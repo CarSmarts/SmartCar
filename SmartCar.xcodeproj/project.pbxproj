@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		159E17D37EE0542DA53E2FCA /* Pods_SmartCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D9A0442CF5A7F92E0E125 /* Pods_SmartCar.framework */; };
+		2303F4B3BC42C402A415BD9D /* Pods_SmartCarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80DBDD678ED0DCFD8BE541D1 /* Pods_SmartCarTests.framework */; };
+		3087A8608E0EADBDA453A705 /* Pods_SmartCarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F40590E46BCCA51D51DA4F4F /* Pods_SmartCarUITests.framework */; };
 		73CE154C1EB2B68F00F54E7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CE154B1EB2B68F00F54E7E /* AppDelegate.swift */; };
 		73CE154E1EB2B68F00F54E7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CE154D1EB2B68F00F54E7E /* ViewController.swift */; };
 		73CE15511EB2B68F00F54E7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CE154F1EB2B68F00F54E7E /* Main.storyboard */; };
@@ -34,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1214D4B5B6B12423096DAB41 /* Pods-SmartCarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCarUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCarUITests/Pods-SmartCarUITests.release.xcconfig"; sourceTree = "<group>"; };
 		73CE15481EB2B68F00F54E7E /* SmartCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CE154B1EB2B68F00F54E7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73CE154D1EB2B68F00F54E7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +51,14 @@
 		73CE15671EB2B68F00F54E7E /* SmartCarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartCarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CE156B1EB2B68F00F54E7E /* SmartCarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartCarUITests.swift; sourceTree = "<group>"; };
 		73CE156D1EB2B68F00F54E7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76A4305060B49D62218656D1 /* Pods-SmartCarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCarUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCarUITests/Pods-SmartCarUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		80DBDD678ED0DCFD8BE541D1 /* Pods_SmartCarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		939ACBE9572836B106965197 /* Pods-SmartCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCar.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCar/Pods-SmartCar.release.xcconfig"; sourceTree = "<group>"; };
+		A449905223E2126EEE916C6C /* Pods-SmartCarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCarTests/Pods-SmartCarTests.release.xcconfig"; sourceTree = "<group>"; };
+		CD7549AB9266608BF12E5E0E /* Pods-SmartCarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCarTests/Pods-SmartCarTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D92E37A52A44D5AE5BEDC1C4 /* Pods-SmartCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCar/Pods-SmartCar.debug.xcconfig"; sourceTree = "<group>"; };
+		F40590E46BCCA51D51DA4F4F /* Pods_SmartCarUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCarUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F71D9A0442CF5A7F92E0E125 /* Pods_SmartCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				159E17D37EE0542DA53E2FCA /* Pods_SmartCar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2303F4B3BC42C402A415BD9D /* Pods_SmartCarTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3087A8608E0EADBDA453A705 /* Pods_SmartCarUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +96,8 @@
 				73CE155F1EB2B68F00F54E7E /* SmartCarTests */,
 				73CE156A1EB2B68F00F54E7E /* SmartCarUITests */,
 				73CE15491EB2B68F00F54E7E /* Products */,
+				D01C0DDF58023D007AD530DB /* Pods */,
+				A34A92094D9C98D91512128E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +142,29 @@
 			path = SmartCarUITests;
 			sourceTree = "<group>";
 		};
+		A34A92094D9C98D91512128E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F71D9A0442CF5A7F92E0E125 /* Pods_SmartCar.framework */,
+				80DBDD678ED0DCFD8BE541D1 /* Pods_SmartCarTests.framework */,
+				F40590E46BCCA51D51DA4F4F /* Pods_SmartCarUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D01C0DDF58023D007AD530DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D92E37A52A44D5AE5BEDC1C4 /* Pods-SmartCar.debug.xcconfig */,
+				939ACBE9572836B106965197 /* Pods-SmartCar.release.xcconfig */,
+				CD7549AB9266608BF12E5E0E /* Pods-SmartCarTests.debug.xcconfig */,
+				A449905223E2126EEE916C6C /* Pods-SmartCarTests.release.xcconfig */,
+				76A4305060B49D62218656D1 /* Pods-SmartCarUITests.debug.xcconfig */,
+				1214D4B5B6B12423096DAB41 /* Pods-SmartCarUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73CE15701EB2B68F00F54E7E /* Build configuration list for PBXNativeTarget "SmartCar" */;
 			buildPhases = (
+				1276C0EC2A13B5BFFAD03C3F /* [CP] Check Pods Manifest.lock */,
 				73CE15441EB2B68F00F54E7E /* Sources */,
 				73CE15451EB2B68F00F54E7E /* Frameworks */,
 				73CE15461EB2B68F00F54E7E /* Resources */,
+				9620A8788914CB4E7454B3E9 /* [CP] Embed Pods Frameworks */,
+				2DD4C8D0E9D25CDB02A99315 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73CE15731EB2B68F00F54E7E /* Build configuration list for PBXNativeTarget "SmartCarTests" */;
 			buildPhases = (
+				F517A05F30A4F10795625E3C /* [CP] Check Pods Manifest.lock */,
 				73CE15581EB2B68F00F54E7E /* Sources */,
 				73CE15591EB2B68F00F54E7E /* Frameworks */,
 				73CE155A1EB2B68F00F54E7E /* Resources */,
+				4B13310B0DB920BD0CD8033C /* [CP] Embed Pods Frameworks */,
+				A23F7F2DB96F973E4B736F8E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73CE15761EB2B68F00F54E7E /* Build configuration list for PBXNativeTarget "SmartCarUITests" */;
 			buildPhases = (
+				9C8987751001D47B9D6EE4D3 /* [CP] Check Pods Manifest.lock */,
 				73CE15631EB2B68F00F54E7E /* Sources */,
 				73CE15641EB2B68F00F54E7E /* Frameworks */,
 				73CE15651EB2B68F00F54E7E /* Resources */,
+				E8FC083B522E157C4AB97495 /* [CP] Embed Pods Frameworks */,
+				3B1EB425BD45AA8F128C9C0A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -256,6 +305,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1276C0EC2A13B5BFFAD03C3F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2DD4C8D0E9D25CDB02A99315 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartCar/Pods-SmartCar-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3B1EB425BD45AA8F128C9C0A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartCarUITests/Pods-SmartCarUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4B13310B0DB920BD0CD8033C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartCarTests/Pods-SmartCarTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9620A8788914CB4E7454B3E9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartCar/Pods-SmartCar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C8987751001D47B9D6EE4D3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A23F7F2DB96F973E4B736F8E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartCarTests/Pods-SmartCarTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8FC083B522E157C4AB97495 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartCarUITests/Pods-SmartCarUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F517A05F30A4F10795625E3C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		73CE15441EB2B68F00F54E7E /* Sources */ = {
@@ -415,6 +602,7 @@
 		};
 		73CE15711EB2B68F00F54E7E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D92E37A52A44D5AE5BEDC1C4 /* Pods-SmartCar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CB8792S7AP;
@@ -428,6 +616,7 @@
 		};
 		73CE15721EB2B68F00F54E7E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 939ACBE9572836B106965197 /* Pods-SmartCar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CB8792S7AP;
@@ -441,6 +630,7 @@
 		};
 		73CE15741EB2B68F00F54E7E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD7549AB9266608BF12E5E0E /* Pods-SmartCarTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -456,6 +646,7 @@
 		};
 		73CE15751EB2B68F00F54E7E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A449905223E2126EEE916C6C /* Pods-SmartCarTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -471,6 +662,7 @@
 		};
 		73CE15771EB2B68F00F54E7E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76A4305060B49D62218656D1 /* Pods-SmartCarUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = CB8792S7AP;
@@ -485,6 +677,7 @@
 		};
 		73CE15781EB2B68F00F54E7E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1214D4B5B6B12423096DAB41 /* Pods-SmartCarUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = CB8792S7AP;
