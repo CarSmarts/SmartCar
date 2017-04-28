@@ -17,8 +17,16 @@ let smartCarServices = [CBUUID(string: "A1A4C256-3370-4D9A-99AA-70BFA81B906B")]
 public class DeviceManager: NSObject {
     public static let manager = DeviceManager()
     
-    let bluetoothManager = BluetoothManager()
- 
+    let bluetoothManager = BluetoothManager(queue: .global(qos: .userInitiated), options: [CBCentralManagerOptionRestoreIdentifierKey : "carSmartsSenderRestoreIdent" as AnyObject])
+    
+    public override init() {
+        super.init()
+        
+        bluetoothManager.listenOnRestoredState().subscribe(onNext: { restoredState in
+            print("Restored: \(restoredState)")
+        }).disposed(by: rx_disposeBag)
+    }
+    
     //MARK: scan switch
     public var scan: Observable<CarSmartsDevice> {
         return bluetoothManager.rx_state.filter { $0 == .poweredOn }.flatMapLatest { _ -> Observable<ScannedPeripheral> in
