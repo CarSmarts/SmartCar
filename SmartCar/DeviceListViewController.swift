@@ -35,7 +35,25 @@ class DeviceListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        DeviceManager.manager.scan.subscribe().disposed(by: scanDisposable)
+        DeviceManager.manager.attemptScan.subscribeOn(MainScheduler.instance)
+        .subscribe(onNext: { state in
+            let title: String
+            
+            switch state {
+            case .poweredOn:
+                title = "Scanning..."
+            case .poweredOff:
+                title = "Bluetooth Off"
+            case .unauthorized:
+                title = "Authorize in settings"
+            case .unknown, .resetting:
+                title = "Unknown"
+            case .unsupported:
+                title = "Bluetooth Not supported"
+            }
+            
+            self.navigationItem.title = title
+        }).disposed(by: scanDisposable)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -28,12 +28,11 @@ public class DeviceManager: NSObject {
     }
     
     //MARK: scan switch
-    public var scan: Observable<CarSmartsDevice> {
-        return bluetoothManager.rx_state.filter { $0 == .poweredOn }.flatMapLatest { _ -> Observable<ScannedPeripheral> in
-            print("Scanning.. ")
-            
-            return self.bluetoothManager.scanForPeripherals(withServices: smartCarServices)
-        }.flatMap { scannedPeripheral -> Observable<Peripheral> in
+    public var attemptScan: Observable<BluetoothState> {
+        
+        let state = bluetoothManager.rx_state
+        
+        let scan = bluetoothManager.scanForPeripherals(withServices: smartCarServices).flatMap { scannedPeripheral -> Observable<Peripheral> in
             print("Connecting to: \(scannedPeripheral.advertisementData.localName ?? "Unnamed")")
             
             return scannedPeripheral.peripheral.connect()
@@ -41,6 +40,14 @@ public class DeviceManager: NSObject {
         .do(onNext: { (device: CarSmartsDevice) in
             self.knownDevices.value.append(device)
         })
+
+        return state.flatMapLatest { bluetoothState -> Observable<BluetoothState> in
+            if bluetoothState == .poweredOn {
+                return scan.catchError({ _ in Observable.empty() }).map { _ in bluetoothState }
+            } else {
+                return Observable.just(bluetoothState)
+            }
+        }
     }
     
     //MARK: devices
