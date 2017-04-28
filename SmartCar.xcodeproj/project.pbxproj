@@ -10,8 +10,11 @@
 		159E17D37EE0542DA53E2FCA /* Pods_SmartCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D9A0442CF5A7F92E0E125 /* Pods_SmartCar.framework */; };
 		2303F4B3BC42C402A415BD9D /* Pods_SmartCarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80DBDD678ED0DCFD8BE541D1 /* Pods_SmartCarTests.framework */; };
 		3087A8608E0EADBDA453A705 /* Pods_SmartCarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F40590E46BCCA51D51DA4F4F /* Pods_SmartCarUITests.framework */; };
+		7399B2FE1EB2BA9400ECBB84 /* CarSmartsDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7399B2FD1EB2BA9400ECBB84 /* CarSmartsDevice.swift */; };
+		7399B3001EB2BB1000ECBB84 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7399B2FF1EB2BB1000ECBB84 /* DeviceManager.swift */; };
+		7399B3021EB2BCBF00ECBB84 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7399B3011EB2BCBF00ECBB84 /* CoreBluetooth.framework */; };
+		7399B3041EB2C46A00ECBB84 /* DeviceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7399B3031EB2C46A00ECBB84 /* DeviceListViewController.swift */; };
 		73CE154C1EB2B68F00F54E7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CE154B1EB2B68F00F54E7E /* AppDelegate.swift */; };
-		73CE154E1EB2B68F00F54E7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CE154D1EB2B68F00F54E7E /* ViewController.swift */; };
 		73CE15511EB2B68F00F54E7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CE154F1EB2B68F00F54E7E /* Main.storyboard */; };
 		73CE15531EB2B68F00F54E7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73CE15521EB2B68F00F54E7E /* Assets.xcassets */; };
 		73CE15561EB2B68F00F54E7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CE15541EB2B68F00F54E7E /* LaunchScreen.storyboard */; };
@@ -38,9 +41,12 @@
 
 /* Begin PBXFileReference section */
 		1214D4B5B6B12423096DAB41 /* Pods-SmartCarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCarUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCarUITests/Pods-SmartCarUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7399B2FD1EB2BA9400ECBB84 /* CarSmartsDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarSmartsDevice.swift; path = Comunication/CarSmartsDevice.swift; sourceTree = "<group>"; };
+		7399B2FF1EB2BB1000ECBB84 /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
+		7399B3011EB2BCBF00ECBB84 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		7399B3031EB2C46A00ECBB84 /* DeviceListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceListViewController.swift; sourceTree = "<group>"; };
 		73CE15481EB2B68F00F54E7E /* SmartCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CE154B1EB2B68F00F54E7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		73CE154D1EB2B68F00F54E7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		73CE15501EB2B68F00F54E7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		73CE15521EB2B68F00F54E7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73CE15551EB2B68F00F54E7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -66,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7399B3021EB2BCBF00ECBB84 /* CoreBluetooth.framework in Frameworks */,
 				159E17D37EE0542DA53E2FCA /* Pods_SmartCar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,6 +96,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7399B2FB1EB2BA3F00ECBB84 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				73CE15521EB2B68F00F54E7E /* Assets.xcassets */,
+				73CE15541EB2B68F00F54E7E /* LaunchScreen.storyboard */,
+				73CE15571EB2B68F00F54E7E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7399B2FC1EB2BA6A00ECBB84 /* Comunication */ = {
+			isa = PBXGroup;
+			children = (
+				7399B2FD1EB2BA9400ECBB84 /* CarSmartsDevice.swift */,
+				7399B2FF1EB2BB1000ECBB84 /* DeviceManager.swift */,
+			);
+			name = Comunication;
+			sourceTree = "<group>";
+		};
 		73CE153F1EB2B68F00F54E7E = {
 			isa = PBXGroup;
 			children = (
@@ -114,12 +140,11 @@
 		73CE154A1EB2B68F00F54E7E /* SmartCar */ = {
 			isa = PBXGroup;
 			children = (
+				7399B2FC1EB2BA6A00ECBB84 /* Comunication */,
 				73CE154B1EB2B68F00F54E7E /* AppDelegate.swift */,
-				73CE154D1EB2B68F00F54E7E /* ViewController.swift */,
+				7399B3031EB2C46A00ECBB84 /* DeviceListViewController.swift */,
 				73CE154F1EB2B68F00F54E7E /* Main.storyboard */,
-				73CE15521EB2B68F00F54E7E /* Assets.xcassets */,
-				73CE15541EB2B68F00F54E7E /* LaunchScreen.storyboard */,
-				73CE15571EB2B68F00F54E7E /* Info.plist */,
+				7399B2FB1EB2BA3F00ECBB84 /* Supporting Files */,
 			);
 			path = SmartCar;
 			sourceTree = "<group>";
@@ -145,6 +170,7 @@
 		A34A92094D9C98D91512128E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7399B3011EB2BCBF00ECBB84 /* CoreBluetooth.framework */,
 				F71D9A0442CF5A7F92E0E125 /* Pods_SmartCar.framework */,
 				80DBDD678ED0DCFD8BE541D1 /* Pods_SmartCarTests.framework */,
 				F40590E46BCCA51D51DA4F4F /* Pods_SmartCarUITests.framework */,
@@ -449,7 +475,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73CE154E1EB2B68F00F54E7E /* ViewController.swift in Sources */,
+				7399B3041EB2C46A00ECBB84 /* DeviceListViewController.swift in Sources */,
+				7399B3001EB2BB1000ECBB84 /* DeviceManager.swift in Sources */,
+				7399B2FE1EB2BA9400ECBB84 /* CarSmartsDevice.swift in Sources */,
 				73CE154C1EB2B68F00F54E7E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -709,6 +737,7 @@
 				73CE15721EB2B68F00F54E7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		73CE15731EB2B68F00F54E7E /* Build configuration list for PBXNativeTarget "SmartCarTests" */ = {
 			isa = XCConfigurationList;
@@ -717,6 +746,7 @@
 				73CE15751EB2B68F00F54E7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		73CE15761EB2B68F00F54E7E /* Build configuration list for PBXNativeTarget "SmartCarUITests" */ = {
 			isa = XCConfigurationList;
@@ -725,6 +755,7 @@
 				73CE15781EB2B68F00F54E7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
