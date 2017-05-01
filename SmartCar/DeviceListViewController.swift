@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import RxDataSources
 
 class DeviceListViewController: UIViewController {
 
@@ -20,10 +19,10 @@ class DeviceListViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        let devices = DeviceManager.manager.knownDevices.asDriver()
+        let devices = DeviceManager.manager.knownDevices.asObservable()
         
-        devices.drive(tableView.rx.items(cellIdentifier: "device", cellType: UITableViewCell.self)) { ip, device, cell in
-            cell.textLabel?.text = device.name
+        devices.bindTo(tableView.rx.items(cellIdentifier: "device")) { row, element, cell in
+            cell.textLabel?.text = element.name
         }.disposed(by: rx_disposeBag)
     }
     
@@ -35,25 +34,23 @@ class DeviceListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        DeviceManager.manager.attemptScan.subscribeOn(MainScheduler.instance)
-        .subscribe(onNext: { state in
-            let title: String
-            
+        DeviceManager.manager.attemptScan.observeOn(MainScheduler.instance)
+        .flatMapLatest { state -> Observable<String> in
             switch state {
             case .poweredOn:
-                title = "Scanning..."
+                return dots(initialString: "Scanning", range: 1...3, timeInterval: 1)
             case .poweredOff:
-                title = "Bluetooth Off"
+                return .just("Bluetooth Off")
             case .unauthorized:
-                title = "Authorize in settings"
+                return .just("Authorize in settings")
             case .unknown, .resetting:
-                title = "Unknown"
+                return .just("Unknown")
             case .unsupported:
-                title = "Bluetooth Not supported"
+                return .just("Bluetooth Not supported")
             }
-            
-            self.navigationItem.title = title
-        }).disposed(by: scanDisposable)
+        }
+        .subscribe(onNext: { self.title = $0 })
+        .disposed(by: scanDisposable)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

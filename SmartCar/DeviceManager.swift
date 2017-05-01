@@ -30,23 +30,28 @@ public class DeviceManager: NSObject {
     //MARK: scan switch
     public var attemptScan: Observable<BluetoothState> {
         
-        let state = bluetoothManager.rx_state
+        let rx_state = bluetoothManager.rx_state
+            .debug("rx_state")
         
-        let scan = bluetoothManager.scanForPeripherals(withServices: smartCarServices).flatMap { scannedPeripheral -> Observable<Peripheral> in
-            print("Connecting to: \(scannedPeripheral.advertisementData.localName ?? "Unnamed")")
+        let scan = bluetoothManager.scanForPeripherals(withServices: smartCarServices).do(onNext: {
+            let device = CarSmartsDevice(from: $0)
             
-            return scannedPeripheral.peripheral.connect()
-        }.map { CarSmartsDevice(from: $0) }
-        .do(onNext: { (device: CarSmartsDevice) in
             self.knownDevices.value.append(device)
         })
-
-        return state.flatMapLatest { bluetoothState -> Observable<BluetoothState> in
-            if bluetoothState == .poweredOn {
-                return scan.catchError({ _ in Observable.empty() }).map { _ in bluetoothState }
-            } else {
-                return Observable.just(bluetoothState)
+            .debug("scan")
+        
+        // kick off scan when subscribed, and dispose when state subscription is disposed
+        return rx_state.flatMapLatest { state -> Observable<BluetoothState> in
+            
+            if state == .poweredOn {
+                // if powered on, return state, but also start the scan
+                return Observable.using({
+                    CompositeDisposable(disposables: [scan.subscribe()])
+                }) { _ in Observable.never().startWith(state) } // Observable that never completes but sends out state
             }
+            
+            // if anything other than .poweredOn, just return the state
+            return .just(state)
         }
     }
     

@@ -7,16 +7,25 @@
 //
 
 import Foundation
+import RxSwift
 import RxBluetoothKit
 
 public class CarSmartsDevice {
+    var disposeBag = DisposeBag()
+    
     var peripheral: Peripheral?
     
-    init(from peripheral: Peripheral) {
-        self.peripheral = peripheral
+    init(from scannedPeripheral: ScannedPeripheral) {
+        peripheral = scannedPeripheral.peripheral
+        
+        print("Connecting to: \(scannedPeripheral.advertisementData.localName ?? "Unnamed")")
+
+        peripheral?.connect().subscribe(onNext: { peripheral in
+            // connected, yay
+        }).disposed(by: disposeBag)
     }
     
     var name: String {
-        return peripheral?.name ?? "Unnamed Device"
+        return peripheral?.name ?? "Unnamed"
     }
 }
