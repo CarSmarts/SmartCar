@@ -21,6 +21,7 @@
 		73CE15561EB2B68F00F54E7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CE15541EB2B68F00F54E7E /* LaunchScreen.storyboard */; };
 		73CE15611EB2B68F00F54E7E /* SmartCarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CE15601EB2B68F00F54E7E /* SmartCarTests.swift */; };
 		73CE156C1EB2B68F00F54E7E /* SmartCarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CE156B1EB2B68F00F54E7E /* SmartCarUITests.swift */; };
+		73E4A6BC1EB6B785002BD442 /* CarSmartsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E4A6BB1EB6B785002BD442 /* CarSmartsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		73CE15671EB2B68F00F54E7E /* SmartCarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartCarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CE156B1EB2B68F00F54E7E /* SmartCarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartCarUITests.swift; sourceTree = "<group>"; };
 		73CE156D1EB2B68F00F54E7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73E4A6BB1EB6B785002BD442 /* CarSmartsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarSmartsService.swift; sourceTree = "<group>"; };
 		76A4305060B49D62218656D1 /* Pods-SmartCarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCarUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCarUITests/Pods-SmartCarUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		80DBDD678ED0DCFD8BE541D1 /* Pods_SmartCarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		939ACBE9572836B106965197 /* Pods-SmartCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCar.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCar/Pods-SmartCar.release.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				7399B2FD1EB2BA9400ECBB84 /* CarSmartsDevice.swift */,
 				7399B2FF1EB2BB1000ECBB84 /* DeviceManager.swift */,
+				73E4A6BB1EB6B785002BD442 /* CarSmartsService.swift */,
 			);
 			name = Comunication;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73E4A6BC1EB6B785002BD442 /* CarSmartsService.swift in Sources */,
 				7399B3041EB2C46A00ECBB84 /* DeviceListViewController.swift in Sources */,
 				7399B3001EB2BB1000ECBB84 /* DeviceManager.swift in Sources */,
 				7399B2FE1EB2BA9400ECBB84 /* CarSmartsDevice.swift in Sources */,
