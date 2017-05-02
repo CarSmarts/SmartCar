@@ -17,6 +17,9 @@ enum CarSmartsService: String, ServiceIdentifier {
         return CBUUID(string: self.rawValue)
     }
     
+    static var services: [CBUUID] {
+        return [CarSmartsService.smartLock].map { $0.uuid }
+    }
 }
 
 enum SmartLockCharacteristic: String, CharacteristicIdentifier {

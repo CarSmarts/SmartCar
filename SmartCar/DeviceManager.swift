@@ -12,8 +12,6 @@ import RxBluetoothKit
 import CoreBluetooth
 import NSObject_Rx
 
-let smartCarServices = [CBUUID(string: "A1A4C256-3370-4D9A-99AA-70BFA81B906B")]
-
 public class DeviceManager: NSObject {
     public static let manager = DeviceManager()
     
@@ -36,14 +34,12 @@ public class DeviceManager: NSObject {
     public var attemptScan: Observable<BluetoothState> {
         
         let rx_state = bluetoothManager.rx_state
-            .debug("rx_state")
-        
-        let scan = bluetoothManager.scanForPeripherals(withServices: smartCarServices).do(onNext: {
+                
+        let scan = bluetoothManager.scanForPeripherals(withServices: CarSmartsService.services).do(onNext: {
             let device = CarSmartsDevice(with: $0)
             
             self.knownDevices.value.append(device)
         })
-            .debug("scan")
         
         // kick off scan when subscribed, and dispose when state subscription is disposed
         return rx_state.flatMapLatest { state -> Observable<BluetoothState> in
