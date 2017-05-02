@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,9 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L6W-bX-E4w">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L6W-bX-E4w">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="device" textLabel="Jc9-us-zyq" style="IBUITableViewCellStyleDefault" id="cy5-ip-Co5">
@@ -50,6 +50,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="L6W-bX-E4w" secondAttribute="trailing" id="0XJ-fg-OwV"/>
+                            <constraint firstItem="L6W-bX-E4w" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="OFi-44-91K"/>
+                            <constraint firstItem="L6W-bX-E4w" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="c0U-no-GtR"/>
+                            <constraint firstItem="L6W-bX-E4w" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="kvv-nF-0UM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Devices" id="7gJ-19-Gvg"/>
                     <connections>
@@ -72,15 +78,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHz-ld-zLG" customClass="LockStateView" customModule="SmartCar" customModuleProvider="target">
-                                <rect key="frame" x="162" y="318" width="50" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHz-ld-zLG" customClass="LockStateView" customModule="SmartCar" customModuleProvider="target">
+                                <rect key="frame" x="16" y="318" width="343" height="30"/>
                                 <state key="normal" title="Locked">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DHz-ld-zLG" firstAttribute="trailing" secondItem="OTP-lp-CzZ" secondAttribute="trailingMargin" id="0IU-zj-rKT"/>
+                            <constraint firstItem="DHz-ld-zLG" firstAttribute="leading" secondItem="OTP-lp-CzZ" secondAttribute="leadingMargin" id="VOW-L9-HIs"/>
+                            <constraint firstItem="DHz-ld-zLG" firstAttribute="centerY" secondItem="OTP-lp-CzZ" secondAttribute="centerY" id="vYs-Ys-bBk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Device" id="OYR-cQ-Yv1"/>
                     <connections>
@@ -89,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rLJ-Rz-rIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1657" y="38"/>
+            <point key="canvasLocation" x="1656.8" y="37.331334332833585"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="x5q-Lm-rPe">
