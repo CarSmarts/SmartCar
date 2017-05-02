@@ -18,3 +18,24 @@ func dots(initialString: String, range: ClosedRange<Int>, timeInterval: RxTimeIn
         return initialString + repeatElement(".", count: count).joined()
     }
 }
+
+func ignoreNil<A>(x: A?) -> Observable<A> {
+    return x.map { Observable.just($0) } ?? Observable.empty()
+}
+
+extension Reactive where Base: UITableView {
+    func decodeSegue<T>(sender: Any?) -> T? {
+        
+        if let element = sender as? T {
+            return element
+            
+        } else if let indexPath = sender as? IndexPath {
+            return try! model(at: indexPath)
+            
+        } else if let tableViewCell = sender as? UITableViewCell {
+            return decodeSegue(sender: base.indexPath(for: tableViewCell)!)
+        }
+        
+        return nil
+    }
+}

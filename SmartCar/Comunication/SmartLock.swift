@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum LockState: Int {
+public enum LockState: Int {
     case unknown = 0
     case lock, unlock
     

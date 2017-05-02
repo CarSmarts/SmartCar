@@ -15,11 +15,11 @@ public class CarSmartsDevice {
     
     var peripheral: Peripheral
     
-    convenience init(with scannedPeripheral: ScannedPeripheral) {
+    public convenience init(with scannedPeripheral: ScannedPeripheral) {
         self.init(with: scannedPeripheral.peripheral)
     }
     
-    init(with peripheral: Peripheral) {
+    public init(with peripheral: Peripheral) {
         self.peripheral = peripheral
 
         // always try to connect
@@ -29,7 +29,14 @@ public class CarSmartsDevice {
 
     }
     
-    var name: String {
+    public var name: String {
         return peripheral.name ?? "Unnamed"
+    }
+    
+    public var smartLock: Observable<LockState> {
+        return peripheral.characteristic(with: SmartLockCharacteristic.lock).flatMap { characteristic in
+            characteristic.setNotificationAndMonitorUpdates()
+        }.map { $0.value }
+        .map(LockState.init(data:)).flatMap(ignoreNil).debug()
     }
 }

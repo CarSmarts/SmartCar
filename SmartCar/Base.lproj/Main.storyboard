@@ -12,7 +12,7 @@
         <!--Devices-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="DeviceListViewController" customModule="SmartCar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Devices" id="BYZ-38-t0r" customClass="DeviceListViewController" customModule="SmartCar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -42,6 +42,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Vry-Yb-79E" kind="show" id="ygo-16-4aA"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -56,6 +59,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="972" y="38.23088455772114"/>
+        </scene>
+        <!--Device-->
+        <scene sceneID="16t-wt-zTV">
+            <objects>
+                <viewController id="Vry-Yb-79E" customClass="DeviceViewController" customModule="SmartCar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lu4-TM-x02"/>
+                        <viewControllerLayoutGuide type="bottom" id="MVa-cz-R2J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OTP-lp-CzZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHz-ld-zLG" customClass="LockStateView" customModule="SmartCar" customModuleProvider="target">
+                                <rect key="frame" x="162" y="318" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Locked">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Device" id="OYR-cQ-Yv1"/>
+                    <connections>
+                        <outlet property="lockStateView" destination="DHz-ld-zLG" id="FK4-d4-Pur"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rLJ-Rz-rIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1657" y="38"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="x5q-Lm-rPe">

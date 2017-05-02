@@ -24,6 +24,7 @@
 		73E4A6BC1EB6B785002BD442 /* CarSmartsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E4A6BB1EB6B785002BD442 /* CarSmartsService.swift */; };
 		73E4A6BE1EB7F63B002BD442 /* LockStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E4A6BD1EB7F63B002BD442 /* LockStateView.swift */; };
 		73E4A6C01EB7F689002BD442 /* SmartLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E4A6BF1EB7F689002BD442 /* SmartLock.swift */; };
+		73E4A6C21EB7FDED002BD442 /* DeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E4A6C11EB7FDED002BD442 /* DeviceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		73E4A6BB1EB6B785002BD442 /* CarSmartsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarSmartsService.swift; sourceTree = "<group>"; };
 		73E4A6BD1EB7F63B002BD442 /* LockStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockStateView.swift; sourceTree = "<group>"; };
 		73E4A6BF1EB7F689002BD442 /* SmartLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SmartLock.swift; path = Comunication/SmartLock.swift; sourceTree = "<group>"; };
+		73E4A6C11EB7FDED002BD442 /* DeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceViewController.swift; sourceTree = "<group>"; };
 		76A4305060B49D62218656D1 /* Pods-SmartCarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCarUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCarUITests/Pods-SmartCarUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		80DBDD678ED0DCFD8BE541D1 /* Pods_SmartCarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		939ACBE9572836B106965197 /* Pods-SmartCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCar.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCar/Pods-SmartCar.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				7399B2FC1EB2BA6A00ECBB84 /* Comunication */,
 				73CE154B1EB2B68F00F54E7E /* AppDelegate.swift */,
 				7399B3031EB2C46A00ECBB84 /* DeviceListViewController.swift */,
+				73E4A6C11EB7FDED002BD442 /* DeviceViewController.swift */,
 				73E4A6BD1EB7F63B002BD442 /* LockStateView.swift */,
 				737B55E41EB2EAEA0059D666 /* RxHelper.swift */,
 				73CE154F1EB2B68F00F54E7E /* Main.storyboard */,
@@ -500,6 +503,7 @@
 				73CE154C1EB2B68F00F54E7E /* AppDelegate.swift in Sources */,
 				737B55E51EB2EAEA0059D666 /* RxHelper.swift in Sources */,
 				73E4A6BE1EB7F63B002BD442 /* LockStateView.swift in Sources */,
+				73E4A6C21EB7FDED002BD442 /* DeviceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
