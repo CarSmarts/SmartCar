@@ -43,8 +43,9 @@ public class CarSmartsDevice {
     
     public var smartLock: Observable<LockState> {
         return peripheral.characteristic(with: SmartLockCharacteristic.lock).flatMap { characteristic in
-            characteristic.setNotificationAndMonitorUpdates()
-        }.map { $0.value }
+            characteristic.readValueAndMonitorUpdates()
+        }.map { $0.value } // Extract the value from the characteristic
+        // convert that into a lockState, ignoreing values the lock state can't interpret
         .map(LockState.init(data:)).flatMap(ignoreNil).debug()
     }
 }

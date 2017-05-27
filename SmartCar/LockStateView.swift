@@ -24,7 +24,7 @@ class LockStateView: UIButton {
             case .unlock:
                 self.setTitle("Unlocked", for: .normal)
             case .unknown:
-                self.setTitle("", for: .normal)
+                self.setTitle("...", for: .normal)
             }
         })
 
