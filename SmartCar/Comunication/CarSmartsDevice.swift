@@ -15,6 +15,10 @@ public class CarSmartsDevice {
     
     var peripheral: Peripheral
     
+    var smartLockCharacteristic: Observable<Characteristic> {
+        return peripheral.characteristic(with: SmartLockCharacteristic.lock)
+    }
+    
     public convenience init(with scannedPeripheral: ScannedPeripheral) {
         self.init(with: scannedPeripheral.peripheral)
     }
@@ -41,11 +45,37 @@ public class CarSmartsDevice {
         return peripheral.rx_isConnected
     }
     
-    public var smartLock: Observable<LockState> {
-        return peripheral.characteristic(with: SmartLockCharacteristic.lock).flatMap { characteristic in
+    public func toggleLockState() -> Observable<LockState> {
+        return smartLockCharacteristic.map { LockState(data: $0.value) }
+        .map { $0.toggled() }
+        .flatMap { self.setLockState($0) }
+    }
+    
+    public func readLockState() -> Observable<LockState> {
+        return smartLockCharacteristic.flatMap { characteristic in
             characteristic.readValueAndMonitorUpdates()
-        }.map { $0.value } // Extract the value from the characteristic
-        // convert that into a lockState, ignoreing values the lock state can't interpret
-        .map(LockState.init(data:)).flatMap(ignoreNil).debug()
+        }
+        .map { LockState(data: $0.value) }.debug()
+    }
+    
+    public func setLockState(_ newState: LockState) -> Observable<LockState> {
+        return smartLockCharacteristic.flatMap { characterisitic in
+            characterisitic.writeValue(newState.data, type: .withResponse)
+        }
+        .map { LockState(data: $0.value) }
+    }
+}
+
+extension LockState {
+    
+    /// Helper function to toggle lock state
+    /// changes `lock` to `unlock` and `unlock`/`unknown` to `lock`
+    func toggled() -> LockState {
+        switch self {
+        case .lock:
+            return .unlock
+        case .unlock, .unknown:
+            return .lock
+        }
     }
 }

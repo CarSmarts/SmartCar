@@ -12,18 +12,19 @@ public enum LockState: Int {
     case unknown = 0
     case lock, unlock
     
-    init?(data someData:Data?)
+    init(data someData:Data?)
     {
         guard let data = someData , data.count == 1 else
         {
-            return nil
+            self = .unknown
+            return
         }
         
         var value: Int = 0
         
         (data as NSData).getBytes(&value, length:1)
         
-        self.init(rawValue: value)
+        self = LockState(rawValue: value) ?? .unknown
     }
     
     
