@@ -22,9 +22,9 @@ public class DeviceManager: NSObject {
         
         bluetoothManager.listenOnRestoredState().subscribe(onNext: { restoredState in
             
-            restoredState.peripherals.map(CarSmartsDevice.init(with:)).forEach { device in
-                self.knownDevices.value.append(device)
-            }
+            let restoredDevices = restoredState.peripherals.map(CarSmartsDevice.init(with:))
+            
+            self.knownDevices.value += restoredDevices
             
             print("Restored: \(restoredState)")
         }).disposed(by: rx_disposeBag)
