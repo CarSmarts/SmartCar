@@ -35,3 +35,10 @@ public extension NSObject {
         }
     }
 }
+
+public extension Reactive where Base: NSObject {
+    var disposeBag: DisposeBag {
+        get { return base.rx_disposeBag }
+        set { base.rx_disposeBag = newValue }
+    }
+}
