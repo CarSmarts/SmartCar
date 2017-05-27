@@ -33,6 +33,14 @@ public class CarSmartsDevice {
         return peripheral.name ?? "Unnamed"
     }
     
+    public var isConnected: Bool {
+        return peripheral.isConnected
+    }
+    
+    public var rx_isConnected: Observable<Bool> {
+        return peripheral.rx_isConnected
+    }
+    
     public var smartLock: Observable<LockState> {
         return peripheral.characteristic(with: SmartLockCharacteristic.lock).flatMap { characteristic in
             characteristic.setNotificationAndMonitorUpdates()
