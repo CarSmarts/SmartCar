@@ -21,8 +21,9 @@ class DeviceListViewController: UIViewController {
         
         let devices = DeviceManager.manager.knownDevices.asObservable()
         
-        devices.bindTo(tableView.rx.items(cellIdentifier: "device")) { row, element, cell in
-            cell.textLabel?.text = element.name
+        devices.bind(to: tableView.rx.items(cellIdentifier: "device")) { row, device, cell in
+            cell.textLabel?.isEnabled = device.isConnected
+            cell.textLabel?.text = device.name
         }.disposed(by: rx_disposeBag)
     }
     
