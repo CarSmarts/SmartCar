@@ -12,19 +12,34 @@ class DeviceViewController: UIViewController {
     
     @IBOutlet weak var lockStateView: LockStateView!
     
-    var device: CarSmartsDevice!
+    var device: CarSmartsDevice! {
+        didSet {
+            device.smartLock.asDriver(onErrorJustReturn: .unknown).drive(lockStateView.lockState).disposed(by: rx_disposeBag)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        device.smartLock.asDriver(onErrorJustReturn: .unknown).drive(lockStateView.lockState).disposed(by: rx_disposeBag)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // show device list if we have no device
+        //TODO: We will always have no device on startup? we should change this
+        if device == nil {
+            performSegue(withIdentifier: "ShowDeviceList", sender: self)
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func unwind(unwindSegue: UIStoryboardSegue) {
+        //TODO: Something?
     }
     
 }
