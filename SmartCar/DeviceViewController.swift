@@ -22,13 +22,13 @@ class DeviceViewController: UIViewController {
                 return newState
                 
             }.flatMapLatest { newState in
-                self.device.setLockState(newState)
-            }.catchError { error in
-                //TODO: do something with error
-                self.lockStateView.error()
-                
-                return Observable.never()
-            }.subscribe().disposed(by: rx_disposeBag)
+                self.device.setLockState(newState).catchError { error in
+                    //TODO: do something with error
+                    self.lockStateView.error()
+                    
+                    return Observable.never()
+                }
+            }.debug().subscribe().disposed(by: rx_disposeBag)
         }
     }
 
