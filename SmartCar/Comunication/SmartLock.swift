@@ -34,17 +34,3 @@ public enum LockState: Int {
         return Data(bytes: [value])
     }
 }
-
-extension LockState: CustomStringConvertible {
-    public var description:String
-    {
-        switch self {
-        case .unknown:
-            return "Unknown"
-        case .lock:
-            return "Locked"
-        case .unlock:
-            return "Unlocked"
-        }
-    }
-}

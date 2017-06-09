@@ -7,36 +7,56 @@
 //
 
 import UIKit
-import RxSwift
 
 class LockStateView: UIButton {
     
-    var lockState = Variable(LockState.unknown)
-    
-    var sending = Variable(false)
-    
-    override func awakeFromNib() {
-        
-        _ = lockState.asDriver().drive(onNext: { state in
-            switch state {
-            case .lock:
-                self.setTitle("Locked", for: .normal)
-            case .unlock:
-                self.setTitle("Unlocked", for: .normal)
-            case .unknown:
-                self.setTitle("...", for: .normal)
-            }
-        })
-
-        _ = sending.asDriver().drive(onNext: { sending in
-            if sending {
-                self.setTitleColor(.orange, for: .normal)
-            } else {
-                self.setTitleColor(.black, for: .normal)
-            }
-
-        })
+    /// The `LockState` shown by the `LockStateView`
+    private(set) var lockState = LockState.unknown {
+        didSet {
+            setTitle(lockState.description, for: .normal)
+        }
     }
     
+    /// The color of the `LockStateView`
+    private(set) var color = UIColor.black {
+        didSet {
+            setTitleColor(color, for: .normal)
+        }
+    }
     
+    /// Presents `newLockState` in normal format
+    ///
+    /// - Parameter newLockState: State to present
+    public func display(_ newLockState: LockState) {
+        lockState = newLockState
+        color = .darkText
+    }
+    
+    /// Presents `newLockState` in "sending" format
+    ///
+    /// - Parameter newLockState: State to present
+    public func displaySending(_ newLockState: LockState) {
+        lockState = newLockState
+        color = .orange
+    }
+    
+    /// Indicates Error
+    public func error() {
+        color = .red
+    }
+    
+}
+
+extension LockState: CustomStringConvertible {
+    public var description:String
+    {
+        switch self {
+        case .unknown:
+            return "..."
+        case .lock:
+            return "Locked"
+        case .unlock:
+            return "Unlocked"
+        }
+    }
 }

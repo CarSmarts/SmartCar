@@ -7,24 +7,36 @@
 //
 
 import UIKit
+import RxSwift
 
 class DeviceViewController: UIViewController {
     
     @IBOutlet weak var lockStateView: LockStateView! {
         didSet {
-            // TODO: combine reading with writing
-            // Right now this works, but only becuase we send a notification out after reciving
-            // Really need to show "sending" ui, followed by updating to new state after its write response is successful
-            // One question is does write response indicate a successful lock on the car side? or does it just indicate a sucessful reception of the message?
-            lockStateView.rx.tap.flatMapLatest {
-                self.device.toggleLockState()
+            lockStateView.rx.tap.map {
+                // Toggle current state
+                let newState = self.lockStateView.lockState.toggled()
+                
+                self.lockStateView.displaySending(newState)
+                
+                return newState
+                
+            }.flatMapLatest { newState in
+                self.device.setLockState(newState)
+            }.catchError { error in
+                //TODO: do something with error
+                self.lockStateView.error()
+                
+                return Observable.never()
             }.subscribe().disposed(by: rx_disposeBag)
         }
     }
 
     var device: CarSmartsDevice! {
         didSet {
-            device.readLockState().asDriver(onErrorJustReturn: .unknown).drive(lockStateView.lockState).disposed(by: rx_disposeBag)
+            device.readLockState().debug().asDriver(onErrorJustReturn: .unknown).drive(onNext: { newState in
+                self.lockStateView.display(newState)
+            }).disposed(by: rx_disposeBag)
         }
     }
     
