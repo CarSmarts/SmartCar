@@ -45,9 +45,12 @@ public class CarSmartsDevice {
         return peripheral.rx_isConnected
     }
     
-    public func toggleLockState() -> Observable<LockState> {
+    public func currentLockState() -> Observable<LockState> {
         return smartLockCharacteristic.map { LockState(data: $0.value) }
-        .map { $0.toggled() }
+    }
+    
+    public func toggleLockState() -> Observable<LockState> {
+        return currentLockState().map { $0.toggled() }
         .flatMap { self.setLockState($0) }
     }
     
@@ -55,7 +58,7 @@ public class CarSmartsDevice {
         return smartLockCharacteristic.flatMap { characteristic in
             characteristic.readValueAndMonitorUpdates()
         }
-        .map { LockState(data: $0.value) }.debug()
+        .map { LockState(data: $0.value) }
     }
     
     public func setLockState(_ newState: LockState) -> Observable<LockState> {
