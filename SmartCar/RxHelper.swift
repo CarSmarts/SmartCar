@@ -23,17 +23,22 @@ func ignoreNil<A>(x: A?) -> Observable<A> {
     return x.map { Observable.just($0) } ?? Observable.empty()
 }
 
-extension Reactive where Base: UITableView {
-    func decodeSegue<T>(sender: Any?) -> T? {
+extension UITableViewController {
+    func decodeSegue<T>(sender: Any?, modelArray: [T]? = nil) -> T? {
         
         if let element = sender as? T {
             return element
             
-        } else if let indexPath = sender as? IndexPath {
-            return try! model(at: indexPath)
+        }
+        
+        if let indexPath = sender as? IndexPath {
+            return modelArray?[indexPath.row]
             
-        } else if let tableViewCell = sender as? UITableViewCell {
-            return decodeSegue(sender: base.indexPath(for: tableViewCell)!)
+        }
+        
+        if let cell = sender as? UITableViewCell {
+            let indexPath = tableView.indexPath(for: cell)!
+            return modelArray?[indexPath.row]
         }
         
         return nil

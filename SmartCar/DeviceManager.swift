@@ -15,6 +15,8 @@ import NSObject_Rx
 public class DeviceManager: NSObject {
     public static let manager = DeviceManager()
     
+    public var delegate: DeviceManagerDelegate?
+    
     let bluetoothManager = BluetoothManager(queue: .global(qos: .userInitiated), options: [CBCentralManagerOptionRestoreIdentifierKey : "carSmartsSenderRestoreIdent" as AnyObject])
     
     public override init() {
@@ -24,7 +26,8 @@ public class DeviceManager: NSObject {
             
             let restoredDevices = restoredState.peripherals.map(CarSmartsDevice.init(with:))
             
-            self.knownDevices.value.formUnion(restoredDevices)
+            self.knownDevices.formUnion(restoredDevices)
+            self.delegate?.deviceManager(didRestore: restoredDevices)
             
             print("Restored: \(restoredState)")
         }).disposed(by: rx_disposeBag)
@@ -38,7 +41,10 @@ public class DeviceManager: NSObject {
         let scan = bluetoothManager.scanForPeripherals(withServices: CarSmartsService.services).do(onNext: {
             let device = CarSmartsDevice(with: $0)
             
-            self.knownDevices.value.insert(device)
+            DispatchQueue.main.async {
+                self.discoveredDevices.insert(device)
+                self.delegate?.deviceManger(didDiscover: device)
+            }
         })
         
         // kick off scan when subscribed, and dispose when state subscription is disposed
@@ -57,6 +63,14 @@ public class DeviceManager: NSObject {
     }
     
     //MARK: devices
-    public var knownDevices = Variable<Set<CarSmartsDevice>>([])
+    public var discoveredDevices = Set<CarSmartsDevice>()
     
+    public var knownDevices = Set<CarSmartsDevice>()
 }
+
+public protocol DeviceManagerDelegate {
+    func deviceManger(didDiscover device: CarSmartsDevice)
+    
+    func deviceManager(didRestore knownDevices: [CarSmartsDevice])
+}
+
