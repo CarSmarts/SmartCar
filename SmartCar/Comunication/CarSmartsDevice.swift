@@ -11,7 +11,7 @@ import RxSwift
 import RxBluetoothKit
 
 public class CarSmartsDevice {
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
     var peripheral: Peripheral
     
@@ -19,11 +19,11 @@ public class CarSmartsDevice {
         return peripheral.characteristic(with: SmartLockCharacteristic.lock)
     }
     
-    public convenience init(with scannedPeripheral: ScannedPeripheral) {
+    convenience init(with scannedPeripheral: ScannedPeripheral) {
         self.init(with: scannedPeripheral.peripheral)
     }
     
-    public init(with peripheral: Peripheral) {
+    init(with peripheral: Peripheral) {
         self.peripheral = peripheral
 
         // always try to connect
@@ -66,6 +66,29 @@ public class CarSmartsDevice {
             characterisitic.writeValue(newState.data, type: .withResponse)
         }
         .map { LockState(data: $0.value) }
+    }
+}
+
+extension CarSmartsDevice : Hashable {
+    
+    static public func == (lhs: CarSmartsDevice, rhs: CarSmartsDevice) -> Bool {
+        return lhs.peripheral == rhs.peripheral
+    }
+    
+    public var hashValue: Int {
+        return peripheral.identifier.hashValue
+    }
+    
+}
+
+extension Characteristic {
+    
+    /// Function that combines `readValue()` and `setnotificationAndMonitorUpdates()`
+    func readValueAndMonitorUpdates() -> Observable<Characteristic> {
+        return Observable.merge(
+            readValue(),
+            setNotificationAndMonitorUpdates()
+        )
     }
 }
 

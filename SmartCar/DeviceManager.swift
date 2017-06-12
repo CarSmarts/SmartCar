@@ -24,7 +24,7 @@ public class DeviceManager: NSObject {
             
             let restoredDevices = restoredState.peripherals.map(CarSmartsDevice.init(with:))
             
-            self.knownDevices.value += restoredDevices
+            self.knownDevices.value.formUnion(restoredDevices)
             
             print("Restored: \(restoredState)")
         }).disposed(by: rx_disposeBag)
@@ -38,7 +38,7 @@ public class DeviceManager: NSObject {
         let scan = bluetoothManager.scanForPeripherals(withServices: CarSmartsService.services).do(onNext: {
             let device = CarSmartsDevice(with: $0)
             
-            self.knownDevices.value.append(device)
+            self.knownDevices.value.insert(device)
         })
         
         // kick off scan when subscribed, and dispose when state subscription is disposed
@@ -57,6 +57,6 @@ public class DeviceManager: NSObject {
     }
     
     //MARK: devices
-    public var knownDevices = Variable<[CarSmartsDevice]>([])
+    public var knownDevices = Variable<Set<CarSmartsDevice>>([])
     
 }
