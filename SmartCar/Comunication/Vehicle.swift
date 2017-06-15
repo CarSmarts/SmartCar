@@ -17,7 +17,15 @@ public class Vehicle: NSObject {
     public var delegate: VehicleDelegate?
     
     let peripheral: CBPeripheral
-    fileprivate var smartLockCharacteristc: CBCharacteristic?
+    fileprivate var smartLockCharacteristc: CBCharacteristic? {
+        didSet {
+            guard let _ = smartLockCharacteristc else { return }
+            
+            delegate?.vehicleDidBecomeAvailible(self)
+            //TODO: Better autounlock
+            send(.unlock)
+        }
+    }
     
     init(with peripheral: CBPeripheral) {
         self.peripheral = peripheral
@@ -92,7 +100,6 @@ extension Vehicle: CBPeripheralDelegate {
         }
         
         self.smartLockCharacteristc = characteristic
-        delegate?.vehicleDidBecomeAvailible(self)
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
