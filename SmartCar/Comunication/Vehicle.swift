@@ -15,9 +15,11 @@ public typealias Command = SmartLock.Command
 public class Vehicle: NSObject {
     
     public var delegate: VehicleDelegate?
-        
-    var peripheral: CBPeripheral
+    
+    let peripheral: CBPeripheral
     fileprivate var smartLockCharacteristc: CBCharacteristic?
+    
+    fileprivate var onDiscoveryFinish: (() -> Void)?
     
     init(with peripheral: CBPeripheral) {
         self.peripheral = peripheral
@@ -25,15 +27,31 @@ public class Vehicle: NSObject {
         super.init()
         
         peripheral.delegate = self
-        peripheral.discoverServices([SmartLock.service])
+    }
+    
+    /// Method to pass "didConnect" callback from manager delegate to individual Vehicles
+    internal func didConnect() {
+        if let _ = smartLockCharacteristc {
+            delegate?.vehicleDidBecomeAvailible(self)
+        } else {
+            peripheral.discoverServices([SmartLock.service])
+        }
+    }
+    
+    /// Method to pass "didDisconnect" callback from manager delegate to individual Vehicles
+    internal func didDisconnect(error: Error?) {
+        delegate?.vehicleDidBecomeUnavailible(self, error: error)
     }
 }
 
 /// Public Accessors
 public extension Vehicle {
+    
     func send(_ command: Command) {
         guard let characteristic = smartLockCharacteristc else {
-            // TODO:
+            onDiscoveryFinish = { [weak self] in
+                self?.send(command)
+            }
             return
         }
         
@@ -59,6 +77,7 @@ extension Vehicle: CBPeripheralDelegate {
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let error = error {
             assertionFailure("Failed to discover service: \(error)")
+            return
         }
         
         guard let service = peripheral.services?.first(where: { $0.uuid == SmartLock.service }) else {
@@ -73,6 +92,7 @@ extension Vehicle: CBPeripheralDelegate {
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if let error = error {
             assertionFailure("Failed to discover service: \(error)")
+            return
         }
         
         guard let characteristic = service.characteristics?.first(where: { $0.uuid == SmartLock.characteristic }) else {
@@ -81,6 +101,8 @@ extension Vehicle: CBPeripheralDelegate {
         }
         
         self.smartLockCharacteristc = characteristic
+        // Do any waiting work
+        onDiscoveryFinish?()
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
@@ -105,5 +127,8 @@ extension Vehicle {
 
 public protocol VehicleDelegate {
     func vehicle(_ vehicle: Vehicle, didSend command: Command, error: Error?)
+    
+    func vehicleDidBecomeAvailible(_ vehicle: Vehicle)
+    func vehicleDidBecomeUnavailible(_ vehicle: Vehicle, error: Error?)
 }
 

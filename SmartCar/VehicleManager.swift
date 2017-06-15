@@ -103,11 +103,17 @@ extension VehicleManager : CBCentralManagerDelegate {
     }
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        delegate?.vehicleManager(didDisconnect: vehicle(for: peripheral), error: error)
+        let vehicle = self.vehicle(for: peripheral)
+
+        vehicle.didDisconnect(error: error)
+        delegate?.vehicleManager(didDisconnect: vehicle, error: error)
     }
     
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        delegate?.vehicleManager(didConnect: vehicle(for: peripheral))
+        let vehicle = self.vehicle(for: peripheral)
+        
+        vehicle.didConnect()
+        delegate?.vehicleManager(didConnect: vehicle)
     }
 }
 

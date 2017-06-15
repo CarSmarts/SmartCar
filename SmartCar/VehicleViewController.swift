@@ -75,5 +75,18 @@ class VehicleViewController: UIViewController {
 extension VehicleViewController: VehicleDelegate {
     func vehicle(_ vehicle: Vehicle, didSend command: Command, error: Error?) {
         commandView.complete()
+        
+        if let error = error {
+            //TODO: Better error messages?
+            commandView.error(message: error.localizedDescription)
+        }
+    }
+    
+    func vehicleDidBecomeAvailible(_ vehicle: Vehicle) {
+        //TODO: Display Avalibility
+    }
+    
+    func vehicleDidBecomeUnavailible(_ vehicle: Vehicle, error: Error?) {
+        //TODO:
     }
 }

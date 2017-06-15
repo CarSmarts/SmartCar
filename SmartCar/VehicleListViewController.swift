@@ -75,7 +75,12 @@ class VehicleListViewController: UITableViewController {
         case 0:
             return vehicleManager.vehicles[indexPath.row]
         case 1:
-            return vehicleManager.connect(to: discoveredVehicles[indexPath.row])
+            let connectedVehicle = vehicleManager.connect(to: discoveredVehicles[indexPath.row])
+            let newIndexPath = IndexPath(row: vehicleManager.vehicles.index(of: connectedVehicle)!, section: 0)
+            
+            tableView.moveRow(at: indexPath, to: newIndexPath)
+            
+            return connectedVehicle
         default:
             return nil
         }
@@ -93,19 +98,24 @@ class VehicleListViewController: UITableViewController {
 
 extension VehicleListViewController: VehicleManagerDelegate {
     
-    func vehicleManager(didConnect vehicle: Vehicle) {
-        
-    }
-    
-    func vehicleManager(didDisconnect vehicle: Vehicle, error: Error?) {
-        
-    }
-        
     func vehicleManager(didDiscover discoveredVehicle: DiscoveredVehicle) {
         let newIndexPath = IndexPath(row: discoveredVehicles.count, section: 1)
         
         discoveredVehicles.append(discoveredVehicle)
         tableView.insertRows(at: [newIndexPath], with: .automatic)
+    }
+    
+    private func reload(for vehicle: Vehicle) {
+        let indexPath = IndexPath(row: vehicleManager.vehicles.index(of: vehicle)!, section: 0)
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
+    func vehicleManager(didConnect vehicle: Vehicle) {
+        reload(for: vehicle)
+    }
+    
+    func vehicleManager(didDisconnect vehicle: Vehicle, error: Error?) {
+        reload(for: vehicle)
     }
 }
 
