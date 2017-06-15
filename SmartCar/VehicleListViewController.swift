@@ -30,6 +30,7 @@ class VehicleListViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // TODO: Button to turn on scan + auto when there are no vehicles
         vehicleManager.scanForNewVehicles()
 
         

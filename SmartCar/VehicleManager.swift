@@ -91,6 +91,12 @@ extension VehicleManager : CBCentralManagerDelegate {
     }
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        
+        if recordedIdentifiers.contains(peripheral.identifier) {
+            // this is a "known device", ignore it
+            return
+        }
+        
         let discoveredVehicle = DiscoveredVehicle(peripheral: peripheral, rssi: RSSI)
         
         delegate?.vehicleManager(didDiscover: discoveredVehicle)
