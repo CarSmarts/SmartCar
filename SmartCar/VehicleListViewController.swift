@@ -34,23 +34,39 @@ class VehicleListViewController: UITableViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        stopScan()
+    }
+    
+    // MARK: - Scan Management
+    @IBOutlet weak var scanButton: UIBarButtonItem!
+    
+    @IBAction func toggleScan(_ sender: Any?) {
+        if vehicleManager.isScanning {
+            stopScan()
+        } else {
+            startScan()
+        }
+    }
+
+    fileprivate func stopScan() {
         vehicleManager.stopScan()
+        scanButton.title = "Scan"
+        scanButton.style = .plain
+    }
+    
+    fileprivate func startScan() {
+        // Clear discovered Vehicles
+        let indexPaths = (0..<discoveredVehicles.count).map { IndexPath(row: $0, section: 1) }
         discoveredVehicles = []
+        tableView.deleteRows(at: indexPaths, with: .automatic)
+        
+        vehicleManager.scanForNewVehicles()
+        scanButton.title = "Stop"
+        scanButton.style = .done
     }
     
     // MARK: - Navigation
     
-    @IBAction func scanButton(_ sender: UIBarButtonItem?) {
-        if vehicleManager.isScanning {
-            vehicleManager.stopScan()
-            sender?.title = "Scan"
-            sender?.style = .plain
-        } else {
-            vehicleManager.scanForNewVehicles()
-            sender?.title = "Stop"
-            sender?.style = .done
-        }
-    }
     
     func decodeSegue(sender: Any?) -> Vehicle? {
         
@@ -101,7 +117,7 @@ extension VehicleListViewController: VehicleManagerDelegate {
         if case .availible = toState, vehicleManager.vehicles.count == 0,
             !vehicleManager.isScanning {
             // AutoScan when there are no vehicles
-            scanButton(nil)
+            startScan()
         }
         
         switch toState {
@@ -111,7 +127,6 @@ extension VehicleListViewController: VehicleManagerDelegate {
             title = "Vehicles"
         }
     }
-
     
     func vehicleManager(didDiscover discoveredVehicle: DiscoveredVehicle) {
         let newIndexPath = IndexPath(row: discoveredVehicles.count, section: 1)

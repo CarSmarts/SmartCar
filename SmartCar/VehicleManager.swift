@@ -35,6 +35,13 @@ public class VehicleManager: NSObject {
     public var delegate: VehicleManagerDelegate?
     public var state: State = .unknown {
         didSet {
+            if case .availible = state {
+                for vehicle in vehicles {
+                    // Try to connect to all the vehicles we know
+                    centralManager.connect(vehicle.peripheral)
+                }
+            }
+            
             delegate?.vehicleManager(didUpdate: state)
         }
     }
@@ -50,11 +57,6 @@ public class VehicleManager: NSObject {
         centralManager = CBCentralManager(delegate: self, queue: nil, options: options)
         
         let peripherals = centralManager.retrievePeripherals(withIdentifiers: recordedIdentifiers)
-        
-        for peripheral in peripherals {
-            // Try to connect to all the vehicles we know
-            centralManager.connect(peripheral)
-        }
         
         vehicles = peripherals.map { Vehicle(with: $0) }
     }

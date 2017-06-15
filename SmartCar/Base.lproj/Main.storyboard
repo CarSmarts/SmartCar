@@ -45,17 +45,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Vehicles" id="hPW-hL-8Ef">
-                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="FhY-z1-nrg">
-                            <connections>
-                                <segue destination="fgs-ZL-Bbm" kind="unwind" unwindAction="unwindWithUnwindSegue:" id="14R-X9-DRP"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Scan" id="Usf-nd-2FU">
                             <connections>
-                                <action selector="scanButton:" destination="yV7-AT-zlt" id="ME2-bv-X8I"/>
+                                <action selector="toggleScan:" destination="yV7-AT-zlt" id="rfZ-9X-exp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="scanButton" destination="Usf-nd-2FU" id="yv6-AV-dnS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VgC-hX-7jW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="fgs-ZL-Bbm" userLabel="Exit" sceneMemberID="exit"/>
