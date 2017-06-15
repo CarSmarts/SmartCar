@@ -7,26 +7,34 @@
 //
 
 import Foundation
+import CoreBluetooth
 
-public enum LockState: Int {
-    case unknown = 0
-    case lock, unlock
-    
-    init(data someData:Data?)
-    {
-        guard let data = someData , data.count == 1 else
+public struct SmartLock {
+    static var service = CBUUID(string: "A1A4C256-3370-4D9A-99AA-70BFA81B906B")
+    static var characteristic = CBUUID(string: "6121294F-5171-4F3D-BD46-43ADAADDA75C")
+
+    public enum Command: Int {
+        case cancel = 0
+        case lock, unlock, driver
+        
+        case windowUp = 6
+        case windowDown
+    }
+}
+
+internal extension SmartLock.Command {
+    init(data: Data?) {
+        guard let data = data , data.count == 1 else
         {
-            self = .unknown
-            return
+            self = .cancel; return
         }
         
         var value: Int = 0
         
         (data as NSData).getBytes(&value, length:1)
         
-        self = LockState(rawValue: value) ?? .unknown
+        self = SmartLock.Command(rawValue: value) ?? .cancel
     }
-    
     
     var data:Data
     {
