@@ -44,7 +44,18 @@
                             <outlet property="delegate" destination="yV7-AT-zlt" id="mwd-UR-C2M"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Vehicles" id="hPW-hL-8Ef"/>
+                    <navigationItem key="navigationItem" title="Vehicles" id="hPW-hL-8Ef">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="FhY-z1-nrg">
+                            <connections>
+                                <segue destination="fgs-ZL-Bbm" kind="unwind" unwindAction="unwindWithUnwindSegue:" id="14R-X9-DRP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Scan" id="Usf-nd-2FU">
+                            <connections>
+                                <action selector="scanButton:" destination="yV7-AT-zlt" id="ME2-bv-X8I"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VgC-hX-7jW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="fgs-ZL-Bbm" userLabel="Exit" sceneMemberID="exit"/>

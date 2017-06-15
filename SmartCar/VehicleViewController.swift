@@ -25,6 +25,7 @@ class VehicleViewController: UIViewController {
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         
+        singleTap.require(toFail: doubleTap)
         doubleTap.numberOfTapsRequired = 2
         
         view.addGestureRecognizer(singleTap)

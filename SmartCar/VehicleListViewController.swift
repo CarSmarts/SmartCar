@@ -30,33 +30,27 @@ class VehicleListViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // TODO: Button to turn on scan + auto when there are no vehicles
-        vehicleManager.scanForNewVehicles()
 
-        
-        // TODO: Display state
-//        .flatMapLatest { state -> Observable<String> in
-//            switch state {
-//            case .poweredOn:
-//                return dots(initialString: "Scanning", range: 1...3, timeInterval: 1)
-//            case .poweredOff:
-//                return .just("Bluetooth Off")
-//            case .unauthorized:
-//                return .just("Authorize in settings")
-//            case .unknown, .resetting:
-//                return .just("Unknown")
-//            case .unsupported:
-//                return .just("Bluetooth Not supported")
-//            }
-//        }
-//        .subscribe(onNext: { self.title = $0 })
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         vehicleManager.stopScan()
+        discoveredVehicles = []
     }
     
     // MARK: - Navigation
+    
+    @IBAction func scanButton(_ sender: UIBarButtonItem?) {
+        if vehicleManager.isScanning {
+            vehicleManager.stopScan()
+            sender?.title = "Scan"
+            sender?.style = .plain
+        } else {
+            vehicleManager.scanForNewVehicles()
+            sender?.title = "Stop"
+            sender?.style = .done
+        }
+    }
     
     func decodeSegue(sender: Any?) -> Vehicle? {
         
@@ -76,9 +70,15 @@ class VehicleListViewController: UITableViewController {
             return vehicleManager.vehicles[indexPath.row]
         case 1:
             let connectedVehicle = vehicleManager.connect(to: discoveredVehicles[indexPath.row])
-            let newIndexPath = IndexPath(row: vehicleManager.vehicles.index(of: connectedVehicle)!, section: 0)
             
-            tableView.moveRow(at: indexPath, to: newIndexPath)
+            // add new connected vehicle
+            let newIndex = vehicleManager.vehicles.index(of: connectedVehicle)!
+            
+            // and remove old
+            discoveredVehicles.remove(at: indexPath.row)
+            
+            // move cell from discovered section, to known section
+            tableView.moveRow(at: indexPath, to: IndexPath(row: newIndex, section: 0))
             
             return connectedVehicle
         default:
@@ -97,6 +97,21 @@ class VehicleListViewController: UITableViewController {
 }
 
 extension VehicleListViewController: VehicleManagerDelegate {
+    func vehicleManager(didUpdate toState: VehicleManager.State) {
+        if case .availible = toState, vehicleManager.vehicles.count == 0,
+            !vehicleManager.isScanning {
+            // AutoScan when there are no vehicles
+            scanButton(nil)
+        }
+        
+        switch toState {
+        case .unavailible(let reason):
+            title = reason
+        default:
+            title = "Vehicles"
+        }
+    }
+
     
     func vehicleManager(didDiscover discoveredVehicle: DiscoveredVehicle) {
         let newIndexPath = IndexPath(row: discoveredVehicles.count, section: 1)
@@ -143,7 +158,7 @@ extension VehicleListViewController {
             let vehicle = vehicleManager.vehicles[indexPath.row]
             
             cell.textLabel?.text = vehicle.name
-            cell.textLabel?.textColor = vehicle.isConnected ? .orange : .darkText
+            cell.textLabel?.textColor = vehicle.isConnected ? .darkText : .orange
             cell.textLabel?.isEnabled = true
 
         } else {

@@ -11,7 +11,33 @@ import CoreBluetooth
 
 public class VehicleManager: NSObject {
     
+    public enum State {
+        case availible
+        case unknown
+        case unavailible(String)
+        
+        fileprivate init(cbState: CBManagerState) {
+            switch cbState {
+            case .poweredOn:
+                self = .availible
+            case .poweredOff:
+                self = .unavailible("Bluetooth Off")
+            case .unauthorized:
+                self = .unavailible("Authorize in settings")
+            case .unsupported:
+                self = .unavailible("Device Not supported")
+            case .unknown, .resetting:
+                self = .unknown
+            }
+        }
+    }
+    
     public var delegate: VehicleManagerDelegate?
+    public var state: State = .unknown {
+        didSet {
+            delegate?.vehicleManager(didUpdate: state)
+        }
+    }
     
     fileprivate var centralManager: CBCentralManager!
     
@@ -24,6 +50,11 @@ public class VehicleManager: NSObject {
         centralManager = CBCentralManager(delegate: self, queue: nil, options: options)
         
         let peripherals = centralManager.retrievePeripherals(withIdentifiers: recordedIdentifiers)
+        
+        for peripheral in peripherals {
+            // Try to connect to all the vehicles we know
+            centralManager.connect(peripheral)
+        }
         
         vehicles = peripherals.map { Vehicle(with: $0) }
     }
@@ -83,7 +114,7 @@ extension VehicleManager : CBCentralManagerDelegate {
     }
     
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        //TODO:
+        state = State(cbState: central.state)
     }
     
     public func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
@@ -103,6 +134,9 @@ extension VehicleManager : CBCentralManagerDelegate {
     }
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        // Try to reconnect
+        centralManager.connect(peripheral)
+        
         let vehicle = self.vehicle(for: peripheral)
 
         vehicle.didDisconnect(error: error)
@@ -129,6 +163,8 @@ public struct DiscoveredVehicle {
 }
 
 public protocol VehicleManagerDelegate {
+    func vehicleManager(didUpdate toState: VehicleManager.State)
+    
     func vehicleManager(didDiscover discoveredVehicle: DiscoveredVehicle)
     
     func vehicleManager(didConnect vehicle: Vehicle)

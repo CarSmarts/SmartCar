@@ -19,8 +19,6 @@ public class Vehicle: NSObject {
     let peripheral: CBPeripheral
     fileprivate var smartLockCharacteristc: CBCharacteristic?
     
-    fileprivate var onDiscoveryFinish: (() -> Void)?
-    
     init(with peripheral: CBPeripheral) {
         self.peripheral = peripheral
         
@@ -31,11 +29,7 @@ public class Vehicle: NSObject {
     
     /// Method to pass "didConnect" callback from manager delegate to individual Vehicles
     internal func didConnect() {
-        if let _ = smartLockCharacteristc {
-            delegate?.vehicleDidBecomeAvailible(self)
-        } else {
-            peripheral.discoverServices([SmartLock.service])
-        }
+        peripheral.discoverServices([SmartLock.service])
     }
     
     /// Method to pass "didDisconnect" callback from manager delegate to individual Vehicles
@@ -49,9 +43,6 @@ public extension Vehicle {
     
     func send(_ command: Command) {
         guard let characteristic = smartLockCharacteristc else {
-            onDiscoveryFinish = { [weak self] in
-                self?.send(command)
-            }
             return
         }
         
@@ -101,8 +92,7 @@ extension Vehicle: CBPeripheralDelegate {
         }
         
         self.smartLockCharacteristc = characteristic
-        // Do any waiting work
-        onDiscoveryFinish?()
+        delegate?.vehicleDidBecomeAvailible(self)
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
