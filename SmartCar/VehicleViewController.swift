@@ -56,7 +56,7 @@ class VehicleViewController: UIViewController {
         }
     }
     
-    func handleTap(_ sender: UITapGestureRecognizer) {
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
         
         if sender.state == .ended {
             if sender.numberOfTapsRequired == 2 {

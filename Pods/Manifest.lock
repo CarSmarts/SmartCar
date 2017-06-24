@@ -1,43 +1,15 @@
 PODS:
   - ATHMultiSelectionSegmentedControl (0.2.1)
   - CrossroadRegex (1.0.0)
-  - NSObject+Rx (2.3.0):
-    - RxSwift (~> 3.0)
-  - RxBlocking (3.4.1):
-    - RxSwift (~> 3.4)
-  - RxBluetoothKit (3.0.11):
-    - RxSwift (~> 3.2)
-  - RxCocoa (3.4.1):
-    - RxSwift (~> 3.4)
-  - RxDataSources (1.0.3):
-    - RxCocoa (~> 3.0)
-    - RxSwift (~> 3.0)
-  - RxSwift (3.4.1)
-  - RxTest (3.4.1):
-    - RxSwift (~> 3.4)
 
 DEPENDENCIES:
   - ATHMultiSelectionSegmentedControl
-  - CrossroadRegex (~> 1.0-alpha.1)
-  - NSObject+Rx
-  - RxBlocking (~> 3.0)
-  - RxBluetoothKit
-  - RxCocoa (~> 3.0)
-  - RxDataSources (~> 1.0)
-  - RxSwift (~> 3.0)
-  - RxTest (~> 3.0)
+  - CrossroadRegex (~> 1.0)
 
 SPEC CHECKSUMS:
   ATHMultiSelectionSegmentedControl: 9f574fc68f62639768fe9eeffb1a4ffcfe09eb25
   CrossroadRegex: f9eec8e064fb467cdfc2b2d4553b529ec06f0073
-  NSObject+Rx: 38170f84b948152c05c57260cb853e387a5519d1
-  RxBlocking: 1e8c41cfe7ca2fc0e19d0e616c553845c63cbbd3
-  RxBluetoothKit: b5d387a69fcfa98b203e35ecd857da6f36076e73
-  RxCocoa: a8a5f1d061d0043e28f56976829f31ce63e8eb09
-  RxDataSources: a021a0e944ba5f7991259829d973afdbfa719c0b
-  RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
-  RxTest: a6fd6e4069face7c6488f96f6c42296b3e44db48
 
-PODFILE CHECKSUM: 6d18ec4f533ea79ccd53271f4863137f2c03c618
+PODFILE CHECKSUM: 150443da5f93550579da9eceb864d215832a1ec6
 
 COCOAPODS: 1.2.1

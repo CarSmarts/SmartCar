@@ -91,20 +91,10 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/ATHMultiSelectionSegmentedControl/ATHMultiSelectionSegmentedControl.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CrossroadRegex/Regex.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/NSObject+Rx/NSObject_Rx.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxBluetoothKit/RxBluetoothKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxCocoa/RxCocoa.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxDataSources/RxDataSources.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxSwift/RxSwift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/ATHMultiSelectionSegmentedControl/ATHMultiSelectionSegmentedControl.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CrossroadRegex/Regex.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/NSObject+Rx/NSObject_Rx.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxBluetoothKit/RxBluetoothKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxCocoa/RxCocoa.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxDataSources/RxDataSources.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxSwift/RxSwift.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

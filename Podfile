@@ -8,22 +8,22 @@ target 'SmartCar' do
   # Pods for SmartCar
 
     pod 'ATHMultiSelectionSegmentedControl'
-    pod 'CrossroadRegex', '~> 1.0-alpha.1'
+    pod 'CrossroadRegex', '~> 1.0'
 
-    pod 'RxSwift', '~> 3.0'
-    pod 'RxCocoa', '~> 3.0'
-    pod 'RxDataSources', '~> 1.0'
+# pod 'RxSwift', '~> 3.0'
+# pod 'RxCocoa', '~> 3.0'
+# pod 'RxDataSources', '~> 1.0'
     #  pod 'RxGesture'
-    pod 'NSObject+Rx'
+    # pod 'NSObject+Rx'
 
-    pod 'RxBluetoothKit'
+# pod 'RxBluetoothKit'
 
   target 'SmartCarTests' do
     inherit! :search_paths
     # Pods for testing
 
-    pod 'RxBlocking', '~> 3.0'
-    pod 'RxTest',     '~> 3.0'
+# pod 'RxBlocking', '~> 3.0'
+# pod 'RxTest',     '~> 3.0'
 
   end
 
