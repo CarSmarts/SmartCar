@@ -58,24 +58,24 @@
 		0194B595B2962BE0AF47FC41415C030C /* PlatformTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PlatformTypes.swift; path = Sources/Regex/PlatformTypes.swift; sourceTree = "<group>"; };
 		01CE4886E7311E49377FEAC4488818FD /* Pods-SmartCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SmartCar.debug.xcconfig"; sourceTree = "<group>"; };
 		0785DB6BCBDAA92C4864F1474537EEDE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		07DD121FE50B27B37C3D0EC8C2C2104B /* ATHMultiSelectionSegmentedControl.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ATHMultiSelectionSegmentedControl.modulemap; sourceTree = "<group>"; };
+		07DD121FE50B27B37C3D0EC8C2C2104B /* ATHMultiSelectionSegmentedControl.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ATHMultiSelectionSegmentedControl.modulemap; sourceTree = "<group>"; };
 		0E8609926EA5639F2242E3708B732046 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12F4EB95AC355F5626ABA73F267411AF /* ATHMultiSelectionControlSegmentButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMultiSelectionControlSegmentButton.swift; path = ATHMultiSelectionSegmentedControl/Classes/ATHMultiSelectionControlSegmentButton.swift; sourceTree = "<group>"; };
-		139A9312F59D5BFFED33BDBB883C4343 /* Regex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Regex.framework; path = CrossroadRegex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		139A9312F59D5BFFED33BDBB883C4343 /* Regex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Regex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1668258C7110F2E1446FEA65A43FF2AA /* Pods-SmartCarUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SmartCarUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		193EA170FD497338AADA536EE830C6C3 /* Pods-SmartCarUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SmartCarUITests-umbrella.h"; sourceTree = "<group>"; };
 		1B92A435B4298D5FCA3A8465C7CCA339 /* ATHMultiSelectionSegmentedControl.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ATHMultiSelectionSegmentedControl.xcconfig; sourceTree = "<group>"; };
 		1C5CB44507745F650D46B36B32C28AC2 /* Pods-SmartCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SmartCar.release.xcconfig"; sourceTree = "<group>"; };
 		1EC0587A4CE5F59A2DD31DCEECB4C7C2 /* ATHMultiSelectionSegmentedControl-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ATHMultiSelectionSegmentedControl-dummy.m"; sourceTree = "<group>"; };
-		30D33B776480B6CABC9E1E90775D08C1 /* Pods-SmartCarTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SmartCarTests.modulemap"; sourceTree = "<group>"; };
+		30D33B776480B6CABC9E1E90775D08C1 /* Pods-SmartCarTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SmartCarTests.modulemap"; sourceTree = "<group>"; };
 		30D42349BCB52D8A71CF91856892DD24 /* ATHMultiSelectionSegmentedControl-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ATHMultiSelectionSegmentedControl-prefix.pch"; sourceTree = "<group>"; };
 		33083C616C9CA8AF16FA7C690BC673C7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		3917A50EB224EEDBC66971700D698782 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		402655604AE25FD65517E3941046BDC7 /* ATHMultiSelectionSegmentedControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ATHMultiSelectionSegmentedControl.framework; path = ATHMultiSelectionSegmentedControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		402655604AE25FD65517E3941046BDC7 /* ATHMultiSelectionSegmentedControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ATHMultiSelectionSegmentedControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CA6AD7B1FF5B499E33B8C2B7026A77 /* Pods-SmartCar-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SmartCar-acknowledgements.markdown"; sourceTree = "<group>"; };
 		449CFA555FAD8C59F313DD417390E182 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44D986F3E8740B12A43DDE7843E1E503 /* CrossroadRegex.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CrossroadRegex.xcconfig; sourceTree = "<group>"; };
-		4768602D6C1C793572E12CA08854E9EF /* Pods-SmartCarUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SmartCarUITests.modulemap"; sourceTree = "<group>"; };
+		4768602D6C1C793572E12CA08854E9EF /* Pods-SmartCarUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SmartCarUITests.modulemap"; sourceTree = "<group>"; };
 		53B8B39DFBA397FA4DBC2FA621C41A37 /* Pods-SmartCar-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SmartCar-resources.sh"; sourceTree = "<group>"; };
 		551486F90F22B648BABDB4D7DC79A2DF /* CrossroadRegex-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CrossroadRegex-dummy.m"; sourceTree = "<group>"; };
 		55A84D536A1E9A14CEE6430D958CB9D1 /* RegexOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RegexOptions.swift; path = Sources/Regex/RegexOptions.swift; sourceTree = "<group>"; };
@@ -85,10 +85,10 @@
 		7C19F702EDBC73B9DE36CA099387F51F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CA43C24F4A204DE93B020D15ED29B85 /* Pods-SmartCarUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SmartCarUITests-frameworks.sh"; sourceTree = "<group>"; };
 		7D9E27B59F397757F8A2D3FDB48A2242 /* Pods-SmartCar-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SmartCar-acknowledgements.plist"; sourceTree = "<group>"; };
-		821742B058A70297600FCE1860BBF08C /* Pods_SmartCarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SmartCarTests.framework; path = "Pods-SmartCarTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		821742B058A70297600FCE1860BBF08C /* Pods_SmartCarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		871A4A07E8C79655479B16D7DCB7876B /* Pods-SmartCar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SmartCar-dummy.m"; sourceTree = "<group>"; };
 		8B19DB3B50763679329E051DC639DE07 /* GroupRangeUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GroupRangeUtils.swift; path = Sources/Regex/GroupRangeUtils.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1D23656C55DB3EFAA8B951281F59544 /* CrossroadRegex-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CrossroadRegex-umbrella.h"; sourceTree = "<group>"; };
 		A381A891335AF577FC421DC1D01E4F0C /* Match.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Sources/Regex/Match.swift; sourceTree = "<group>"; };
 		A81C02062B067F3AA541183D44461D92 /* Pods-SmartCarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SmartCarTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		AE99B568CFBFF6A1693704CF6BACA18E /* Pods-SmartCarTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SmartCarTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		B224DFBA4B1A1616E7F3EF902600F5F7 /* Pods-SmartCarTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SmartCarTests-resources.sh"; sourceTree = "<group>"; };
 		B4EC6B548506D17F0D1F9ED326A01C32 /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Sources/Regex/Utils.swift; sourceTree = "<group>"; };
-		B7AF7437D320D3BABE5655660B5787C5 /* CrossroadRegex.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CrossroadRegex.modulemap; sourceTree = "<group>"; };
+		B7AF7437D320D3BABE5655660B5787C5 /* CrossroadRegex.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CrossroadRegex.modulemap; sourceTree = "<group>"; };
 		B84833C52EB99966AE0623FEAA4E1EFA /* Regex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Regex.swift; path = Sources/Regex/Regex.swift; sourceTree = "<group>"; };
 		BE9B252CD3A6C0F17EC9951E95F94BEF /* Pods-SmartCarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SmartCarUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BEE506BDACFADA4256BD1E090995F7C1 /* Pods-SmartCarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SmartCarTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,13 +104,13 @@
 		C39169A900E14E2D5E14A1AF90015A58 /* Pods-SmartCarUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SmartCarUITests-dummy.m"; sourceTree = "<group>"; };
 		CD3C892D13BDABF58D085495B9A1F8F3 /* Pods-SmartCar-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SmartCar-frameworks.sh"; sourceTree = "<group>"; };
 		D28CA0F2FB89FC7039379D60B1482B8D /* Pods-SmartCar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SmartCar-umbrella.h"; sourceTree = "<group>"; };
-		D6FDDA97DCEB6EBF991066F192438CB7 /* Pods-SmartCar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SmartCar.modulemap"; sourceTree = "<group>"; };
-		DA0B459A482713ADBFCB44DC86D83BF1 /* Pods_SmartCarUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SmartCarUITests.framework; path = "Pods-SmartCarUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6FDDA97DCEB6EBF991066F192438CB7 /* Pods-SmartCar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SmartCar.modulemap"; sourceTree = "<group>"; };
+		DA0B459A482713ADBFCB44DC86D83BF1 /* Pods_SmartCarUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCarUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD695A8330E705D47C070ADE6D443FA8 /* String+Regex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Regex.swift"; path = "Sources/Regex/String+Regex.swift"; sourceTree = "<group>"; };
 		E288D21272783ED0F934D3049BA1FE7B /* Pods-SmartCarTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SmartCarTests-umbrella.h"; sourceTree = "<group>"; };
 		E2EE85C8D5C80B8C76A8DE6F0C2AF597 /* Pods-SmartCarTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SmartCarTests-frameworks.sh"; sourceTree = "<group>"; };
 		E8DD126C3B5876DE33A315742E22FB68 /* ATHMultiSelectionSegmentedControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMultiSelectionSegmentedControl.swift; path = ATHMultiSelectionSegmentedControl/Classes/ATHMultiSelectionSegmentedControl.swift; sourceTree = "<group>"; };
-		E979602719B20AFC27499A98FC9EA060 /* Pods_SmartCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SmartCar.framework; path = "Pods-SmartCar.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E979602719B20AFC27499A98FC9EA060 /* Pods_SmartCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1461357B4DA78A376DB6541C7880158 /* CrossroadRegex-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CrossroadRegex-prefix.pch"; sourceTree = "<group>"; };
 		F1CF08743673D3BAED72466B878FA44A /* Pods-SmartCarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SmartCarUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F7ACF7B95FFEF07360071F239A45C383 /* Pods-SmartCarUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SmartCarUITests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -205,7 +205,6 @@
 				B4EC6B548506D17F0D1F9ED326A01C32 /* Utils.swift */,
 				76D7FA130FE2B85C98F06663174F0B15 /* Support Files */,
 			);
-			name = CrossroadRegex;
 			path = CrossroadRegex;
 			sourceTree = "<group>";
 		};
@@ -216,7 +215,6 @@
 				E8DD126C3B5876DE33A315742E22FB68 /* ATHMultiSelectionSegmentedControl.swift */,
 				ADA705A652747E8AA99C368CD039EF44 /* Support Files */,
 			);
-			name = ATHMultiSelectionSegmentedControl;
 			path = ATHMultiSelectionSegmentedControl;
 			sourceTree = "<group>";
 		};
@@ -593,7 +591,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -757,6 +755,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_VERSION = 3.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
@@ -788,7 +787,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -822,7 +821,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -893,7 +892,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -975,6 +974,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_VERSION = 3.0;
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
 			};
