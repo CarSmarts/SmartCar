@@ -89,7 +89,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="tD3-Mb-BnR"/>
                         <barButtonItem title="CANHack" id="QDj-dC-shs">
                             <connections>
-                                <segue destination="sFP-0b-DVf" kind="show" id="yMr-in-TBx"/>
+                                <segue destination="Taz-Pf-CuA" kind="presentation" id="jh3-Jz-qtP"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -109,33 +109,13 @@
             </objects>
             <point key="canvasLocation" x="461.60000000000002" y="691.304347826087"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="gcA-H5-7z3">
+        <!--CANHack-->
+        <scene sceneID="b4H-9r-pMR">
             <objects>
-                <tableViewController id="sFP-0b-DVf" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="DP7-D5-qZq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lWq-GE-nw8">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lWq-GE-nw8" id="HM6-Y4-fL5">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="sFP-0b-DVf" id="I0J-6e-5jj"/>
-                            <outlet property="delegate" destination="sFP-0b-DVf" id="1Yf-SI-j8i"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IW4-ho-jAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="CANHack" id="Taz-Pf-CuA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vcb-de-h52" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1353" y="1173"/>
+            <point key="canvasLocation" x="1125" y="711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="x5q-Lm-rPe">

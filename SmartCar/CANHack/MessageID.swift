@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct MessageID : RawRepresentable {
+public struct MessageID : RawRepresentable, Codable {
     public typealias RawValue = UInt32
     
     public var rawValue: UInt32
@@ -43,7 +43,15 @@ public extension MessageID {
     
     /// Creates am instance of `self` from a hex string
     static func from(hex: String) -> MessageID? {
-        return MessageID(rawValue: RawValue(hex.dropping(prefix: "0x"), radix: 16))
+        guard let value = RawValue(hex.dropping(prefix: "0x"), radix: 16) else { return nil }
+        
+        return MessageID(rawValue: value)
+    }
+}
+
+extension MessageID: Hashable {
+    public var hashValue: Int {
+        return rawValue.hashValue
     }
 }
 
