@@ -110,6 +110,7 @@ class MessageSetListTableViewController: UITableViewController {
         } else {
             cell.accessoryType = .checkmark
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     /*
