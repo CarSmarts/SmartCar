@@ -11,6 +11,12 @@
 		2303F4B3BC42C402A415BD9D /* Pods_SmartCarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80DBDD678ED0DCFD8BE541D1 /* Pods_SmartCarTests.framework */; };
 		3087A8608E0EADBDA453A705 /* Pods_SmartCarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F40590E46BCCA51D51DA4F4F /* Pods_SmartCarUITests.framework */; };
 		7332B3B11EF2C1BF0059046C /* CommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332B3B01EF2C1BF0059046C /* CommandView.swift */; };
+		73859D541F02ECDE00492484 /* CANHack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73859D531F02ECDE00492484 /* CANHack.swift */; };
+		73859D551F02EE4000492484 /* Byte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73859D4F1F02EC8100492484 /* Byte.swift */; };
+		73859D561F02EE4000492484 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73859D501F02EC8100492484 /* Message.swift */; };
+		73859D571F02EE4000492484 /* MessageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73859D521F02EC8100492484 /* MessageSet.swift */; };
+		73859D581F02EE4000492484 /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73859D4E1F02EC8100492484 /* Parsing.swift */; };
+		73859D5A1F02FC1B00492484 /* MessageID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73859D591F02FC1B00492484 /* MessageID.swift */; };
 		7399B2FE1EB2BA9400ECBB84 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7399B2FD1EB2BA9400ECBB84 /* Vehicle.swift */; };
 		7399B3001EB2BB1000ECBB84 /* VehicleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7399B2FF1EB2BB1000ECBB84 /* VehicleManager.swift */; };
 		7399B3021EB2BCBF00ECBB84 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7399B3011EB2BCBF00ECBB84 /* CoreBluetooth.framework */; };
@@ -46,6 +52,12 @@
 /* Begin PBXFileReference section */
 		1214D4B5B6B12423096DAB41 /* Pods-SmartCarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCarUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCarUITests/Pods-SmartCarUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7332B3B01EF2C1BF0059046C /* CommandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandView.swift; sourceTree = "<group>"; };
+		73859D4E1F02EC8100492484 /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
+		73859D4F1F02EC8100492484 /* Byte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Byte.swift; sourceTree = "<group>"; };
+		73859D501F02EC8100492484 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		73859D521F02EC8100492484 /* MessageSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSet.swift; sourceTree = "<group>"; };
+		73859D531F02ECDE00492484 /* CANHack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CANHack.swift; path = Comunication/CANHack.swift; sourceTree = "<group>"; };
+		73859D591F02FC1B00492484 /* MessageID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageID.swift; sourceTree = "<group>"; };
 		7399B2FD1EB2BA9400ECBB84 /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vehicle.swift; path = Comunication/Vehicle.swift; sourceTree = "<group>"; };
 		7399B2FF1EB2BB1000ECBB84 /* VehicleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VehicleManager.swift; path = Comunication/VehicleManager.swift; sourceTree = "<group>"; };
 		7399B3011EB2BCBF00ECBB84 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
@@ -120,8 +132,21 @@
 				7399B2FD1EB2BA9400ECBB84 /* Vehicle.swift */,
 				7399B2FF1EB2BB1000ECBB84 /* VehicleManager.swift */,
 				73E4A6BF1EB7F689002BD442 /* SmartLock.swift */,
+				73859D531F02ECDE00492484 /* CANHack.swift */,
 			);
 			name = Comunication;
+			sourceTree = "<group>";
+		};
+		73C13A9A1F02EC4500335950 /* CANHack */ = {
+			isa = PBXGroup;
+			children = (
+				73859D4F1F02EC8100492484 /* Byte.swift */,
+				73859D591F02FC1B00492484 /* MessageID.swift */,
+				73859D501F02EC8100492484 /* Message.swift */,
+				73859D521F02EC8100492484 /* MessageSet.swift */,
+				73859D4E1F02EC8100492484 /* Parsing.swift */,
+			);
+			path = CANHack;
 			sourceTree = "<group>";
 		};
 		73CE153F1EB2B68F00F54E7E = {
@@ -150,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				73E901FB1F02EA920096475C /* Helper.swift */,
+				73C13A9A1F02EC4500335950 /* CANHack */,
 				7399B2FC1EB2BA6A00ECBB84 /* Comunication */,
 				73CE154B1EB2B68F00F54E7E /* AppDelegate.swift */,
 				7399B3031EB2C46A00ECBB84 /* VehicleListViewController.swift */,
@@ -495,12 +521,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73859D581F02EE4000492484 /* Parsing.swift in Sources */,
+				73859D571F02EE4000492484 /* MessageSet.swift in Sources */,
 				7399B3041EB2C46A00ECBB84 /* VehicleListViewController.swift in Sources */,
+				73859D551F02EE4000492484 /* Byte.swift in Sources */,
 				73E4A6C01EB7F689002BD442 /* SmartLock.swift in Sources */,
 				7399B3001EB2BB1000ECBB84 /* VehicleManager.swift in Sources */,
+				73859D5A1F02FC1B00492484 /* MessageID.swift in Sources */,
 				7332B3B11EF2C1BF0059046C /* CommandView.swift in Sources */,
 				7399B2FE1EB2BA9400ECBB84 /* Vehicle.swift in Sources */,
+				73859D561F02EE4000492484 /* Message.swift in Sources */,
 				73CE154C1EB2B68F00F54E7E /* AppDelegate.swift in Sources */,
+				73859D541F02ECDE00492484 /* CANHack.swift in Sources */,
 				73E4A6C21EB7FDED002BD442 /* VehicleViewController.swift in Sources */,
 				73E901FC1F02EB250096475C /* Helper.swift in Sources */,
 			);

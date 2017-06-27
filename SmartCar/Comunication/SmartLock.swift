@@ -29,14 +29,12 @@ internal extension SmartLock.Command {
             self = .cancel; return
         }
         
-        var value: Int = 0
-        
-        (data as NSData).getBytes(&value, length:1)
+        let value: Int = data.withUnsafeBytes { $0.pointee }
         
         self = SmartLock.Command(rawValue: value) ?? .cancel
     }
     
-    var data:Data
+    var data: Data
     {
         let value = UInt8(rawValue)
         return Data(bytes: [value])
