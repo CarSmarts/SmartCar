@@ -73,7 +73,7 @@ public class VehicleManager: NSObject {
 public extension VehicleManager {
     /// Search for more vehicles to pair with
     func scanForNewVehicles() {
-        centralManager.scanForPeripherals(withServices: [SmartLock.service])
+        centralManager.scanForPeripherals(withServices: [SmartLock.serviceUUID])
     }
     
     var isScanning: Bool {

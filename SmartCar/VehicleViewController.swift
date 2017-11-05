@@ -68,19 +68,14 @@ class VehicleViewController: UIViewController {
     }
             
     func send(_ command: Command) {
-        vehicle?.send(command)
+        vehicle?.smartLock?.send(command)
         commandView.display(sending: command)
     }
 }
 
 extension VehicleViewController: VehicleDelegate {
-    func vehicle(_ vehicle: Vehicle, didSend command: Command, error: Error?) {
-        commandView.complete()
-        
-        if let error = error {
-            //TODO: Better error messages?
-            commandView.error(message: error.localizedDescription)
-        }
+    func vehicle(_ vehicle: Vehicle, smartLockDidBecomeAvalible smartLock: SmartLock) {
+        //TODO:
     }
     
     func vehicleDidBecomeAvailible(_ vehicle: Vehicle) {
@@ -89,5 +84,16 @@ extension VehicleViewController: VehicleDelegate {
     
     func vehicleDidBecomeUnavailible(_ vehicle: Vehicle, error: Error?) {
         //TODO:
+    }
+}
+
+extension VehicleViewController: SmartLockDelegate {
+    func smartLock(_ smartLock: SmartLock, didSend command: Command, error: Error?) {
+        commandView.complete()
+        
+        if let error = error {
+            //TODO: Better error messages?
+            commandView.error(message: error.localizedDescription)
+        }
     }
 }

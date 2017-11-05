@@ -135,17 +135,17 @@ extension VehicleListViewController: VehicleManagerDelegate {
         tableView.insertRows(at: [newIndexPath], with: .automatic)
     }
     
-    private func reload(for vehicle: Vehicle) {
+    private func reloadRow(for vehicle: Vehicle) {
         let indexPath = IndexPath(row: vehicleManager.vehicles.index(of: vehicle)!, section: 0)
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
     func vehicleManager(didConnect vehicle: Vehicle) {
-        reload(for: vehicle)
+        reloadRow(for: vehicle)
     }
     
     func vehicleManager(didDisconnect vehicle: Vehicle, error: Error?) {
-        reload(for: vehicle)
+        reloadRow(for: vehicle)
     }
 }
 

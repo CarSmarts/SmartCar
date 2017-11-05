@@ -17,13 +17,12 @@ public class Vehicle: NSObject {
     public var delegate: VehicleDelegate?
     
     let peripheral: CBPeripheral
-    fileprivate var smartLockCharacteristc: CBCharacteristic? {
+    
+    public private(set) var smartLock: SmartLock? {
         didSet {
-            guard let _ = smartLockCharacteristc else { return }
-            
-            delegate?.vehicleDidBecomeAvailible(self)
-            //TODO: Better autounlock
-            send(.unlock)
+            if let smartLock = smartLock {
+                delegate?.vehicle(self, smartLockDidBecomeAvalible: smartLock)
+            }
         }
     }
     
@@ -37,7 +36,7 @@ public class Vehicle: NSObject {
     
     /// Method to pass "didConnect" callback from manager delegate to individual Vehicles
     internal func didConnect() {
-        peripheral.discoverServices([SmartLock.service])
+        peripheral.discoverServices([SmartLock.serviceUUID])
     }
     
     /// Method to pass "didDisconnect" callback from manager delegate to individual Vehicles
@@ -48,16 +47,6 @@ public class Vehicle: NSObject {
 
 /// Public Accessors
 public extension Vehicle {
-    
-    func send(_ command: Command) {
-        guard let characteristic = smartLockCharacteristc else {
-            return
-        }
-        
-        peripheral.writeValue(command.data, for: characteristic, type: .withResponse)
-    }
-    
-    // MARK: Forwarding Accessors
     
     var name: String {
         return peripheral.name ?? "Vehicle"
@@ -75,37 +64,33 @@ public extension Vehicle {
 extension Vehicle: CBPeripheralDelegate {
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let error = error {
-            assertionFailure("Failed to discover service: \(error)")
+            print("Failed to discover service: \(error)")
             return
         }
         
-        guard let service = peripheral.services?.first(where: { $0.uuid == SmartLock.service }) else {
-            // Discovered junk service.. should never happen
-            assertionFailure("Failed to discover service")
-            return
-        }
+        if let smartLockService = peripheral.services?.first(where: { $0.uuid == SmartLock.serviceUUID }) {
         
-        peripheral.discoverCharacteristics([SmartLock.characteristic], for: service)
+            peripheral.discoverCharacteristics([SmartLock.commandUUID], for: smartLockService)
+        }
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if let error = error {
-            assertionFailure("Failed to discover service: \(error)")
+            print("Failed to discover service: \(error)")
             return
         }
         
-        guard let characteristic = service.characteristics?.first(where: { $0.uuid == SmartLock.characteristic }) else {
-            assertionFailure("Failed to discover characterisitc")
-            return
+        if let characteristic = service.characteristics?.first(where: { $0.uuid == SmartLock.commandUUID }) {
+            smartLock = SmartLock(commandCharacteristic: characteristic)
         }
-        
-        self.smartLockCharacteristc = characteristic
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
-        if let commandCharacteristic = smartLockCharacteristc, commandCharacteristic == characteristic {
-            delegate?.vehicle(self, didSend: Command(data: commandCharacteristic.value), error: error)
+        
+        if let smartLock = smartLock, smartLock.commandCharacteristic == characteristic {
+            smartLock.didWrite(error: error)
         }
+        
     }
 }
 
@@ -123,9 +108,9 @@ extension Vehicle {
 }
 
 public protocol VehicleDelegate {
-    func vehicle(_ vehicle: Vehicle, didSend command: Command, error: Error?)
-    
     func vehicleDidBecomeAvailible(_ vehicle: Vehicle)
     func vehicleDidBecomeUnavailible(_ vehicle: Vehicle, error: Error?)
+    
+    func vehicle(_ vehicle: Vehicle, smartLockDidBecomeAvalible smartLock: SmartLock)
 }
 

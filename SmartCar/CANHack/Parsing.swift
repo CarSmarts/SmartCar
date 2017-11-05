@@ -17,9 +17,9 @@ public enum ParseError: Error {
 extension String {
     mutating func dropPrefix(matching expression: String, options: NSString.CompareOptions = [.caseInsensitive]) -> String? {
         guard let range = range(of: expression, options: options.union(.regularExpression)) else { return nil }
-        let sub = substring(with: range)
-        removeSubrange(...range.upperBound)
-        return sub
+        let sub = self[range]
+        removeSubrange(..<range.upperBound)
+        return String(sub)
     }
 }
 
@@ -51,7 +51,7 @@ public extension MessageSet {
             } catch {
                 // TODO: Better way to report bad lines when parsing
                 // if the message doesn't work, print it and remove it from the list of messages
-                print(line)
+                print(line, error)
                 return nil
             }
         }

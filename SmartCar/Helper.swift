@@ -29,4 +29,20 @@ extension UIStoryboardSegue {
     }
 }
 
+class Logger {
+    // TODO: offical logging
+    static func log(_ items: Any...) {
+        print(items)
+    }
 
+    static func warn(_ items: Any...) {
+        print("[WARN]", terminator: " ")
+        print(items)
+    }
+    
+    static func error(_ items: Any...) {
+        print("[ERROR]", terminator: " ")
+        print(items)
+    }
+    
+}
