@@ -34,15 +34,6 @@ func calculateHistogramBins(_ data: [Int], binCount: Int, min: Int, max: Int) ->
     return bins
 }
 
-//    func smartBinCount(_ data: [DataType]) -> Int {
-//        //        let min = data.first!
-//        //        let max = data.last!
-//        //
-//        //        let range = max - min
-//
-//        return data.count / 2
-//    }
-
 struct HistogramScale: Codable {
     var min: Int
     var max: Int
@@ -52,7 +43,9 @@ struct HistogramScale: Codable {
 
 extension HistogramScale {
     init(using list: [Int]) {
-        self.init(min: list.min() ?? 0, max: list.max() ?? 0, binCount: list.count)
+        // TODO: binCount math
+        let binCount = list.count // < 1000 ? (list.count / 2) : 500
+        self.init(min: list.min() ?? 0, max: list.max() ?? 0, binCount: binCount)
     }
 }
 

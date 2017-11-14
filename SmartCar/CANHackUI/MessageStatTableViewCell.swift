@@ -21,7 +21,7 @@ class MessageStatTableViewCell: UITableViewCell {
             return histogramView.bins
         }
         set {
-            histogramView.bins = histogramBins
+            histogramView.bins = newValue
         }
     }
     

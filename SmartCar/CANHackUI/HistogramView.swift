@@ -12,9 +12,7 @@ class HistogramView: UIView {
     
     public var bins: [Int] = []
     
-    private func drawBar(_ x: CGFloat, _ height: CGFloat, _ width: CGFloat) {
-        let path = UIBezierPath(rect: CGRect(x: x, y: bounds.height - height, width: width, height: height))
-        path.fill()
+    private func drawBar(x: CGFloat, percentFull: CGFloat, width: CGFloat) {
     }
     
     // Only override draw() if you perform custom drawing.
@@ -27,16 +25,18 @@ class HistogramView: UIView {
         }
         
         let binWidth = bounds.width / CGFloat(bins.count)
-        let maxHeight = CGFloat(bins.max()!)
+        let max = CGFloat(bins.max()!)
         
         // TODO: one Path, translated
         // TODO: consider drawing lines instead of Rects?
         for (index, frequency) in bins.enumerated() {
             let x = binWidth * CGFloat(index)
-            let height = maxHeight * CGFloat(frequency)
+            let percentFull = CGFloat(frequency) / max
+            let height = bounds.height * percentFull
             UIColor.blue.setFill()
             
-            drawBar(x, height, binWidth)
+            let path = UIBezierPath(rect: CGRect(x: x, y: bounds.height - height, width: binWidth, height: height))
+            path.fill()
         }
     }
 }

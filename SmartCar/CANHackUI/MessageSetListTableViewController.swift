@@ -13,7 +13,6 @@ class MessageSetListTableViewController: UITableViewController {
     var messageSets = [URL]()
     let fileManager = FileManager()
     let decoder = PropertyListDecoder()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
