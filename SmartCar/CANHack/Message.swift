@@ -48,7 +48,7 @@ public struct MessageInstance: Codable {
     }
 }
 
-extension Message: Hashable {
+extension Message: Hashable, Comparable {
     public var hashValue: Int {
         // TODO: better hash algorithm?
         return id.hashValue + contents.hashValue
@@ -56,6 +56,20 @@ extension Message: Hashable {
     
     static public func ==(lhs: Message, rhs: Message) -> Bool {
         return lhs.id == rhs.id && lhs.contents == rhs.contents
+    }
+    
+    public static func <(lhs: Message, rhs: Message) -> Bool {
+        if lhs.id == rhs.id {
+            for (left, right) in zip(lhs.contents, rhs.contents) {
+                if left != right {
+                    return left < right
+                }
+            }
+            return false // equal
+        }
+        else {
+            return lhs.id.rawValue < rhs.id.rawValue
+        }
     }
 }
 
@@ -68,12 +82,6 @@ extension Message: CustomStringConvertible {
 extension MessageInstance: CustomStringConvertible {
     public var description: String {
         return "\(timestamp) \(message)"
-    }
-}
-
-extension Message: CustomDebugStringConvertible {
-    public var debugDescription: String {
-        return description
     }
 }
 

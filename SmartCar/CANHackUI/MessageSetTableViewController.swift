@@ -15,16 +15,11 @@ enum MessageSetView {
 
 class MessageSetTableViewController: UITableViewController {
 
-    var messageSet: MessageSet! {
-        didSet {
-            currentView = .stats(messageSet.stats.sorted(by: { $0.value.count < $1.value.count }))
-        }
-    }
-    var currentView = MessageSetView.none
+    var messageSet: MessageSet!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -46,22 +41,16 @@ class MessageSetTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messageSet.stats.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Message", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Message", for: indexPath) as! MessageStatTableViewCell
+        let stat = messageSet.stats[indexPath.row]
 
-        switch currentView {
-        case .stats(let stats):
-            let stat = stats[indexPath.row]
-            cell.textLabel?.text = "\(stat.1.count)x \(stat.0)"
-        default:
-            cell.textLabel?.text = ""
-        }
+        cell.stats = stat
+        cell.histogramBins = messageSet.histogramController[indexPath.row]
 
         return cell
     }
-    
 
     /*
     // Override to support conditional editing of the table view.

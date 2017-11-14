@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,7 +36,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="mKY-OZ-HXN" kind="show" identifier="Show Message Set" id="4UV-qz-0ML"/>
+                                    <segue destination="mKY-OZ-HXN" kind="show" identifier="Show Message Set" id="bZe-Ai-FPK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -61,7 +62,7 @@
             </objects>
             <point key="canvasLocation" x="1564.5" y="1172.5"/>
         </scene>
-        <!--Message Set Table View Controller-->
+        <!--Messages-->
         <scene sceneID="hhw-yH-Rmc">
             <objects>
                 <tableViewController id="mKY-OZ-HXN" customClass="MessageSetTableViewController" customModule="SmartCar" customModuleProvider="target" sceneMemberID="viewController">
@@ -70,22 +71,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Message" textLabel="Xhr-L8-8df" style="IBUITableViewCellStyleDefault" id="Qlm-bR-83X">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Message" rowHeight="103" id="Qlm-bR-83X" customClass="MessageStatTableViewCell" customModule="SmartCar" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qlm-bR-83X" id="tE5-rC-OOl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="102.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xhr-L8-8df">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmU-UB-QKE">
+                                            <rect key="frame" x="16" y="11" width="343" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbk-MC-TrG" customClass="HistogramView" customModule="SmartCar" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="40" width="375" height="63"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="63" id="3iM-1c-xxa"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="rmU-UB-QKE" firstAttribute="leading" secondItem="tE5-rC-OOl" secondAttribute="leadingMargin" id="0Pu-dW-MHh"/>
+                                        <constraint firstItem="rmU-UB-QKE" firstAttribute="top" secondItem="tE5-rC-OOl" secondAttribute="topMargin" id="Gpl-x9-K1q"/>
+                                        <constraint firstItem="rmU-UB-QKE" firstAttribute="trailing" secondItem="tE5-rC-OOl" secondAttribute="trailingMargin" id="W2K-Wc-b4B"/>
+                                        <constraint firstAttribute="trailing" secondItem="kbk-MC-TrG" secondAttribute="trailing" id="X6K-PK-CcO"/>
+                                        <constraint firstItem="kbk-MC-TrG" firstAttribute="leading" secondItem="tE5-rC-OOl" secondAttribute="leading" id="a65-KQ-Wfi"/>
+                                        <constraint firstAttribute="bottom" secondItem="kbk-MC-TrG" secondAttribute="bottom" id="bMd-9P-hQc"/>
+                                        <constraint firstItem="kbk-MC-TrG" firstAttribute="top" secondItem="rmU-UB-QKE" secondAttribute="bottom" constant="8" id="cMa-Bo-COo"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="histogramView" destination="kbk-MC-TrG" id="9wn-sJ-fyD"/>
+                                    <outlet property="title" destination="rmU-UB-QKE" id="YW0-hL-AJZ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -93,10 +113,35 @@
                             <outlet property="delegate" destination="mKY-OZ-HXN" id="NPf-sK-KyU"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Messages" id="z20-s9-5ka">
+                        <barButtonItem key="rightBarButtonItem" title="Options" id="q4E-mu-YZo">
+                            <connections>
+                                <segue destination="lGg-Sh-8TJ" kind="show" identifier="Show Options" id="N6t-br-5kV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDV-Yp-ebv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2329" y="1172"/>
+            <point key="canvasLocation" x="2328.8000000000002" y="1171.6641679160421"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="4tZ-Db-VZ7">
+            <objects>
+                <viewController id="lGg-Sh-8TJ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P8K-Bt-iOw"/>
+                        <viewControllerLayoutGuide type="bottom" id="4MX-Jh-64I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zyo-5C-AqJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NCJ-qt-rCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3062" y="1172"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E7O-kS-des">
