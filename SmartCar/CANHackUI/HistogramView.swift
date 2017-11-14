@@ -10,9 +10,10 @@ import UIKit
 
 class HistogramView: UIView {
     
-    public var bins: [Int] = []
-    
-    private func drawBar(x: CGFloat, percentFull: CGFloat, width: CGFloat) {
+    public var bins: [Int] = [] {
+        didSet {
+            setNeedsDisplay()
+        }
     }
     
     // Only override draw() if you perform custom drawing.

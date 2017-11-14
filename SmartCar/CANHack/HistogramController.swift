@@ -44,7 +44,7 @@ struct HistogramScale: Codable {
 extension HistogramScale {
     init(using list: [Int]) {
         // TODO: binCount math
-        let binCount = list.count // < 1000 ? (list.count / 2) : 500
+        let binCount = 300 // list.count
         self.init(min: list.min() ?? 0, max: list.max() ?? 0, binCount: binCount)
     }
 }
