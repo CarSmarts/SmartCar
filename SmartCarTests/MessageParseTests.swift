@@ -24,16 +24,16 @@ class MessageParseTests: XCTestCase {
     func testMessageCreation() {
         let message = try? Message(from: "0x1E12FF10,0")
         
-        XCTAssertNotNil(message, "Unable to create Message Instance");
+        XCTAssertNotNil(message, "Unable to create Message");
         
         XCTAssertEqual(message!.id.rawValue, 0x1E12FF10)
         XCTAssertEqual(message!.contents, [])
 
-        let messageInst = try! MessageInstance(from: "17548,0x12F85250,4,75,04,AD,D2")
+        let messageOccurance = try! SignalOccurance<Message>(from: "17548,0x12F85250,4,75,04,AD,D2")
 
-        XCTAssertEqual(messageInst.timestamp, 17548)
-        XCTAssertEqual(messageInst.message.id.rawValue, 0x12F85250)
-        XCTAssertEqual(messageInst.message.contents, [0x75,0x04,0xAD,0xD2])
+        XCTAssertEqual(messageOccurance.timestamp, 17548)
+        XCTAssertEqual(messageOccurance.signal.id.rawValue, 0x12F85250)
+        XCTAssertEqual(messageOccurance.signal.contents, [0x75,0x04,0xAD,0xD2])
     }
     
     func testPerformanceExample() {
