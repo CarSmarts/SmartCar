@@ -39,15 +39,15 @@ private func parse(id: String) throws -> MessageID {
     }
 }
 
-public extension MessageSet {
-    /// Create a MessageSet by parsing multiple lines of text
+public extension SignalSet where S == Message {
+    /// Create a SignalSet by parsing multiple lines of text
     convenience init (from file: String) {
         let lines = file.components(separatedBy: .newlines).filter { !$0.isEmpty }
         
         // map every line into a parsed message
-        let parsed = lines.flatMap { line -> MessageInstance? in
+        let parsed = lines.flatMap { line -> SignalOccurance<S>? in
             do {
-                return try MessageInstance(from: line)
+                return try SignalOccurance<S>(from: line)
             } catch {
                 // TODO: Better way to report bad lines when parsing
                 // if the message doesn't work, print it and remove it from the list of messages
@@ -56,11 +56,12 @@ public extension MessageSet {
             }
         }
         
-        self.init(messageList: parsed)
+        self.init(signalOccurances: parsed)
     }
 }
 
-public extension MessageInstance {
+// TODO: Make this generic
+public extension SignalOccurance where S == Message {
     /// Create a MessageInstance by parsing text
     init(from text: String) throws {
         var text = text
@@ -69,7 +70,7 @@ public extension MessageInstance {
         // Assume that a string of numbers is always convertable to an int
         timestamp = Timestamp(timeString)!
         
-        message = try .init(from: text)
+        signal = try Message.init(from: text)
     }
 }
 

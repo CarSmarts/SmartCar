@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct MessageID : RawRepresentable, Codable {
+public struct MessageID : RawRepresentable, Signal, Codable {
     public typealias RawValue = UInt32
     
     public var rawValue: UInt32
@@ -52,6 +52,12 @@ public extension MessageID {
 extension MessageID: Hashable {
     public var hashValue: Int {
         return rawValue.hashValue
+    }
+}
+
+extension MessageID: Comparable {
+    public static func <(lhs: MessageID, rhs: MessageID) -> Bool {
+        return lhs.rawValue < rhs.rawValue
     }
 }
 

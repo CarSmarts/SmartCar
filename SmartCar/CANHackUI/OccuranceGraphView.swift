@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HistogramView: UIView {
+class OccuranceGraphView: UIView {
     
     public var bins: [Int] = [] {
         didSet {

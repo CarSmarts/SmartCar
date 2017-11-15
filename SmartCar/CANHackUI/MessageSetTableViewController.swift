@@ -15,7 +15,7 @@ enum MessageSetView {
 
 class MessageSetTableViewController: UITableViewController {
 
-    var messageSet: MessageSet!
+    var messageSet: SignalSet<Message>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
