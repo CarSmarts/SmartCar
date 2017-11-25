@@ -13,15 +13,16 @@ class MessageStatTableViewCell: UITableViewCell {
     public var stats: SignalStat<Message>! {
         didSet {
             title.text = stats.description
+            occuranceGraphView.data = [stats.timestamps]
         }
     }
     
-    public var histogramBins: [Int] {
-        get {
-            return occuranceGraphView.bins
-        }
+    public var scale: OccuranceGraphScale? {
         set {
-            occuranceGraphView.bins = newValue
+            occuranceGraphView.scale = newValue
+        }
+        get {
+            return occuranceGraphView.scale
         }
     }
     

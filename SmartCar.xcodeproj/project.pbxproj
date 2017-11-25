@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7332B1391FBBF82700BA420D /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332B1381FBBF82700BA420D /* Signal.swift */; };
 		7332B3B11EF2C1BF0059046C /* CommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332B3B01EF2C1BF0059046C /* CommandView.swift */; };
+		7353E1E51FBD65580072948D /* GroupedSignalSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7353E1E41FBD65580072948D /* GroupedSignalSet.swift */; };
 		73859D541F02ECDE00492484 /* CANHack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73859D531F02ECDE00492484 /* CANHack.swift */; };
 		73859D551F02EE4000492484 /* Byte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73859D4F1F02EC8100492484 /* Byte.swift */; };
 		73859D561F02EE4000492484 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73859D501F02EC8100492484 /* Message.swift */; };
@@ -31,13 +32,13 @@
 		73CE15561EB2B68F00F54E7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CE15541EB2B68F00F54E7E /* LaunchScreen.storyboard */; };
 		73CE15611EB2B68F00F54E7E /* SmartCarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CE15601EB2B68F00F54E7E /* SmartCarTests.swift */; };
 		73CE156C1EB2B68F00F54E7E /* SmartCarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CE156B1EB2B68F00F54E7E /* SmartCarUITests.swift */; };
-		73DDADC71FBAA2B900BFEFE5 /* HistogramController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DDADC61FBAA2B900BFEFE5 /* HistogramController.swift */; };
 		73E4A6C01EB7F689002BD442 /* SmartLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E4A6BF1EB7F689002BD442 /* SmartLock.swift */; };
 		73E4A6C21EB7FDED002BD442 /* VehicleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E4A6C11EB7FDED002BD442 /* VehicleViewController.swift */; };
 		73E901FC1F02EB250096475C /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E901FB1F02EA920096475C /* Helper.swift */; };
 		73EE84BE1FB8066E003E45F7 /* OccuranceGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EE84BD1FB8066E003E45F7 /* OccuranceGraphView.swift */; };
 		73EE84C01FB80C55003E45F7 /* HistogramMathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EE84BF1FB80C55003E45F7 /* HistogramMathTests.swift */; };
 		73EE84C21FB81E08003E45F7 /* MessageStatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EE84C11FB81E07003E45F7 /* MessageStatTableViewCell.swift */; };
+		73F6168A1FBD198C00691138 /* MessageIDStatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F616891FBD198C00691138 /* MessageIDStatTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 /* Begin PBXFileReference section */
 		7332B1381FBBF82700BA420D /* Signal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
 		7332B3B01EF2C1BF0059046C /* CommandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandView.swift; sourceTree = "<group>"; };
+		7353E1E41FBD65580072948D /* GroupedSignalSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedSignalSet.swift; sourceTree = "<group>"; };
 		73859D4E1F02EC8100492484 /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
 		73859D4F1F02EC8100492484 /* Byte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Byte.swift; sourceTree = "<group>"; };
 		73859D501F02EC8100492484 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -88,13 +90,13 @@
 		73CE15671EB2B68F00F54E7E /* SmartCarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartCarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CE156B1EB2B68F00F54E7E /* SmartCarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartCarUITests.swift; sourceTree = "<group>"; };
 		73CE156D1EB2B68F00F54E7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		73DDADC61FBAA2B900BFEFE5 /* HistogramController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistogramController.swift; sourceTree = "<group>"; };
 		73E4A6BF1EB7F689002BD442 /* SmartLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SmartLock.swift; path = Comunication/SmartLock.swift; sourceTree = "<group>"; };
 		73E4A6C11EB7FDED002BD442 /* VehicleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleViewController.swift; sourceTree = "<group>"; };
 		73E901FB1F02EA920096475C /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		73EE84BD1FB8066E003E45F7 /* OccuranceGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccuranceGraphView.swift; sourceTree = "<group>"; };
 		73EE84BF1FB80C55003E45F7 /* HistogramMathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistogramMathTests.swift; sourceTree = "<group>"; };
 		73EE84C11FB81E07003E45F7 /* MessageStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStatTableViewCell.swift; sourceTree = "<group>"; };
+		73F616891FBD198C00691138 /* MessageIDStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageIDStatTableViewCell.swift; sourceTree = "<group>"; };
 		80DBDD678ED0DCFD8BE541D1 /* Pods_SmartCarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F40590E46BCCA51D51DA4F4F /* Pods_SmartCarUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCarUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F71D9A0442CF5A7F92E0E125 /* Pods_SmartCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,8 +134,8 @@
 				7332B1381FBBF82700BA420D /* Signal.swift */,
 				73B2D1501FBBFD76002D2B23 /* SignalOccurance.swift */,
 				73B2D14E1FBBFB6A002D2B23 /* SignalStat.swift */,
-				73DDADC61FBAA2B900BFEFE5 /* HistogramController.swift */,
 				73859D521F02EC8100492484 /* SignalSet.swift */,
+				7353E1E41FBD65580072948D /* GroupedSignalSet.swift */,
 			);
 			path = "Signal Occurance";
 			sourceTree = "<group>";
@@ -144,6 +146,7 @@
 				73859D5B1F02FDE200492484 /* MessageSetListTableViewController.swift */,
 				73A5F5031FAEADC500187A70 /* MessageSetTableViewController.swift */,
 				73EE84C11FB81E07003E45F7 /* MessageStatTableViewCell.swift */,
+				73F616891FBD198C00691138 /* MessageIDStatTableViewCell.swift */,
 				73859D5E1F02FE3100492484 /* CANHack.storyboard */,
 				73EE84BD1FB8066E003E45F7 /* OccuranceGraphView.swift */,
 			);
@@ -405,10 +408,11 @@
 				73EE84C21FB81E08003E45F7 /* MessageStatTableViewCell.swift in Sources */,
 				7399B3041EB2C46A00ECBB84 /* VehicleListViewController.swift in Sources */,
 				73859D551F02EE4000492484 /* Byte.swift in Sources */,
-				73DDADC71FBAA2B900BFEFE5 /* HistogramController.swift in Sources */,
+				73F6168A1FBD198C00691138 /* MessageIDStatTableViewCell.swift in Sources */,
 				73E4A6C01EB7F689002BD442 /* SmartLock.swift in Sources */,
 				73EE84BE1FB8066E003E45F7 /* OccuranceGraphView.swift in Sources */,
 				7399B3001EB2BB1000ECBB84 /* VehicleManager.swift in Sources */,
+				7353E1E51FBD65580072948D /* GroupedSignalSet.swift in Sources */,
 				73A5F5041FAEADC500187A70 /* MessageSetTableViewController.swift in Sources */,
 				73859D5A1F02FC1B00492484 /* MessageID.swift in Sources */,
 				7332B3B11EF2C1BF0059046C /* CommandView.swift in Sources */,

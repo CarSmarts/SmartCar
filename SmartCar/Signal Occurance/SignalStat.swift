@@ -9,8 +9,8 @@
 import Foundation
 
 public struct SignalStat<S: Signal>: Codable {
-    public private(set) var signal: S
-    public private(set) var timestamps: [Timestamp]
+    public let signal: S
+    public let timestamps: [Timestamp]
     
     init(signal: S, timestamps: [Timestamp]) {
         self.signal = signal

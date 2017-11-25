@@ -53,7 +53,11 @@ extension Message: Hashable, Comparable {
 
 extension Message: CustomStringConvertible {
     public var description: String {
-        return "\(id.hex): " + contents.map { $0.hex }.joined(separator: " ")
+        return "\(id.hex): " + contentDescription
+    }
+    
+    public var contentDescription: String {
+        return contents.map { $0.hex }.joined(separator: " ")
     }
 }
 

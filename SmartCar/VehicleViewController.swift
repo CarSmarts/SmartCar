@@ -36,7 +36,7 @@ class VehicleViewController: UIViewController {
         if vehicle == nil {
             vehicle = vehicleManager.vehicles.first
             if vehicle == nil {
-                performSegue(withIdentifier: "ShowVehicleList", sender: self)
+                //performSegue(withIdentifier: "ShowVehicleList", sender: self)
             }
         }
     }

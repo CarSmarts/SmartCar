@@ -47,7 +47,7 @@ class MessageSetTableViewController: UITableViewController {
         let stat = messageSet.stats[indexPath.row]
 
         cell.stats = stat
-        cell.histogramBins = messageSet.histogramController[indexPath.row]
+        cell.scale = messageSet.scale
 
         return cell
     }

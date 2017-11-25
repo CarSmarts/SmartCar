@@ -25,8 +25,6 @@ public class SignalSet<S: Signal>: Codable {
     
     public private(set) var timestamps: [Timestamp]
     
-    public private(set) var histogramController: HistogramController
-    
     public init(signalOccurances: [SignalOccurance<S>]) {
         
         // TODO: all this trash is supposed to make this faster.. did it?
@@ -43,11 +41,13 @@ public class SignalSet<S: Signal>: Codable {
         
         let allTimestamps = messageDict.values.reduce(Set(), { (t1, t2) in t1.union(t2) })
         timestamps = allTimestamps.sorted()
-        
-        let scale = HistogramScale(using: timestamps)
-        histogramController = HistogramController(data: stats.map { $0.timestamps }, scale: scale)
     }
-    
+}
+
+extension SignalSet {
+    public var scale: OccuranceGraphScale {
+        return OccuranceGraphScale(min: firstTimestamp, max: lastTimestamp)
+    }
 }
 
 extension SignalSet: Equatable {

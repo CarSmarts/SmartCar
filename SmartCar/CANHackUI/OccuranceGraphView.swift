@@ -8,36 +8,75 @@
 
 import UIKit
 
+public struct OccuranceGraphScale {
+    public var min: Int
+    public var max: Int
+    
+    public var color: UIColor? = nil
+    
+    init(min: Int, max: Int, color: UIColor? = nil) {
+        self.min = min
+        self.max = max
+        self.color = color
+    }
+}
+
 class OccuranceGraphView: UIView {
     
-    public var bins: [Int] = [] {
+    public var data: [[Int]] = [] {
         didSet {
             setNeedsDisplay()
         }
     }
+    
+    public var scale: OccuranceGraphScale? {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
+    private func draw(occurances: [Int], scale: OccuranceGraphScale, color: UIColor, ypos: CGFloat, height: CGFloat) {
+        let context = UIGraphicsGetCurrentContext()!
+        color.setStroke()
+        
+        for occurance in occurances {
+            let position = CGFloat(occurance - scale.min) / CGFloat(scale.max - scale.min) * bounds.width
+            
+            context.move(to: CGPoint(x: position, y: ypos))
+            context.addLine(to: CGPoint(x: position, y: ypos + height))
+        }
+        context.strokePath()
+    }
+    
+    private let colors = [
+        UIColor.cyan,
+        UIColor.magenta,
+        UIColor.green,
+        UIColor.purple,
+        UIColor.red,
+        UIColor.orange,
+        UIColor.brown,
+    ]
+    
+    var colorAlpha: CGFloat = 0.65
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         // Drawing code
         
-        guard bins.count > 0 else {
+        guard let scale = self.scale else {
             return
         }
         
-        let binWidth = bounds.width / CGFloat(bins.count)
-        let max = CGFloat(bins.max()!)
+        let height = bounds.height / CGFloat(data.count)
         
-        // TODO: one Path, translated
-        // TODO: consider drawing lines instead of Rects?
-        for (index, frequency) in bins.enumerated() {
-            let x = binWidth * CGFloat(index)
-            let percentFull = CGFloat(frequency) / max
-            let height = bounds.height * percentFull
-            UIColor.blue.setFill()
+        for (index, occurances) in data.enumerated() {
+            let pos = height * CGFloat(index)
+            let color = scale.color ?? colors[index % colors.count]
+            .withAlphaComponent(colorAlpha)
             
-            let path = UIBezierPath(rect: CGRect(x: x, y: bounds.height - height, width: binWidth, height: height))
-            path.fill()
+            draw(occurances: occurances, scale: scale, color: color, ypos: pos, height: height)
         }
     }
 }
