@@ -45,7 +45,7 @@ public extension SignalSet where S == Message {
         let lines = file.components(separatedBy: .newlines).filter { !$0.isEmpty }
         
         // map every line into a parsed message
-        let parsed = lines.flatMap { line -> SignalOccurance<S>? in
+        let parsed = lines.compactMap { line -> SignalOccurance<S>? in
             do {
                 return try SignalOccurance<S>(from: line)
             } catch {
