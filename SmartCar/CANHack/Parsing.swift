@@ -79,7 +79,7 @@ public extension Message {
     init(from text: String) throws {
         var text = text
         
-        guard let idString = text.dropPrefix(matching: "0x([A-F0-9]{7,8})(?![A-F0-9])") else { throw ParseError.idNotFound }
+        guard let idString = text.dropPrefix(matching: "(?:0x)?([A-F0-9]{7,8})(?![A-F0-9])") else { throw ParseError.idNotFound }
         id = try parse(id: idString)
         
         if let dataString = text.dropPrefix(matching: "([A-F0-9]{2})(, ?[A-F0-9]{2})*$") {

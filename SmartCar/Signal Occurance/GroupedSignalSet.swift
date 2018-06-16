@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Grouping: Hashable, Comparable, Codable { }
+public typealias Grouping = Signal
 
 /// A set of messages, collected for the purpose of analysis
 public class GroupedSignalSet<S: Signal, G: Grouping>: Codable {

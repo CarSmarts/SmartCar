@@ -23,20 +23,27 @@ class MessageIDStatTableViewCell: UITableViewCell {
             occuranceGraphView.data = stats.map { $0.timestamps }
         }
     }
+    
+    public var scale: OccuranceGraphScale? {
+        set {
+            occuranceGraphView.scale = newValue
+        }
+        get {
+            return occuranceGraphView.scale
+        }
+    }
 
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var descriptions: UILabel!
+    @IBOutlet weak var descriptions: UITextView!
     @IBOutlet weak var occuranceGraphView: OccuranceGraphView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+//        super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
     }

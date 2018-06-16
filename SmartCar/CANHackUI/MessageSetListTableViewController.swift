@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageSetListTableViewController: UITableViewController {
+class MessageSetListTableViewController: UITableViewController, UIDocumentPickerDelegate {
     
     var messageSets = [URL]()
     let fileManager = FileManager()
@@ -43,13 +43,17 @@ class MessageSetListTableViewController: UITableViewController {
     }
     
     @IBAction func newSet(_ sender: Any) {
-        guard let paste = UIPasteboard.general.string else {
-            return
-        }
+        let picker = UIDocumentPickerViewController(documentTypes: ["public.plain-text"], in: .import)
+        picker.delegate = self
+        present(picker, animated: true)
         
-        let set = SignalSet<Message>(from: paste)
-        
-        performSegue(withIdentifier: "Show Message Set", sender: set)
+//        guard let paste = UIPasteboard.general.string else {
+//            return
+//        }
+//
+//        let set = SignalSet<Message>(from: paste)
+//
+//        performSegue(withIdentifier: "Show Message Set", sender: set)
     }
     
     // MARK: - Table view data source
@@ -97,6 +101,19 @@ class MessageSetListTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    // MARK: - Document Picker
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        let url = urls.first!
+        guard let data = try? String(contentsOf: url) else {
+            Logger.error("Trying to decode chosen file")
+            return
+        }
+        
+        let set = SignalSet<Message>(from: data)
+
+        performSegue(withIdentifier: "Show Message Set", sender: set)
+    }
     
     // MARK: - Navigation
 
