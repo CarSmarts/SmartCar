@@ -23,7 +23,7 @@ public struct OccuranceGraphScale {
 
 class OccuranceGraphView: UIView {
     
-    public var data: [[Int]] = [] {
+    public var data: [Int] = [] {
         didSet {
             setNeedsDisplay()
         }
@@ -48,7 +48,7 @@ class OccuranceGraphView: UIView {
         context.strokePath()
     }
     
-    private let colors = [
+    private  let colors = [
         UIColor.cyan,
         UIColor.magenta,
         UIColor.green,
@@ -57,8 +57,6 @@ class OccuranceGraphView: UIView {
         UIColor.orange,
         UIColor.brown,
     ]
-    
-    var colorAlpha: CGFloat = 0.65
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -71,12 +69,8 @@ class OccuranceGraphView: UIView {
         
         let height = bounds.height / CGFloat(data.count)
         
-        for (index, occurances) in data.enumerated() {
-            let pos = height * CGFloat(index)
-            let color = scale.color ?? colors[index % colors.count]
-            .withAlphaComponent(colorAlpha)
+        let color = scale.color ?? UIColor.blue
             
-            draw(occurances: occurances, scale: scale, color: color, ypos: pos, height: height)
-        }
+        draw(occurances: data, scale: scale, color: color, ypos: 0, height: bounds.height)
     }
 }

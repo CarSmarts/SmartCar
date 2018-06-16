@@ -13,7 +13,7 @@ class MessageStatTableViewCell: UITableViewCell {
     public var stats: SignalStat<Message>! {
         didSet {
             title.text = stats.description
-            occuranceGraphView.data = [stats.timestamps]
+            occuranceGraphView.data = stats.timestamps
         }
     }
     
