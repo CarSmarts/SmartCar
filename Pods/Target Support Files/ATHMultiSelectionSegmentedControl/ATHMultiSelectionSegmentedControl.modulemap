@@ -1,6 +1,0 @@
-framework module ATHMultiSelectionSegmentedControl {
-  umbrella header "ATHMultiSelectionSegmentedControl-umbrella.h"
-
-  export *
-  module * { export * }
-}

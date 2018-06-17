@@ -10,23 +10,24 @@ import UIKit
 
 class MessageStatTableViewCell: UITableViewCell {
 
-    public var stats: MessageStat! {
+    public var stats: SignalStat<Message>! {
         didSet {
-            title.text = stats.message.description
+            title.text = stats.description
+            occuranceGraphView.data = [stats.timestamps]
         }
     }
     
-    public var histogramBins: [Int] {
-        get {
-            return histogramView.bins
-        }
+    public var scale: OccuranceGraphScale? {
         set {
-            histogramView.bins = newValue
+            occuranceGraphView.scale = newValue
+        }
+        get {
+            return occuranceGraphView.scale
         }
     }
     
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var histogramView: HistogramView!
+    @IBOutlet weak var occuranceGraphView: OccuranceGraphView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

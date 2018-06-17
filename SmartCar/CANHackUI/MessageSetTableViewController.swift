@@ -8,14 +8,19 @@
 
 import UIKit
 
-enum MessageSetView {
-    case stats([(Message, Set<Timestamp>)])
-    case none
-}
-
 class MessageSetTableViewController: UITableViewController {
 
-    var messageSet: MessageSet!
+    var messageSet: SignalSet<Message>! {
+        didSet {
+            if let messageSet = messageSet {
+                groupedMessages = GroupedSignalSet(grouping: messageSet, by: { (stat) -> MessageID in
+                    stat.signal.id
+                })
+            }
+        }
+    }
+    
+    private var groupedMessages: GroupedSignalSet<Message, MessageID>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,15 +44,17 @@ class MessageSetTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messageSet.stats.count
+        return groupedMessages.groupings.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Message", for: indexPath) as! MessageStatTableViewCell
-        let stat = messageSet.stats[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Message", for: indexPath) as! MessageIDStatTableViewCell
+        let group = groupedMessages.groupings[indexPath.row]
+        let stats = groupedMessages.statsForGrouping[group]
 
-        cell.stats = stat
-        cell.histogramBins = messageSet.histogramController[indexPath.row]
+        cell.id = group
+        cell.stats = stats
+        cell.scale = messageSet.scale
 
         return cell
     }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I3L-rZ-8eQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I3L-rZ-8eQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageSet" textLabel="D1q-29-MZ1" style="IBUITableViewCellStyleDefault" id="Fa8-dg-BBm">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SignalSet" textLabel="D1q-29-MZ1" style="IBUITableViewCellStyleDefault" id="Fa8-dg-BBm">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fa8-dg-BBm" id="UV2-yz-tYm">
@@ -71,40 +71,59 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Message" rowHeight="103" id="Qlm-bR-83X" customClass="MessageStatTableViewCell" customModule="SmartCar" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="103"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Message" rowHeight="142" id="Qlm-bR-83X" customClass="MessageIDStatTableViewCell" customModule="SmartCar" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="142"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qlm-bR-83X" id="tE5-rC-OOl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="102.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="141.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmU-UB-QKE">
-                                            <rect key="frame" x="16" y="11" width="343" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0d-pb-8fi">
+                                            <rect key="frame" x="16" y="11" width="343" height="20"/>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbk-MC-TrG" customClass="HistogramView" customModule="SmartCar" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="40" width="375" height="63"/>
+                                        <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="SXy-vT-Bfb" customClass="OccuranceGraphView" customModule="SmartCar" customModuleProvider="target">
+                                            <rect key="frame" x="20" y="39" width="335" height="94.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="63" id="3iM-1c-xxa"/>
-                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="barHeight">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="overlapFactor">
+                                                    <real key="value" value="0.90000000000000002"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </view>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zi-Ax-zUa">
+                                            <rect key="frame" x="16" y="31" width="58.5" height="110.5"/>
+                                            <string key="text">00 00
+10 00
+11 00
+50 40
+52 40</string>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="rmU-UB-QKE" firstAttribute="leading" secondItem="tE5-rC-OOl" secondAttribute="leadingMargin" id="0Pu-dW-MHh"/>
-                                        <constraint firstItem="rmU-UB-QKE" firstAttribute="top" secondItem="tE5-rC-OOl" secondAttribute="topMargin" id="Gpl-x9-K1q"/>
-                                        <constraint firstItem="rmU-UB-QKE" firstAttribute="trailing" secondItem="tE5-rC-OOl" secondAttribute="trailingMargin" id="W2K-Wc-b4B"/>
-                                        <constraint firstAttribute="trailing" secondItem="kbk-MC-TrG" secondAttribute="trailing" id="X6K-PK-CcO"/>
-                                        <constraint firstItem="kbk-MC-TrG" firstAttribute="leading" secondItem="tE5-rC-OOl" secondAttribute="leading" id="a65-KQ-Wfi"/>
-                                        <constraint firstAttribute="bottom" secondItem="kbk-MC-TrG" secondAttribute="bottom" id="bMd-9P-hQc"/>
-                                        <constraint firstItem="kbk-MC-TrG" firstAttribute="top" secondItem="rmU-UB-QKE" secondAttribute="bottom" constant="8" id="cMa-Bo-COo"/>
+                                        <constraint firstItem="f0d-pb-8fi" firstAttribute="top" secondItem="tE5-rC-OOl" secondAttribute="topMargin" id="1CD-7K-xtc"/>
+                                        <constraint firstAttribute="bottom" secondItem="SXy-vT-Bfb" secondAttribute="bottom" constant="8" id="9Hh-cJ-4Ug"/>
+                                        <constraint firstAttribute="trailing" secondItem="SXy-vT-Bfb" secondAttribute="trailing" constant="20" symbolic="YES" id="B3x-aQ-ZsX"/>
+                                        <constraint firstItem="f0d-pb-8fi" firstAttribute="leading" secondItem="tE5-rC-OOl" secondAttribute="leadingMargin" id="IsQ-Ou-xwr"/>
+                                        <constraint firstItem="0zi-Ax-zUa" firstAttribute="leading" secondItem="tE5-rC-OOl" secondAttribute="leading" constant="16" id="KPp-mS-w1R"/>
+                                        <constraint firstAttribute="bottom" secondItem="0zi-Ax-zUa" secondAttribute="bottom" id="P5I-W3-pED"/>
+                                        <constraint firstItem="0zi-Ax-zUa" firstAttribute="top" secondItem="f0d-pb-8fi" secondAttribute="bottom" id="PFC-V8-LFf"/>
+                                        <constraint firstItem="SXy-vT-Bfb" firstAttribute="top" secondItem="f0d-pb-8fi" secondAttribute="bottom" constant="8" symbolic="YES" id="ofW-mP-dDM"/>
+                                        <constraint firstItem="f0d-pb-8fi" firstAttribute="trailing" secondItem="tE5-rC-OOl" secondAttribute="trailingMargin" id="r1E-j1-Rxl"/>
+                                        <constraint firstItem="SXy-vT-Bfb" firstAttribute="leading" secondItem="tE5-rC-OOl" secondAttribute="leading" constant="20" symbolic="YES" id="ubP-uw-5fW"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="histogramView" destination="kbk-MC-TrG" id="9wn-sJ-fyD"/>
-                                    <outlet property="title" destination="rmU-UB-QKE" id="YW0-hL-AJZ"/>
+                                    <outlet property="descriptions" destination="0zi-Ax-zUa" id="4Dk-xo-aCm"/>
+                                    <outlet property="occuranceGraphView" destination="SXy-vT-Bfb" id="cx1-bH-ia8"/>
+                                    <outlet property="title" destination="f0d-pb-8fi" id="I51-rx-pGD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

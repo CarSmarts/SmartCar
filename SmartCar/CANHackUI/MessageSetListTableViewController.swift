@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageSetListTableViewController: UITableViewController {
+class MessageSetListTableViewController: UITableViewController, UIDocumentPickerDelegate {
     
     var messageSets = [URL]()
     let fileManager = FileManager()
@@ -24,16 +24,13 @@ class MessageSetListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         
-        // Load Messages
-        do {
-            let base = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            
-            messageSets += ["Hi", "Hello"].map { URL(fileURLWithPath: $0, relativeTo: base) }
-            
-        } catch let error as NSError {
-            // TODO: some error happened
-            print(error.localizedDescription)
-        }
+        // TODO: Load Messages
+//        do {
+//            let base = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+//        } catch let error as NSError {
+//            // TODO: some error happened
+//            print(error.localizedDescription)
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,9 +43,17 @@ class MessageSetListTableViewController: UITableViewController {
     }
     
     @IBAction func newSet(_ sender: Any) {
-        let set = MessageSet(from: UIPasteboard.general.string ?? "")
+        let picker = UIDocumentPickerViewController(documentTypes: ["public.plain-text"], in: .import)
+        picker.delegate = self
+        present(picker, animated: true)
         
-        performSegue(withIdentifier: "Show Message Set", sender: set)
+//        guard let paste = UIPasteboard.general.string else {
+//            return
+//        }
+//
+//        let set = SignalSet<Message>(from: paste)
+//
+//        performSegue(withIdentifier: "Show Message Set", sender: set)
     }
     
     // MARK: - Table view data source
@@ -63,7 +68,7 @@ class MessageSetListTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageSet", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SignalSet", for: indexPath)
 
         cell.textLabel?.text = messageSets[indexPath.row].lastPathComponent
 
@@ -96,17 +101,30 @@ class MessageSetListTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    // MARK: - Document Picker
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        let url = urls.first!
+        guard let data = try? String(contentsOf: url) else {
+            Logger.error("Trying to decode chosen file")
+            return
+        }
+        
+        let set = SignalSet<Message>(from: data)
+
+        performSegue(withIdentifier: "Show Message Set", sender: set)
+    }
     
     // MARK: - Navigation
 
-    private func loadMessageSet(for cell: UITableViewCell) -> MessageSet? {
+    private func loadMessageSet(for cell: UITableViewCell) -> SignalSet<Message>? {
         let url = messageSets[tableView.indexPath(for: cell)!.row]
         guard let data = fileManager.contents(atPath: url.absoluteString) else {
             Logger.error("Trying to prepare messageSetVC but unable to read message set")
             return nil
         }
         
-        guard let set = try? decoder.decode(MessageSet.self, from: data) else {
+        guard let set = try? decoder.decode(SignalSet<Message>.self, from: data) else {
             Logger.error("Trying to prepare messageSetVC but unable to decode messageset")
             return nil
         }
@@ -124,7 +142,7 @@ class MessageSetListTableViewController: UITableViewController {
             
             if let cell = sender as? UITableViewCell {
                 messageSetViewController.messageSet = loadMessageSet(for: cell)
-            } else if let set = sender as? MessageSet {
+            } else if let set = sender as? SignalSet<Message> {
                 messageSetViewController.messageSet = set
             } else {
                 assertionFailure("Trying to prepare messageSetVC but sender gives no information")

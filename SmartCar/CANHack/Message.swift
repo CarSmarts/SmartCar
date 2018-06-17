@@ -9,7 +9,7 @@
 import Foundation
 
 /// A specific instance of a network message.
-public struct Message: Codable {
+public struct Message: Signal, Codable {
     /// The id of the message.
     public var id: MessageID
     /// The message contents
@@ -23,28 +23,6 @@ public struct Message: Codable {
     public init(id: MessageID, contents: [Byte]) {
         self.id = id
         self.contents = contents
-    }
-}
-
-// - MARK: Timed Message
-
-public typealias Timestamp = Int
-
-/// A specific instance of `Message`, with a timestamp
-public struct MessageInstance: Codable {
-    /// Timestamp associated with the message, usually in milliseconds since startup
-    var timestamp: Timestamp
-    
-    /// The message that occured at `timestamp`
-    var message: Message
-    
-    public init(timestamp: Timestamp, message: Message) {
-        self.timestamp = timestamp
-        self.message   = message
-    }
-    
-    public init(timestamp: Timestamp, id: MessageID, data: [Byte]) {
-        self.init(timestamp: timestamp, message: Message(id: id, contents: data))
     }
 }
 
@@ -75,13 +53,11 @@ extension Message: Hashable, Comparable {
 
 extension Message: CustomStringConvertible {
     public var description: String {
-        return "\(id.hex): " + contents.map { $0.hex }.joined(separator: " ")
+        return "\(id.hex): " + contentDescription
     }
-}
-
-extension MessageInstance: CustomStringConvertible {
-    public var description: String {
-        return "\(timestamp) \(message)"
+    
+    public var contentDescription: String {
+        return contents.map { $0.hex }.joined(separator: " ")
     }
 }
 
