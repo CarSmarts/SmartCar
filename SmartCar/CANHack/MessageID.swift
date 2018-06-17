@@ -38,7 +38,7 @@ public extension MessageID {
     
     /// A human readable hex representation of `self`
     var hex: String {
-        return String(format: "%X", rawValue)
+        return "0x" + String(format: "%X", rawValue)
     }
     
     /// Creates am instance of `self` from a hex string

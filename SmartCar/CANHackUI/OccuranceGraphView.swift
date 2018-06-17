@@ -25,6 +25,7 @@ class OccuranceGraphView: UIView {
     
     public var data: [[Int]] = [] {
         didSet {
+            invalidateIntrinsicContentSize()
             setNeedsDisplay()
         }
     }
@@ -33,6 +34,16 @@ class OccuranceGraphView: UIView {
         didSet {
             setNeedsDisplay()
         }
+    }
+    
+    @IBInspectable public var overlapFactor: CGFloat = 0.9
+    @IBInspectable public var barHeight: CGFloat = 5.0;
+    
+    override var intrinsicContentSize: CGSize {
+        // calculating target height from overlapFactor and target bar height
+        let targetHeight = barHeight + CGFloat(data.count - 1) * barHeight * overlapFactor
+        
+        return CGSize(width: UIViewNoIntrinsicMetric, height: targetHeight)
     }
     
     private func draw(occurances: [Int], scale: OccuranceGraphScale, color: UIColor, ypos: CGFloat, height: CGFloat) {
@@ -49,7 +60,7 @@ class OccuranceGraphView: UIView {
     }
     
     private let colors = [
-        UIColor.cyan,
+        UIColor.blue,
         UIColor.magenta,
         UIColor.green,
         UIColor.purple,
@@ -58,7 +69,7 @@ class OccuranceGraphView: UIView {
         UIColor.brown,
     ]
     
-    var colorAlpha: CGFloat = 0.65
+    var colorAlpha: CGFloat = 0.80
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -69,10 +80,11 @@ class OccuranceGraphView: UIView {
             return
         }
         
-        let height = bounds.height / CGFloat(data.count)
+        // Inverse of calculation in intrinsicContentSize
+        let height = bounds.height / (1.0 + CGFloat(data.count - 1) * overlapFactor)
         
         for (index, occurances) in data.enumerated() {
-            let pos = height * CGFloat(index)
+            let pos = height * CGFloat(index) * overlapFactor
             let color = scale.color ?? colors[index % colors.count]
             .withAlphaComponent(colorAlpha)
             

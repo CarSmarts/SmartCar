@@ -18,7 +18,7 @@ class MessageIDStatTableViewCell: UITableViewCell {
     
     public var stats: [SignalStat<Message>]! {
         didSet {
-            descriptions.text = stats.map { $0.partialDescription }.joined(separator: "\n")
+            descriptions.text = stats.map { $0.signal.contentDescription }.joined(separator: "\n")
             
             occuranceGraphView.data = stats.map { $0.timestamps }
         }
@@ -34,7 +34,11 @@ class MessageIDStatTableViewCell: UITableViewCell {
     }
 
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var descriptions: UITextView!
+    @IBOutlet weak var descriptions: UITextView! {
+        didSet {
+            descriptions?.textContainer.lineFragmentPadding = 0
+        }
+    }
     @IBOutlet weak var occuranceGraphView: OccuranceGraphView!
     
     override func awakeFromNib() {
@@ -43,7 +47,7 @@ class MessageIDStatTableViewCell: UITableViewCell {
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
+        super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
     }
@@ -51,6 +55,6 @@ class MessageIDStatTableViewCell: UITableViewCell {
 
 extension SignalStat where S == Message {
     var partialDescription: String {
-        return "\(timestamps.count): " + signal.contentDescription
+        return "\(timestamps.count)" + signal.contentDescription
     }
 }

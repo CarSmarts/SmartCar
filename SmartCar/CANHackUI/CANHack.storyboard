@@ -71,43 +71,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Message" rowHeight="121" id="Qlm-bR-83X" customClass="MessageIDStatTableViewCell" customModule="SmartCar" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="121"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Message" rowHeight="142" id="Qlm-bR-83X" customClass="MessageIDStatTableViewCell" customModule="SmartCar" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="142"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qlm-bR-83X" id="tE5-rC-OOl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="141.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0d-pb-8fi">
-                                            <rect key="frame" x="16" y="11" width="343" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0d-pb-8fi">
+                                            <rect key="frame" x="16" y="11" width="343" height="20"/>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SXy-vT-Bfb" customClass="OccuranceGraphView" customModule="SmartCar" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="40" width="343" height="70"/>
-                                            <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Some Lines" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zi-Ax-zUa">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="70"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                            </subviews>
+                                        <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="SXy-vT-Bfb" customClass="OccuranceGraphView" customModule="SmartCar" customModuleProvider="target">
+                                            <rect key="frame" x="20" y="39" width="335" height="94.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="70" id="NdJ-f7-UaU"/>
-                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="barHeight">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="overlapFactor">
+                                                    <real key="value" value="0.90000000000000002"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </view>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zi-Ax-zUa">
+                                            <rect key="frame" x="16" y="31" width="58.5" height="110.5"/>
+                                            <string key="text">00 00
+10 00
+11 00
+50 40
+52 40</string>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="f0d-pb-8fi" firstAttribute="trailing" secondItem="tE5-rC-OOl" secondAttribute="trailingMargin" id="3DA-oX-ezR"/>
-                                        <constraint firstItem="SXy-vT-Bfb" firstAttribute="top" secondItem="f0d-pb-8fi" secondAttribute="bottom" constant="8" symbolic="YES" id="Bai-Bi-gI1"/>
-                                        <constraint firstItem="SXy-vT-Bfb" firstAttribute="bottom" secondItem="tE5-rC-OOl" secondAttribute="bottomMargin" id="Keb-qA-W4M"/>
-                                        <constraint firstItem="f0d-pb-8fi" firstAttribute="leading" secondItem="tE5-rC-OOl" secondAttribute="leadingMargin" id="eEJ-x4-v8O"/>
-                                        <constraint firstItem="f0d-pb-8fi" firstAttribute="trailing" secondItem="SXy-vT-Bfb" secondAttribute="trailing" id="mtw-jT-Hs8"/>
-                                        <constraint firstItem="f0d-pb-8fi" firstAttribute="top" secondItem="tE5-rC-OOl" secondAttribute="topMargin" id="rX0-Uj-F1h"/>
-                                        <constraint firstItem="f0d-pb-8fi" firstAttribute="leading" secondItem="SXy-vT-Bfb" secondAttribute="leading" id="wSo-HS-V6J"/>
+                                        <constraint firstItem="f0d-pb-8fi" firstAttribute="top" secondItem="tE5-rC-OOl" secondAttribute="topMargin" id="1CD-7K-xtc"/>
+                                        <constraint firstAttribute="bottom" secondItem="SXy-vT-Bfb" secondAttribute="bottom" constant="8" id="9Hh-cJ-4Ug"/>
+                                        <constraint firstAttribute="trailing" secondItem="SXy-vT-Bfb" secondAttribute="trailing" constant="20" symbolic="YES" id="B3x-aQ-ZsX"/>
+                                        <constraint firstItem="f0d-pb-8fi" firstAttribute="leading" secondItem="tE5-rC-OOl" secondAttribute="leadingMargin" id="IsQ-Ou-xwr"/>
+                                        <constraint firstItem="0zi-Ax-zUa" firstAttribute="leading" secondItem="tE5-rC-OOl" secondAttribute="leading" constant="16" id="KPp-mS-w1R"/>
+                                        <constraint firstAttribute="bottom" secondItem="0zi-Ax-zUa" secondAttribute="bottom" id="P5I-W3-pED"/>
+                                        <constraint firstItem="0zi-Ax-zUa" firstAttribute="top" secondItem="f0d-pb-8fi" secondAttribute="bottom" id="PFC-V8-LFf"/>
+                                        <constraint firstItem="SXy-vT-Bfb" firstAttribute="top" secondItem="f0d-pb-8fi" secondAttribute="bottom" constant="8" symbolic="YES" id="ofW-mP-dDM"/>
+                                        <constraint firstItem="f0d-pb-8fi" firstAttribute="trailing" secondItem="tE5-rC-OOl" secondAttribute="trailingMargin" id="r1E-j1-Rxl"/>
+                                        <constraint firstItem="SXy-vT-Bfb" firstAttribute="leading" secondItem="tE5-rC-OOl" secondAttribute="leading" constant="20" symbolic="YES" id="ubP-uw-5fW"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
