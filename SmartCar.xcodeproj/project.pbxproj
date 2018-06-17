@@ -78,6 +78,7 @@
 		73A5F5031FAEADC500187A70 /* MessageSetTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSetTableViewController.swift; sourceTree = "<group>"; };
 		73A5F5051FAEC00500187A70 /* MessageParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageParseTests.swift; sourceTree = "<group>"; };
 		73AFDD3120D5D54800118C6F /* IBHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBHelpers.swift; sourceTree = "<group>"; };
+		73AFDD3520D5FEE800118C6F /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		73B2D14E1FBBFB6A002D2B23 /* SignalStat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalStat.swift; sourceTree = "<group>"; };
 		73B2D1501FBBFD76002D2B23 /* SignalOccurance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalOccurance.swift; sourceTree = "<group>"; };
 		73CE15481EB2B68F00F54E7E /* SmartCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +192,7 @@
 		73CE153F1EB2B68F00F54E7E = {
 			isa = PBXGroup;
 			children = (
+				73AFDD3520D5FEE800118C6F /* TODO.md */,
 				73CE154A1EB2B68F00F54E7E /* SmartCar */,
 				73CE155F1EB2B68F00F54E7E /* SmartCarTests */,
 				73CE156A1EB2B68F00F54E7E /* SmartCarUITests */,

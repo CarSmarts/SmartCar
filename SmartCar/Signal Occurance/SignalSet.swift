@@ -29,23 +29,24 @@ public class SignalSet<S: Signal>: Codable {
         
         var messageDict = [S : [Timestamp]]()
         
+        timestamps = [Timestamp]()
+        
         for signalOccurance in signalOccurances {
-            if messageDict[signalOccurance.signal] != nil {
-                messageDict[signalOccurance.signal]?.append(signalOccurance.timestamp)
-            } else {
-                messageDict[signalOccurance.signal] = [signalOccurance.timestamp]
-            }
+            let timestamp = signalOccurance.timestamp
+            let signal = signalOccurance.signal
+            
+            messageDict[signal, default: []].append(timestamp)
+            
+            timestamps.append(timestamp)
         }
         
         stats = messageDict.map { (arg) -> SignalStat<S> in
             let (signal, timestamps) = arg
             return SignalStat(signal: signal, timestamps: Array(timestamps))
         }
-
+        
         stats.sort()
-
-        let allTimestamps = messageDict.values.reduce(Set(), { (t1, t2) in t1.union(t2) })
-        timestamps = allTimestamps.sorted()
+        timestamps.sort()
     }
 }
 
