@@ -37,6 +37,9 @@ class VehicleViewController: UIViewController {
             vehicle = vehicleManager.vehicles.first
             if vehicle == nil {
                 //performSegue(withIdentifier: "ShowVehicleList", sender: self)
+                
+                //TODO: Remove before flight
+                performSegue(withIdentifier: "CANHack", sender: self)
             }
         }
     }
