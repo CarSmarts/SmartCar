@@ -27,18 +27,23 @@ public class SignalSet<S: Signal>: Codable {
     
     public init(signalOccurances: [SignalOccurance<S>]) {
         
-        // TODO: all this trash is supposed to make this faster.. did it?
-        let signals = signalOccurances.lazy.map { ($0.signal, Set([$0.timestamp]))}
-
-        let messageDict = Dictionary(signals, uniquingKeysWith: { k1, k2 in k1.union(k2) })
+        var messageDict = [S : [Timestamp]]()
+        
+        for signalOccurance in signalOccurances {
+            if messageDict[signalOccurance.signal] != nil {
+                messageDict[signalOccurance.signal]?.append(signalOccurance.timestamp)
+            } else {
+                messageDict[signalOccurance.signal] = [signalOccurance.timestamp]
+            }
+        }
         
         stats = messageDict.map { (arg) -> SignalStat<S> in
             let (signal, timestamps) = arg
             return SignalStat(signal: signal, timestamps: Array(timestamps))
         }
-        
+
         stats.sort()
-        
+
         let allTimestamps = messageDict.values.reduce(Set(), { (t1, t2) in t1.union(t2) })
         timestamps = allTimestamps.sorted()
     }
