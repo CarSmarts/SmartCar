@@ -25,6 +25,8 @@ class GVRetParser: Parser {
         // 4210,0x12F85150,true,Rx,1,2,40,00
         // timestamp,id,extended?,Rx/Tx(optional),bus,len,data
         let components = line.components(separatedBy: ",")
+        guard components.count > 4 else { return nil }
+        
         let lenIndex = computeLenIndex(for: components[3])
 
         guard let timestamp = Timestamp(components[0]) else { return nil }
