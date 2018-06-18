@@ -26,15 +26,11 @@ extension Parser {
             return SignalSet<S>(signalOccurances: [])
         }
 
-        let lines = data.components(separatedBy: "\n")
-        
+        let lines = data.components(separatedBy: .newlines)
+
         // map every line into a parsed message
         let parsed = lines.compactMap { line -> SignalOccurance<S>? in
-            if line.hasSuffix("\r") {
-                return parse(line: String(line.dropLast()))
-            } else {
-                return parse(line: line)
-            }
+            return parse(line: line)
         }
         
         return SignalSet<S>(signalOccurances: parsed)
