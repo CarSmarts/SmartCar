@@ -84,7 +84,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="SXy-vT-Bfb" customClass="OccuranceGraphView" customModule="SmartCar" customModuleProvider="target">
+                                        <view clipsSubviews="YES" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="SXy-vT-Bfb" customClass="OccuranceGraphView" customModule="SmartCar" customModuleProvider="target">
                                             <rect key="frame" x="20" y="39" width="335" height="94.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <userDefinedRuntimeAttributes>

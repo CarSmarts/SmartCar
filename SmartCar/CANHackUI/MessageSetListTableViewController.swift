@@ -13,6 +13,7 @@ class MessageSetListTableViewController: UITableViewController, UIDocumentPicker
     var messageSets = [URL]()
     let fileManager = FileManager()
     let decoder = PropertyListDecoder()
+    let gvretParser = GVRetParser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,12 +106,8 @@ class MessageSetListTableViewController: UITableViewController, UIDocumentPicker
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         let url = urls.first!
-        guard let data = try? String(contentsOf: url) else {
-            Logger.error("Trying to decode chosen file")
-            return
-        }
         
-        let set = SignalSet<Message>(from: data)
+        let set = gvretParser.parse(from: url)
 
         performSegue(withIdentifier: "Show Message Set", sender: set)
     }

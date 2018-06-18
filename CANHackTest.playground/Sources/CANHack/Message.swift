@@ -52,14 +52,13 @@ extension Message: CustomStringConvertible {
     }
 }
 
-/// Array Sorting
-extension Sequence where Element: Comparable {
-    static func <(lhs: Self, rhs: Self) -> Bool {
-        for (left, right) in zip(lhs, rhs) {
-            if left != right {
-                return left < right
-            }
-        }
-        return false // equal
-    }
-}
+//// shortcut for getting hash value of array
+//private extension Collection where Element == Byte {
+//    var hashValue: Int {
+//        //TODO: Document this
+//        return self.reduce(5381) {
+//            ($0 << 5) &+ $0 &+ Int($1)
+//        }
+//    }
+//}
+//

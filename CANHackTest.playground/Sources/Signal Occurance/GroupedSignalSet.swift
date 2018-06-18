@@ -43,7 +43,7 @@ public class GroupedSignalSet<S: Signal, G: Grouping>: Codable {
         
         statsForGrouping = Dictionary(grouping: original.stats, by: groupingFunction)
         
-        groupings = statsForGrouping.keys.sorted()
+        groupings = Array(statsForGrouping.keys).sorted()
     }
 }
 

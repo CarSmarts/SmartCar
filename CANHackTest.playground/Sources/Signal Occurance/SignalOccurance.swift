@@ -8,13 +8,8 @@
 
 import Foundation
 
-/// Super vague, but a `Signal` is anything that could be associated with "happening" at a certain time
-public protocol Signal: Hashable, CustomStringConvertible, Comparable, Codable { }
-
-/// When a `Signal` "happened"
 public typealias Timestamp = Int
 
-/// Ties a Signal to a specific Timestamp
 public struct SignalOccurance<S: Signal>: Codable {
     var signal: S
     var timestamp: Timestamp

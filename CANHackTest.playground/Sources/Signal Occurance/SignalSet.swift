@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// A set of Signals, collected for the purpose of analysis
+/// A set of messages, collected for the purpose of analysis
 public class SignalSet<S: Signal>: Codable {
     /// A mapping of messages to the times they occur
     public private(set) var stats: [SignalStat<S>]
@@ -50,11 +50,11 @@ public class SignalSet<S: Signal>: Codable {
     }
 }
 
-extension SignalSet {
-    public var scale: OccuranceGraphScale {
-        return OccuranceGraphScale(min: firstTimestamp, max: lastTimestamp)
-    }
-}
+//extension SignalSet {
+//    public var scale: OccuranceGraphScale {
+//        return OccuranceGraphScale(min: firstTimestamp, max: lastTimestamp)
+//    }
+//}
 
 extension SignalSet: Equatable {
     public static func ==(lhs: SignalSet, rhs: SignalSet) -> Bool {

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Super vague, but a `Signal` is anything that could h
 public protocol Signal: Hashable, CustomStringConvertible, Comparable, Codable {
     
 }

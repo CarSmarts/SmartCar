@@ -42,7 +42,7 @@ private func parse(id: String) throws -> MessageID {
 public extension SignalSet where S == Message {
     /// Create a SignalSet by parsing multiple lines of text
     convenience init (from file: String) {
-        let lines = file.components(separatedBy: .newlines).filter { !$0.isEmpty }
+        let lines = file.components(separatedBy: "\n").filter { !$0.isEmpty }
         
         // map every line into a parsed message
         let parsed = lines.compactMap { line -> SignalOccurance<S>? in

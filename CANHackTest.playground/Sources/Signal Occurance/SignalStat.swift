@@ -8,19 +8,29 @@
 
 import Foundation
 
-/// Combined statisitics for a Signal, basically just a list of timestamps when it happened
-public struct SignalStat<S: Signal>: Hashable, Codable {
+public struct SignalStat<S: Signal>: Codable {
     public let signal: S
     public let timestamps: [Timestamp]
+    
+    init(signal: S, timestamps: [Timestamp]) {
+        self.signal = signal
+        self.timestamps = timestamps
+    }
+}
+
+extension SignalStat: Hashable {
+    public var hashValue: Int {
+        return signal.hashValue
+    }
+    
+    static public func ==(lhs: SignalStat, rhs: SignalStat) -> Bool {
+        return lhs.signal == rhs.signal && lhs.timestamps == rhs.timestamps
+    }
 }
 
 extension SignalStat: Comparable {
     public static func <(lhs: SignalStat<S>, rhs: SignalStat<S>) -> Bool {
-        if lhs.signal == rhs.signal {
-            return lhs.timestamps < rhs.timestamps
-        } else {
-            return lhs.signal < rhs.signal
-        }
+        return lhs.signal < rhs.signal
     }
 }
 
