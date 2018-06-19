@@ -8,16 +8,11 @@
 
 import UIKit
 
-class MessageIDStatTableViewCell: UITableViewCell {
+class MessageIDStatTableViewCell: UITableViewCell, Reusable {
 
-    public var id: MessageID! {
+    public var groupStats: GroupedStat<Message, MessageID>! {
         didSet {
-            title.text = id.description
-        }
-    }
-    
-    public var stats: [SignalStat<Message>]! {
-        didSet {
+            title.text = groupStats.group.description
             updateFromStats()
         }
     }
@@ -37,13 +32,13 @@ class MessageIDStatTableViewCell: UITableViewCell {
     @IBOutlet weak var occuranceGraphView: OccuranceGraphView!
     
     private func updateFromStats() {
-        let shortList = stats.prefix(10)
+        let shortList = groupStats.stats.prefix(10)
         
         descriptions.text = shortList.map { $0.signal.contentDescription }.joined(separator: "\n")
         
         occuranceGraphView.data = shortList.map { $0.timestamps }
         
-        let remainder = stats.count - 10
+        let remainder = groupStats.stats.count - 10
         if remainder > 0 {
             moreLabel.text = "+ \(remainder) more"
             moreLabel.isHidden = false

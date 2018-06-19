@@ -44,17 +44,15 @@ class MessageSetTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groupedMessages.groupings.count
+        return groupedMessages.groups.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Message", for: indexPath) as! MessageIDStatTableViewCell
-        let group = groupedMessages.groupings[indexPath.row]
-        let stats = groupedMessages.statsForGrouping[group]!
+        let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MessageIDStatTableViewCell
+        let group = groupedMessages.groups[indexPath.row]
 
-        cell.id = group
         // TODO: Switch to do something different when there are more than 10 values
-        cell.stats = stats
+        cell.groupStats = groupedMessages[group]
         cell.scale = messageSet.scale
 
         return cell

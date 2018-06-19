@@ -38,6 +38,7 @@
 		73EE84BE1FB8066E003E45F7 /* OccuranceGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EE84BD1FB8066E003E45F7 /* OccuranceGraphView.swift */; };
 		73EE84C21FB81E08003E45F7 /* MessageStatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EE84C11FB81E07003E45F7 /* MessageStatTableViewCell.swift */; };
 		73F6168A1FBD198C00691138 /* MessageIDStatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F616891FBD198C00691138 /* MessageIDStatTableViewCell.swift */; };
+		73F7215A20D9B61B00A72964 /* MessageStatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F7215920D9B61B00A72964 /* MessageStatViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		73EE84BD1FB8066E003E45F7 /* OccuranceGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccuranceGraphView.swift; sourceTree = "<group>"; };
 		73EE84C11FB81E07003E45F7 /* MessageStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStatTableViewCell.swift; sourceTree = "<group>"; };
 		73F616891FBD198C00691138 /* MessageIDStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageIDStatTableViewCell.swift; sourceTree = "<group>"; };
+		73F7215920D9B61B00A72964 /* MessageStatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStatViewController.swift; sourceTree = "<group>"; };
 		80DBDD678ED0DCFD8BE541D1 /* Pods_SmartCarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F40590E46BCCA51D51DA4F4F /* Pods_SmartCarUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCarUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F71D9A0442CF5A7F92E0E125 /* Pods_SmartCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +146,7 @@
 			children = (
 				73859D5B1F02FDE200492484 /* MessageSetListTableViewController.swift */,
 				73A5F5031FAEADC500187A70 /* MessageSetTableViewController.swift */,
+				73F7215920D9B61B00A72964 /* MessageStatViewController.swift */,
 				73EE84C11FB81E07003E45F7 /* MessageStatTableViewCell.swift */,
 				73F616891FBD198C00691138 /* MessageIDStatTableViewCell.swift */,
 				73859D5E1F02FE3100492484 /* CANHack.storyboard */,
@@ -416,6 +419,7 @@
 				7332B3B11EF2C1BF0059046C /* CommandView.swift in Sources */,
 				7399B2FE1EB2BA9400ECBB84 /* Vehicle.swift in Sources */,
 				73AFDD3220D5D54800118C6F /* IBHelpers.swift in Sources */,
+				73F7215A20D9B61B00A72964 /* MessageStatViewController.swift in Sources */,
 				73859D561F02EE4000492484 /* Message.swift in Sources */,
 				73CE154C1EB2B68F00F54E7E /* AppDelegate.swift in Sources */,
 				73859D5C1F02FDE200492484 /* MessageSetListTableViewController.swift in Sources */,

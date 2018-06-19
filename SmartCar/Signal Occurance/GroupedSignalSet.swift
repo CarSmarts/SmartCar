@@ -10,18 +10,34 @@ import Foundation
 
 public typealias Grouping = Signal
 
+public struct GroupedStat<S: Signal, G: Grouping>: Hashable, Codable {
+    public let group: G
+    public let stats: [SignalStat<S>]
+}
+
 /// A set of messages, collected for the purpose of analysis
 public class GroupedSignalSet<S: Signal, G: Grouping>: Codable {
     
     private var originalSignalSet: SignalSet<S>
+    private var groupedStats: [G: [SignalStat<S>]]
     
-    public let groupings: [G]
+    /// Sorted list of groups contained by this class
+    public private(set) var groups: [G]
     
-    public let statsForGrouping: [G: [SignalStat<S>]]
+    /// Access a grouped stat for a specific group
+    ///
+    /// - traps if `group` is not part of this classes `groups` array
+    public subscript (_ group: G) -> GroupedStat<S, G> {
+        return GroupedStat<S, G>(group: group, stats: groupedStats[group]!)
+    }
     
     /// A mapping of messages to the times they occur
     public var stats: [SignalStat<S>] {
         return originalSignalSet.stats
+    }
+    
+    public var timestamps: [Timestamp] {
+        return originalSignalSet.timestamps
     }
     
     /// The first timestamp in this dataset
@@ -34,16 +50,12 @@ public class GroupedSignalSet<S: Signal, G: Grouping>: Codable {
         return timestamps.last ?? 0
     }
     
-    public var timestamps: [Timestamp] {
-        return originalSignalSet.timestamps
-    }
-    
     public init(grouping original: SignalSet<S>, by groupingFunction: (SignalStat<S>) -> G) {
         originalSignalSet = original
         
-        statsForGrouping = Dictionary(grouping: original.stats, by: groupingFunction)
+        groupedStats = Dictionary(grouping: original.stats, by: groupingFunction)
         
-        groupings = statsForGrouping.keys.sorted()
+        groups = groupedStats.keys.sorted()
     }
 }
 
