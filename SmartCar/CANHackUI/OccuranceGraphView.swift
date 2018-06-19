@@ -36,6 +36,7 @@ class OccuranceGraphView: UIView {
         }
     }
     
+    @IBInspectable public var minDifference: CGFloat = 0.75
     @IBInspectable public var overlapFactor: CGFloat = 0.9
     @IBInspectable public var barHeight: CGFloat = 5.0;
     
@@ -50,11 +51,17 @@ class OccuranceGraphView: UIView {
         let context = UIGraphicsGetCurrentContext()!
         color.setStroke()
         
+        var lastPosition: CGFloat = 0.0
+        
         for occurance in occurances {
             let position = CGFloat(occurance - scale.min) / CGFloat(scale.max - scale.min) * bounds.width
             
-            context.move(to: CGPoint(x: position, y: ypos))
-            context.addLine(to: CGPoint(x: position, y: ypos + height))
+            if (position - lastPosition) > minDifference {
+                context.move(to: CGPoint(x: lastPosition, y: ypos))
+                context.addLine(to: CGPoint(x: position, y: ypos + height))
+                
+                lastPosition = position
+            }
         }
         context.strokePath()
     }

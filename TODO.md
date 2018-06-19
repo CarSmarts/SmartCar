@@ -2,14 +2,15 @@
 
 ## CANHACK
 
-- Fix perf bottleneck in parsing.. wewrite parsing to be cleaner, modular, and use less string mutation
-- Update Occurance Graph drawing code to skip repeated lines of the same color (note.. may not be necessary with next change)
+- [DONE] Fix perf bottleneck in parsing.. wewrite parsing to be cleaner, modular, and use less string mutation
+- [DONE]Update Occurance Graph drawing code to skip repeated lines of the same color (note.. may not be necessary with next change)
 - Change Occurance Graph to automatically switch to "continuous mode" for signals over say 10 
-- (or just stop drawing after 10)
+- [DONE] (or just stop drawing after 10)
 - Write some Tests!! :)
 
 Other:
-- Revisit "Signal Abstraction".. make it more clear/useful/update UI code to match the abstraction
+- [DONE] Revisit "Signal Abstraction".. make it more clear/useful/
+  - update UI code to match the abstraction
 - Maybe it should be "Message Abstraction" with a specifc type of Message (ie. CAN extended, CAN normal, LIN...)
 - Consider Occurance Graph Controller?
 

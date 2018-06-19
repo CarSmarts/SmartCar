@@ -18,9 +18,7 @@ class MessageIDStatTableViewCell: UITableViewCell {
     
     public var stats: [SignalStat<Message>]! {
         didSet {
-            descriptions.text = stats.map { $0.signal.contentDescription }.joined(separator: "\n")
-            
-            occuranceGraphView.data = stats.map { $0.timestamps }
+            updateFromStats()
         }
     }
     
@@ -33,23 +31,26 @@ class MessageIDStatTableViewCell: UITableViewCell {
         }
     }
 
+    @IBOutlet weak var moreLabel: UILabel!
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var descriptions: UITextView! {
-        didSet {
-            descriptions?.textContainer.lineFragmentPadding = 0
-        }
-    }
+    @IBOutlet weak var descriptions: UITextView!
     @IBOutlet weak var occuranceGraphView: OccuranceGraphView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    private func updateFromStats() {
+        let shortList = stats.prefix(10)
         
-        // Configure the view for the selected state
+        descriptions.text = shortList.map { $0.signal.contentDescription }.joined(separator: "\n")
+        
+        occuranceGraphView.data = shortList.map { $0.timestamps }
+        
+        let remainder = stats.count - 10
+        if remainder > 0 {
+            moreLabel.text = "+ \(remainder) more"
+            moreLabel.isHidden = false
+        } else {
+            moreLabel.text = ""
+            moreLabel.isHidden = true
+        }
     }
 }
 

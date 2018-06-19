@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I3L-rZ-8eQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I3L-rZ-8eQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -71,11 +70,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Message" rowHeight="142" id="Qlm-bR-83X" customClass="MessageIDStatTableViewCell" customModule="SmartCar" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="142"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Message" rowHeight="170" id="Qlm-bR-83X" customClass="MessageIDStatTableViewCell" customModule="SmartCar" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="170"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qlm-bR-83X" id="tE5-rC-OOl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="141.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="169.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0d-pb-8fi">
@@ -85,7 +84,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view clipsSubviews="YES" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="SXy-vT-Bfb" customClass="OccuranceGraphView" customModule="SmartCar" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="39" width="335" height="94.5"/>
+                                            <rect key="frame" x="20" y="39" width="335" height="94"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="barHeight">
@@ -97,7 +96,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zi-Ax-zUa">
-                                            <rect key="frame" x="16" y="31" width="58.5" height="110.5"/>
+                                            <rect key="frame" x="16" y="31" width="58.5" height="110"/>
                                             <string key="text">00 00
 10 00
 11 00
@@ -105,16 +104,30 @@
 52 40</string>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="lineFragmentPadding">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 17 More" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmO-nf-u0f">
+                                            <rect key="frame" x="16" y="141" width="343" height="18"/>
+                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="f0d-pb-8fi" firstAttribute="top" secondItem="tE5-rC-OOl" secondAttribute="topMargin" id="1CD-7K-xtc"/>
-                                        <constraint firstAttribute="bottom" secondItem="SXy-vT-Bfb" secondAttribute="bottom" constant="8" id="9Hh-cJ-4Ug"/>
+                                        <constraint firstItem="0zi-Ax-zUa" firstAttribute="bottom" secondItem="SXy-vT-Bfb" secondAttribute="bottom" constant="8" id="9Hh-cJ-4Ug"/>
+                                        <constraint firstItem="PmO-nf-u0f" firstAttribute="bottom" secondItem="tE5-rC-OOl" secondAttribute="bottomMargin" id="9fX-EM-u3p"/>
                                         <constraint firstAttribute="trailing" secondItem="SXy-vT-Bfb" secondAttribute="trailing" constant="20" symbolic="YES" id="B3x-aQ-ZsX"/>
+                                        <constraint firstItem="PmO-nf-u0f" firstAttribute="leading" secondItem="tE5-rC-OOl" secondAttribute="leadingMargin" id="EpD-CK-XqT"/>
                                         <constraint firstItem="f0d-pb-8fi" firstAttribute="leading" secondItem="tE5-rC-OOl" secondAttribute="leadingMargin" id="IsQ-Ou-xwr"/>
                                         <constraint firstItem="0zi-Ax-zUa" firstAttribute="leading" secondItem="tE5-rC-OOl" secondAttribute="leading" constant="16" id="KPp-mS-w1R"/>
-                                        <constraint firstAttribute="bottom" secondItem="0zi-Ax-zUa" secondAttribute="bottom" id="P5I-W3-pED"/>
                                         <constraint firstItem="0zi-Ax-zUa" firstAttribute="top" secondItem="f0d-pb-8fi" secondAttribute="bottom" id="PFC-V8-LFf"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="PmO-nf-u0f" secondAttribute="trailing" id="RhL-OE-MYA"/>
+                                        <constraint firstItem="PmO-nf-u0f" firstAttribute="top" secondItem="0zi-Ax-zUa" secondAttribute="bottom" id="fiF-Hq-f2B"/>
                                         <constraint firstItem="SXy-vT-Bfb" firstAttribute="top" secondItem="f0d-pb-8fi" secondAttribute="bottom" constant="8" symbolic="YES" id="ofW-mP-dDM"/>
                                         <constraint firstItem="f0d-pb-8fi" firstAttribute="trailing" secondItem="tE5-rC-OOl" secondAttribute="trailingMargin" id="r1E-j1-Rxl"/>
                                         <constraint firstItem="SXy-vT-Bfb" firstAttribute="leading" secondItem="tE5-rC-OOl" secondAttribute="leading" constant="20" symbolic="YES" id="ubP-uw-5fW"/>
@@ -122,6 +135,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="descriptions" destination="0zi-Ax-zUa" id="4Dk-xo-aCm"/>
+                                    <outlet property="moreLabel" destination="PmO-nf-u0f" id="Po4-Lw-KYJ"/>
                                     <outlet property="occuranceGraphView" destination="SXy-vT-Bfb" id="cx1-bH-ia8"/>
                                     <outlet property="title" destination="f0d-pb-8fi" id="I51-rx-pGD"/>
                                 </connections>
@@ -143,6 +157,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDV-Yp-ebv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2328.8000000000002" y="1171.6641679160421"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="evh-fv-yep">
+            <objects>
+                <viewController id="O4H-ws-L3t" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ujB-JV-1Fu"/>
+                        <viewControllerLayoutGuide type="bottom" id="FIh-tP-i6g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z5Y-jF-CAs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="90"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Se-Ok-gpD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2290" y="1653"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="4tZ-Db-VZ7">

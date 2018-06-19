@@ -8,6 +8,17 @@
 
 import UIKit
 
+extension UITextView {
+    @IBInspectable var lineFragmentPadding: CGFloat {
+        get {
+            return textContainer.lineFragmentPadding
+        }
+        set {
+            textContainer.lineFragmentPadding = newValue
+        }
+    }
+}
+
 @IBDesignable
 extension OccuranceGraphView {
     override func prepareForInterfaceBuilder() {

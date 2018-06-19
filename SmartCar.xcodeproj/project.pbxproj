@@ -323,7 +323,7 @@
 					73CE15471EB2B68F00F54E7E = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = CB8792S7AP;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = "";
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -334,14 +334,14 @@
 					73CE155B1EB2B68F00F54E7E = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = CB8792S7AP;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = "";
 						ProvisioningStyle = Automatic;
 						TestTargetID = 73CE15471EB2B68F00F54E7E;
 					};
 					73CE15661EB2B68F00F54E7E = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = CB8792S7AP;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = "";
 						ProvisioningStyle = Automatic;
 						TestTargetID = 73CE15471EB2B68F00F54E7E;
 					};
