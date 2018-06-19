@@ -57,7 +57,7 @@ class OccuranceGraphView: UIView {
             let position = CGFloat(occurance - scale.min) / CGFloat(scale.max - scale.min) * bounds.width
             
             if (position - lastPosition) > minDifference {
-                context.move(to: CGPoint(x: lastPosition, y: ypos))
+                context.move(to: CGPoint(x: position, y: ypos))
                 context.addLine(to: CGPoint(x: position, y: ypos + height))
                 
                 lastPosition = position
