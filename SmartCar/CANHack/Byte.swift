@@ -23,7 +23,7 @@ public typealias Byte = UInt8
 public extension Byte {
     /// A human readable binary representation of a Byte
     var bin: String {
-        let padding = String(repeating: "0", count: leadingZeroBitCount)
+        let padding = String(repeating: "0", count: Swift.min(leadingZeroBitCount, 7))
         var string = "0b"+padding+String(self, radix: 2)
         
         // Insert space, for readability
