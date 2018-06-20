@@ -39,6 +39,9 @@
 		73EE84C21FB81E08003E45F7 /* MessageStatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EE84C11FB81E07003E45F7 /* MessageStatTableViewCell.swift */; };
 		73F6168A1FBD198C00691138 /* MessageIDStatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F616891FBD198C00691138 /* MessageIDStatTableViewCell.swift */; };
 		73F7215A20D9B61B00A72964 /* MessageStatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F7215920D9B61B00A72964 /* MessageStatViewController.swift */; };
+		73FF9FC920D9C97600D8FBDD /* BinaryDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FF9FC820D9C97600D8FBDD /* BinaryDataView.swift */; };
+		73FF9FCB20D9CC5600D8FBDD /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FF9FCA20D9CC5500D8FBDD /* Then.swift */; };
+		73FF9FCE20D9CC7C00D8FBDD /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FF9FCD20D9CC7C00D8FBDD /* Reusable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +101,9 @@
 		73EE84C11FB81E07003E45F7 /* MessageStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStatTableViewCell.swift; sourceTree = "<group>"; };
 		73F616891FBD198C00691138 /* MessageIDStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageIDStatTableViewCell.swift; sourceTree = "<group>"; };
 		73F7215920D9B61B00A72964 /* MessageStatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStatViewController.swift; sourceTree = "<group>"; };
+		73FF9FC820D9C97600D8FBDD /* BinaryDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryDataView.swift; sourceTree = "<group>"; };
+		73FF9FCA20D9CC5500D8FBDD /* Then.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
+		73FF9FCD20D9CC7C00D8FBDD /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		80DBDD678ED0DCFD8BE541D1 /* Pods_SmartCarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F40590E46BCCA51D51DA4F4F /* Pods_SmartCarUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCarUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F71D9A0442CF5A7F92E0E125 /* Pods_SmartCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +156,7 @@
 				73EE84C11FB81E07003E45F7 /* MessageStatTableViewCell.swift */,
 				73F616891FBD198C00691138 /* MessageIDStatTableViewCell.swift */,
 				73859D5E1F02FE3100492484 /* CANHack.storyboard */,
+				73FF9FC820D9C97600D8FBDD /* BinaryDataView.swift */,
 				73EE84BD1FB8066E003E45F7 /* OccuranceGraphView.swift */,
 				73AFDD3120D5D54800118C6F /* IBHelpers.swift */,
 			);
@@ -214,7 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				73CE154B1EB2B68F00F54E7E /* AppDelegate.swift */,
-				73E901FB1F02EA920096475C /* Helper.swift */,
+				73FF9FCC20D9CC6500D8FBDD /* Helper */,
 				7399B2FC1EB2BA6A00ECBB84 /* Comunication */,
 				73C13A9A1F02EC4500335950 /* CANHack */,
 				7332B1351FBBF7F000BA420D /* Signal Occurance */,
@@ -244,6 +251,16 @@
 				73CE156D1EB2B68F00F54E7E /* Info.plist */,
 			);
 			path = SmartCarUITests;
+			sourceTree = "<group>";
+		};
+		73FF9FCC20D9CC6500D8FBDD /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				73E901FB1F02EA920096475C /* Helper.swift */,
+				73FF9FCD20D9CC7C00D8FBDD /* Reusable.swift */,
+				73FF9FCA20D9CC5500D8FBDD /* Then.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		A34A92094D9C98D91512128E /* Frameworks */ = {
@@ -413,14 +430,17 @@
 				73E4A6C01EB7F689002BD442 /* SmartLock.swift in Sources */,
 				73EE84BE1FB8066E003E45F7 /* OccuranceGraphView.swift in Sources */,
 				7399B3001EB2BB1000ECBB84 /* VehicleManager.swift in Sources */,
+				73FF9FCB20D9CC5600D8FBDD /* Then.swift in Sources */,
 				7353E1E51FBD65580072948D /* GroupedSignalSet.swift in Sources */,
 				73A5F5041FAEADC500187A70 /* MessageSetTableViewController.swift in Sources */,
 				73859D5A1F02FC1B00492484 /* MessageID.swift in Sources */,
 				7332B3B11EF2C1BF0059046C /* CommandView.swift in Sources */,
 				7399B2FE1EB2BA9400ECBB84 /* Vehicle.swift in Sources */,
+				73FF9FC920D9C97600D8FBDD /* BinaryDataView.swift in Sources */,
 				73AFDD3220D5D54800118C6F /* IBHelpers.swift in Sources */,
 				73F7215A20D9B61B00A72964 /* MessageStatViewController.swift in Sources */,
 				73859D561F02EE4000492484 /* Message.swift in Sources */,
+				73FF9FCE20D9CC7C00D8FBDD /* Reusable.swift in Sources */,
 				73CE154C1EB2B68F00F54E7E /* AppDelegate.swift in Sources */,
 				73859D5C1F02FDE200492484 /* MessageSetListTableViewController.swift in Sources */,
 				7386037620D7589700FDB9B4 /* Parser.swift in Sources */,
