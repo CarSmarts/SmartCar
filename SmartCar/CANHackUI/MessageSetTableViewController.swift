@@ -93,14 +93,17 @@ class MessageSetTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let messageStatViewController = segue.finalDestination as? MessageStatViewController,
+           let cell = sender as? MessageIDStatTableViewCell {
+            
+                messageStatViewController.groupStats = cell.groupStats
+        }
     }
-    */
-
 }

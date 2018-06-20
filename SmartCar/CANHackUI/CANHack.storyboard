@@ -138,6 +138,7 @@
                                     <outlet property="moreLabel" destination="PmO-nf-u0f" id="Po4-Lw-KYJ"/>
                                     <outlet property="occuranceGraphView" destination="SXy-vT-Bfb" id="cx1-bH-ia8"/>
                                     <outlet property="title" destination="f0d-pb-8fi" id="I51-rx-pGD"/>
+                                    <segue destination="lLg-1W-ice" kind="show" id="cmc-rM-4An"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -158,6 +159,60 @@
             </objects>
             <point key="canvasLocation" x="2328.8000000000002" y="1171.6641679160421"/>
         </scene>
+        <!--Message ID-->
+        <scene sceneID="IY8-kv-1zS">
+            <objects>
+                <viewController title="Message ID" id="lLg-1W-ice" customClass="MessageStatViewController" customModule="SmartCar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d00-l1-zyJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="oo2-9Q-0fm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d04-bC-Et7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="966-Lf-5iU">
+                                <rect key="frame" x="14" y="72" width="347" height="31"/>
+                            </slider>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6x-MB-6Iu" customClass="BinaryDataView" customModule="SmartCar" customModuleProvider="target">
+                                <rect key="frame" x="16" y="110" width="343" height="343"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CD4-pq-cIV">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="343"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="CD4-pq-cIV" secondAttribute="bottom" id="8d3-BF-no4"/>
+                                    <constraint firstItem="CD4-pq-cIV" firstAttribute="leading" secondItem="k6x-MB-6Iu" secondAttribute="leading" id="Fod-pj-YAb"/>
+                                    <constraint firstAttribute="trailing" secondItem="CD4-pq-cIV" secondAttribute="trailing" id="UWT-hp-7EA"/>
+                                    <constraint firstItem="CD4-pq-cIV" firstAttribute="top" secondItem="k6x-MB-6Iu" secondAttribute="top" id="qRZ-W4-vML"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="labelStack" destination="CD4-pq-cIV" id="5mY-Cc-cnr"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="966-Lf-5iU" firstAttribute="trailing" secondItem="d04-bC-Et7" secondAttribute="trailingMargin" id="14q-0w-aVL"/>
+                            <constraint firstItem="966-Lf-5iU" firstAttribute="leading" secondItem="d04-bC-Et7" secondAttribute="leadingMargin" id="FMY-R1-yGW"/>
+                            <constraint firstItem="k6x-MB-6Iu" firstAttribute="top" secondItem="966-Lf-5iU" secondAttribute="bottom" constant="8" id="LEc-tA-mBL"/>
+                            <constraint firstItem="k6x-MB-6Iu" firstAttribute="leading" secondItem="d04-bC-Et7" secondAttribute="leadingMargin" id="NoH-yB-2tW"/>
+                            <constraint firstItem="oo2-9Q-0fm" firstAttribute="top" secondItem="k6x-MB-6Iu" secondAttribute="bottom" constant="214" placeholder="YES" id="UHz-Bf-PMQ"/>
+                            <constraint firstItem="966-Lf-5iU" firstAttribute="top" secondItem="d00-l1-zyJ" secondAttribute="bottom" constant="8" symbolic="YES" id="e0J-hc-q8Q"/>
+                            <constraint firstItem="k6x-MB-6Iu" firstAttribute="trailing" secondItem="d04-bC-Et7" secondAttribute="trailingMargin" id="oGD-0Y-3Vz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="binaryDataView" destination="k6x-MB-6Iu" id="bkw-9k-ffK"/>
+                        <outlet property="scrubSlider" destination="966-Lf-5iU" id="68I-bW-CR1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XRt-ea-yLR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3108" y="1171.6641679160421"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="evh-fv-yep">
             <objects>
@@ -177,10 +232,10 @@
             </objects>
             <point key="canvasLocation" x="2290" y="1653"/>
         </scene>
-        <!--View Controller-->
+        <!--Options-->
         <scene sceneID="4tZ-Db-VZ7">
             <objects>
-                <viewController id="lGg-Sh-8TJ" sceneMemberID="viewController">
+                <viewController title="Options" id="lGg-Sh-8TJ" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P8K-Bt-iOw"/>
                         <viewControllerLayoutGuide type="bottom" id="4MX-Jh-64I"/>
@@ -193,7 +248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCJ-qt-rCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3062" y="1172"/>
+            <point key="canvasLocation" x="3084" y="546"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E7O-kS-des">

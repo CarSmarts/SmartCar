@@ -67,4 +67,3 @@ extension SignalSet: CustomStringConvertible {
         return stats.map { $0.description }.joined(separator: "\n")
     }
 }
-
