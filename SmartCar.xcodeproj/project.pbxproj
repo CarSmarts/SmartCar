@@ -156,11 +156,19 @@
 				73EE84C11FB81E07003E45F7 /* MessageStatTableViewCell.swift */,
 				73F616891FBD198C00691138 /* MessageIDStatTableViewCell.swift */,
 				73859D5E1F02FE3100492484 /* CANHack.storyboard */,
+				73900B1820DADB9C001C8ED3 /* Graphing */,
+			);
+			path = CANHackUI;
+			sourceTree = "<group>";
+		};
+		73900B1820DADB9C001C8ED3 /* Graphing */ = {
+			isa = PBXGroup;
+			children = (
 				73FF9FC820D9C97600D8FBDD /* BinaryDataView.swift */,
 				73EE84BD1FB8066E003E45F7 /* OccuranceGraphView.swift */,
 				73AFDD3120D5D54800118C6F /* IBHelpers.swift */,
 			);
-			path = CANHackUI;
+			path = Graphing;
 			sourceTree = "<group>";
 		};
 		7399B2FB1EB2BA3F00ECBB84 /* Supporting Files */ = {
