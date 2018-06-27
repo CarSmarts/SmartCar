@@ -8,66 +8,69 @@
 
 import Foundation
 
-public typealias Grouping = Signal
+public typealias Group = Signal
 
-public struct GroupedStat<S: Signal, G: Grouping>: Hashable, Codable {
+public class GroupedStat<S: Signal, G: Group>: InstanceList {
     public let group: G
-    public let stats: [SignalStat<S>]
+    public private(set) var stats: [SignalStat<S>]
+    public private(set) var signalList: [SignalInstance<S>]
+    
+    fileprivate init(_ group: G, stats: [SignalStat<S>] = []) {
+        self.group = group
+        self.stats = stats
+        
+        self.signalList = stats.flatMap { $0.signalList }.sorted(by: { first, second in first.timestamp < second.timestamp})
+    }
 }
 
 /// A set of messages, collected for the purpose of analysis
-public class GroupedSignalSet<S: Signal, G: Grouping>: Codable {
-    
-    private var originalSignalSet: SignalSet<S>
-    private var groupedStats: [G: [SignalStat<S>]]
-    
-    /// Sorted list of groups contained by this class
+public class GroupedSignalSet<S: Signal, G: Group>: InstanceList {
+    private var _signalSet: SignalSet<S>
+    private var _stats: [G: GroupedStat<S, G>]
+    private var _groupingFunction: (SignalStat<S>) -> G
+
+    /// Sorted list of groups in this set
     public private(set) var groups: [G]
+
+    /// The original list of signals
+    public var signalList: [SignalInstance<S>] {
+        return _signalSet.signalList
+    }
     
+    /// Creates a GroupedSignalSet by grouping an existing SignalSet
+    public init(grouping original: SignalSet<S>, by groupingFunction: @escaping (SignalStat<S>) -> G) {
+        _signalSet = original
+        _groupingFunction = groupingFunction
+        
+        let grouped = Dictionary(grouping: original.stats, by: groupingFunction)
+        
+        _stats = Dictionary(uniqueKeysWithValues: grouped.map {
+            let (group, stats) = $0
+            return (group, GroupedStat(group, stats: stats))
+        })
+        
+        groups = _stats.keys.sorted()
+    }
+}
+
+/// SignalStat getters
+extension GroupedSignalSet {
     /// Access a grouped stat for a specific group
     ///
     /// - traps if `group` is not part of this classes `groups` array
     public subscript (_ group: G) -> GroupedStat<S, G> {
-        return GroupedStat<S, G>(group: group, stats: groupedStats[group]!)
+        return _stats[group]!
     }
     
-    /// A mapping of messages to the times they occur
-    public var stats: [SignalStat<S>] {
-        return originalSignalSet.stats
-    }
-    
-    public var timestamps: [Timestamp] {
-        return originalSignalSet.timestamps
-    }
-    
-    /// The first timestamp in this dataset
-    public var firstTimestamp: Timestamp {
-        return timestamps.first ?? 0
-    }
-    
-    /// The last timestamp in this dataset
-    public var lastTimestamp: Timestamp {
-        return timestamps.last ?? 0
-    }
-    
-    public init(grouping original: SignalSet<S>, by groupingFunction: (SignalStat<S>) -> G) {
-        originalSignalSet = original
-        
-        groupedStats = Dictionary(grouping: original.stats, by: groupingFunction)
-        
-        groups = groupedStats.keys.sorted()
+    /// All the stats in a Collection
+    public var stats: LazyMapCollection<[G], GroupedStat<S, G>> {
+        return groups.lazy.map { self[$0] }
     }
 }
 
-extension GroupedSignalSet: Equatable {
-    public static func ==(lhs: GroupedSignalSet, rhs: GroupedSignalSet) -> Bool {
-        return lhs.originalSignalSet == rhs.originalSignalSet
-    }
-}
-
-extension GroupedSignalSet: CustomStringConvertible {
-    // FIXME:
-    public var description: String {
-        return stats.map { $0.description }.joined(separator: "\n")
-    }
-}
+// FIXME:
+//extension GroupedSignalSet: CustomStringConvertible {
+//    public var description: String {
+//        return stats.map { $0.description }.joined(separator: "\n")
+//    }
+//}

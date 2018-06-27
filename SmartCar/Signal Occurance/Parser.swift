@@ -12,7 +12,7 @@ protocol Parser {
     associatedtype S: Signal
     
     /// Main important function
-    func parse(line: String) -> SignalOccurance<S>?
+    func parse(line: String) -> SignalInstance<S>?
     
     /// Has default implementation
     func parse(from file: URL) -> SignalSet<S>
@@ -23,17 +23,17 @@ extension Parser {
         
         guard let data = try? String(contentsOf: file) else {
             Logger.error("Trying to decode chosen file")
-            return SignalSet<S>(signalOccurances: [])
+            return SignalSet<S>(signalInstances: [])
         }
 
         let lines = data.components(separatedBy: .newlines)
 
         // map every line into a parsed message
-        let parsed = lines.compactMap { line -> SignalOccurance<S>? in
+        let parsed = lines.compactMap { line -> SignalInstance<S>? in
             return parse(line: line)
         }
         
-        return SignalSet<S>(signalOccurances: parsed)
+        return SignalSet<S>(signalInstances: parsed)
     }
 
 }

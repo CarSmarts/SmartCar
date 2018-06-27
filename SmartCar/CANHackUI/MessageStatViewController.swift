@@ -15,7 +15,6 @@ class MessageStatViewController: UIViewController {
     @IBOutlet weak var scrubSlider: UISlider! {
         didSet {
             scrubSlider.addTarget(self, action: #selector(MessageStatViewController.updateShownFrame), for: .valueChanged)
-
         }
     }
     @IBOutlet weak var binaryDataView: BinaryDataView!
@@ -24,7 +23,7 @@ class MessageStatViewController: UIViewController {
         title = groupStats.group.description
         
         scrubSlider.minimumValue = 0
-        scrubSlider.maximumValue = Float(groupStats.stats.count - 1) // last index is one less than count
+        scrubSlider.maximumValue = Float(groupStats.signalList.count - 1) // last index is one less than count
         scrubSlider.value = 0
         
         updateShownFrame()
@@ -33,7 +32,7 @@ class MessageStatViewController: UIViewController {
     @objc private func updateShownFrame() {
         let index = Int(round(scrubSlider.value))
         
-        binaryDataView.data = groupStats.stats[index].signal.contents
+        binaryDataView.data = groupStats.signalList[index].signal.contents
     }
     
     /*

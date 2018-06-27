@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7332B3B11EF2C1BF0059046C /* CommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332B3B01EF2C1BF0059046C /* CommandView.swift */; };
+		734B7FCD20E42AA800CF9EB6 /* ObservableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734B7FCC20E42AA700CF9EB6 /* ObservableArray.swift */; };
 		7353E1E51FBD65580072948D /* GroupedSignalSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7353E1E41FBD65580072948D /* GroupedSignalSet.swift */; };
 		73859D541F02ECDE00492484 /* CANHack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73859D531F02ECDE00492484 /* CANHack.swift */; };
 		73859D551F02EE4000492484 /* Byte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73859D4F1F02EC8100492484 /* Byte.swift */; };
@@ -24,8 +25,7 @@
 		7399B3041EB2C46A00ECBB84 /* VehicleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7399B3031EB2C46A00ECBB84 /* VehicleListViewController.swift */; };
 		73A5F5041FAEADC500187A70 /* MessageSetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A5F5031FAEADC500187A70 /* MessageSetTableViewController.swift */; };
 		73AFDD3220D5D54800118C6F /* IBHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AFDD3120D5D54800118C6F /* IBHelpers.swift */; };
-		73B2D14F1FBBFB6A002D2B23 /* SignalStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B2D14E1FBBFB6A002D2B23 /* SignalStat.swift */; };
-		73B2D1511FBBFD76002D2B23 /* SignalOccurance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B2D1501FBBFD76002D2B23 /* SignalOccurance.swift */; };
+		73B2D1511FBBFD76002D2B23 /* SignalInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B2D1501FBBFD76002D2B23 /* SignalInstance.swift */; };
 		73CE154C1EB2B68F00F54E7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CE154B1EB2B68F00F54E7E /* AppDelegate.swift */; };
 		73CE15511EB2B68F00F54E7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CE154F1EB2B68F00F54E7E /* Main.storyboard */; };
 		73CE15531EB2B68F00F54E7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73CE15521EB2B68F00F54E7E /* Assets.xcassets */; };
@@ -63,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		7332B3B01EF2C1BF0059046C /* CommandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandView.swift; sourceTree = "<group>"; };
+		734B7FCC20E42AA700CF9EB6 /* ObservableArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableArray.swift; sourceTree = "<group>"; };
 		7353E1E41FBD65580072948D /* GroupedSignalSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedSignalSet.swift; sourceTree = "<group>"; };
 		73859D4F1F02EC8100492484 /* Byte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Byte.swift; sourceTree = "<group>"; };
 		73859D501F02EC8100492484 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -80,8 +81,7 @@
 		73A5F5031FAEADC500187A70 /* MessageSetTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSetTableViewController.swift; sourceTree = "<group>"; };
 		73AFDD3120D5D54800118C6F /* IBHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBHelpers.swift; sourceTree = "<group>"; };
 		73AFDD3520D5FEE800118C6F /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
-		73B2D14E1FBBFB6A002D2B23 /* SignalStat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalStat.swift; sourceTree = "<group>"; };
-		73B2D1501FBBFD76002D2B23 /* SignalOccurance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalOccurance.swift; sourceTree = "<group>"; };
+		73B2D1501FBBFD76002D2B23 /* SignalInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalInstance.swift; sourceTree = "<group>"; };
 		73CE15481EB2B68F00F54E7E /* SmartCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CE154B1EB2B68F00F54E7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73CE15501EB2B68F00F54E7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -138,8 +138,8 @@
 		7332B1351FBBF7F000BA420D /* Signal Occurance */ = {
 			isa = PBXGroup;
 			children = (
-				73B2D1501FBBFD76002D2B23 /* SignalOccurance.swift */,
-				73B2D14E1FBBFB6A002D2B23 /* SignalStat.swift */,
+				734B7FCC20E42AA700CF9EB6 /* ObservableArray.swift */,
+				73B2D1501FBBFD76002D2B23 /* SignalInstance.swift */,
 				73859D521F02EC8100492484 /* SignalSet.swift */,
 				7353E1E41FBD65580072948D /* GroupedSignalSet.swift */,
 				7386037520D7589700FDB9B4 /* Parser.swift */,
@@ -428,11 +428,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73B2D14F1FBBFB6A002D2B23 /* SignalStat.swift in Sources */,
-				73B2D1511FBBFD76002D2B23 /* SignalOccurance.swift in Sources */,
+				73B2D1511FBBFD76002D2B23 /* SignalInstance.swift in Sources */,
 				73859D571F02EE4000492484 /* SignalSet.swift in Sources */,
 				73EE84C21FB81E08003E45F7 /* MessageStatTableViewCell.swift in Sources */,
 				7399B3041EB2C46A00ECBB84 /* VehicleListViewController.swift in Sources */,
+				734B7FCD20E42AA800CF9EB6 /* ObservableArray.swift in Sources */,
 				73859D551F02EE4000492484 /* Byte.swift in Sources */,
 				73F6168A1FBD198C00691138 /* MessageIDStatTableViewCell.swift in Sources */,
 				73E4A6C01EB7F689002BD442 /* SmartLock.swift in Sources */,

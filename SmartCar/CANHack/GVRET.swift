@@ -21,7 +21,7 @@ class GVRetParser: Parser {
         }
     }
     
-    func parse(line: String) -> SignalOccurance<S>? {
+    func parse(line: String) -> SignalInstance<S>? {
         // 4210,0x12F85150,true,Rx,1,2,40,00
         // timestamp,id,extended?,Rx/Tx(optional),bus,len,data
         let components = line.components(separatedBy: ",")
@@ -37,6 +37,6 @@ class GVRetParser: Parser {
         
         guard data.count == len else { return nil}
         
-        return SignalOccurance<S>(signal: Message(id: id, contents: data), timestamp: timestamp)
+        return SignalInstance<S>(signal: Message(id: id, contents: data), timestamp: timestamp)
     }
 }

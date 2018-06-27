@@ -115,18 +115,19 @@ class MessageSetListTableViewController: UITableViewController, UIDocumentPicker
     // MARK: - Navigation
 
     private func loadMessageSet(for cell: UITableViewCell) -> SignalSet<Message>? {
-        let url = messageSets[tableView.indexPath(for: cell)!.row]
-        guard let data = fileManager.contents(atPath: url.absoluteString) else {
-            Logger.error("Trying to prepare messageSetVC but unable to read message set")
-            return nil
-        }
+//        let url = messageSets[tableView.indexPath(for: cell)!.row]
+//        guard let data = fileManager.contents(atPath: url.absoluteString) else {
+//            Logger.error("Trying to prepare messageSetVC but unable to read message set")
+//            return nil
+//        }
         
-        guard let set = try? decoder.decode(SignalSet<Message>.self, from: data) else {
-            Logger.error("Trying to prepare messageSetVC but unable to decode messageset")
-            return nil
-        }
+        // FIXME:
+//        guard let set = try? decoder.decode(SignalSet<Message>.self, from: data) else {
+//            Logger.error("Trying to prepare messageSetVC but unable to decode messageset")
+//            return nil
+//        }
         
-        return set
+        return nil //set
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
