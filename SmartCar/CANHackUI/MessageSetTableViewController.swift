@@ -58,6 +58,15 @@ class MessageSetTableViewController: UITableViewController {
         return cell
     }
 
+
+    @IBAction func testAdd(_ sender: Any) {
+        let testData = UIPasteboard.general.string ?? "4157,0xAF81111,true,Rx,1,2,00,00"
+        
+        if let testMessage = GVRetParser().parse(line: testData) {
+            messageSet.add(testMessage)
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

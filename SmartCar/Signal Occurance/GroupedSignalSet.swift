@@ -12,14 +12,23 @@ public typealias Group = Signal
 
 public class GroupedStat<S: Signal, G: Group>: InstanceList {
     public let group: G
-    public private(set) var stats: [SignalStat<S>]
-    public private(set) var signalList: [SignalInstance<S>]
+    public private(set) var stats: AppendArray<SignalStat<S>>
+    public private(set) var signalList: SignalList<S>
     
     fileprivate init(_ group: G, stats: [SignalStat<S>] = []) {
         self.group = group
-        self.stats = stats
+        self.stats = AppendArray(stats)
         
-        self.signalList = stats.flatMap { $0.signalList }.sorted(by: { first, second in first.timestamp < second.timestamp})
+        self.signalList = SignalList(stats.flatMap { stat in
+            stat.signalList
+        })
+    
+        // Side effect, observe each stat so we can update
+        for stat in stats {
+            stat.signalList.onInsert { instance, _ in
+                self.signalList.insert(instance)
+            }
+        }
     }
 }
 
@@ -30,10 +39,10 @@ public class GroupedSignalSet<S: Signal, G: Group>: InstanceList {
     private var _groupingFunction: (SignalStat<S>) -> G
 
     /// Sorted list of groups in this set
-    public private(set) var groups: [G]
+    public private(set) var groups: SortedArray<G>
 
     /// The original list of signals
-    public var signalList: [SignalInstance<S>] {
+    public var signalList: SignalList<S> {
         return _signalSet.signalList
     }
     
@@ -49,7 +58,7 @@ public class GroupedSignalSet<S: Signal, G: Group>: InstanceList {
             return (group, GroupedStat(group, stats: stats))
         })
         
-        groups = _stats.keys.sorted()
+        groups = SortedArray(sorting: Array(_stats.keys))
     }
 }
 
@@ -63,7 +72,7 @@ extension GroupedSignalSet {
     }
     
     /// All the stats in a Collection
-    public var stats: LazyMapCollection<[G], GroupedStat<S, G>> {
+    public var stats: LazyMapCollection<SortedArray<G>, GroupedStat<S, G>> {
         return groups.lazy.map { self[$0] }
     }
 }

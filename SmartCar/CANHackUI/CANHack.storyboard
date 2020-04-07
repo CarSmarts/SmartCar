@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I3L-rZ-8eQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I3L-rZ-8eQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -148,11 +148,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Messages" id="z20-s9-5ka">
-                        <barButtonItem key="rightBarButtonItem" title="Options" id="q4E-mu-YZo">
-                            <connections>
-                                <segue destination="lGg-Sh-8TJ" kind="show" identifier="Show Options" id="N6t-br-5kV"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Options" id="q4E-mu-YZo">
+                                <connections>
+                                    <segue destination="lGg-Sh-8TJ" kind="show" identifier="Show Options" id="N6t-br-5kV"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="Tkp-kM-ye2">
+                                <connections>
+                                    <action selector="testAdd:" destination="mKY-OZ-HXN" id="7b3-E0-whj"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDV-Yp-ebv" userLabel="First Responder" sceneMemberID="firstResponder"/>

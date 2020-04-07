@@ -26,11 +26,18 @@ extension SignalInstance: CustomStringConvertible {
     }
 }
 
+/// List of SignalInstance sorted by timestamp
+public class SignalList<S: Signal>: SortedArray<SignalInstance<S>> {
+    public init(_ array: [Element] = []) {
+        super.init(sorting: array) { $0.timestamp < $1.timestamp }
+    }
+}
+
 /// Anything that has a list of signalInstances...
 public protocol InstanceList {
     associatedtype S: Signal
     
-    var signalList: [SignalInstance<S>] { get }
+    var signalList: SignalList<S> { get }
 }
 
 /// ...should also have a list of Timestamps

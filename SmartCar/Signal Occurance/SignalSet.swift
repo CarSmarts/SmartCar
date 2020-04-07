@@ -11,15 +11,15 @@ import Foundation
 /// Combined statisitics for a Signal, maps a signal to all the times it occured
 public class SignalStat<S: Signal>: InstanceList {
     public let signal: S
-    public private(set) var signalList: [SignalInstance<S>]
+    public let signalList: SignalList<S>
     
     fileprivate init(_ signal: S, signalList: [SignalInstance<S>] = []) {
         self.signal = signal
-        self.signalList = signalList
+        self.signalList = SignalList(signalList)
     }
     
-    public func add(newInstance: SignalInstance<S>) {
-        signalList.append(newInstance)
+    fileprivate func add(newInstance: SignalInstance<S>) {
+        signalList.insert(newInstance)
     }
 }
 
@@ -32,23 +32,17 @@ extension SignalStat: CustomStringConvertible {
 
 /// A set of Signals, collected for the purpose of analysis
 public class SignalSet<S: Signal>: InstanceList {
-    public var _observers: [(SignalInstance<S>) -> Void] = []
     private var _stats: [S: SignalStat<S>]
     
     /// Sorted of signals in this set
-    public private(set) var signals: [S]
+    public private(set) var signals: SortedArray<S>
     
     /// The original list of signals
-    public private(set) var signalList: [SignalInstance<S>]
+    public private(set) var signalList: SignalList<S>
     
     /// Create a SignalSet from a list of signals
     public init(signalInstances: [SignalInstance<S>]) {
-        // TODO: there are some expectations we should check?
-        // Do we need to sort the incoming signal list, should be sorted by timestamp
-        // Do we need to check if timestamps are unique
-        // We get a speedup by skiping both, but we'll start to do strange things if these conditions don't hold true
-        // TODO: TEST
-        signalList = signalInstances
+        signalList = SignalList(signalInstances)
         
         _stats = [:]
         for instance in signalInstances {
@@ -60,7 +54,7 @@ public class SignalSet<S: Signal>: InstanceList {
             _stats[signal]!.add(newInstance: instance)
         }
         
-        self.signals = _stats.keys.sorted()
+        signals = SortedArray(sorting: Array(_stats.keys))
     }
 }
 
@@ -74,7 +68,7 @@ extension SignalSet {
     }
     
     /// All the stats in a Collection
-    public var stats: LazyMapCollection<[S], SignalStat<S>> {
+    public var stats: LazyMapCollection<SortedArray<S>, SignalStat<S>> {
         return signals.lazy.map { self[$0] }
     }
 }
@@ -83,7 +77,7 @@ extension SignalSet {
 extension SignalSet {
     /// Add an incoming signal to the list
     public func add(_ newInstance: SignalInstance<S>) {
-        signalList.append(newInstance)
+        signalList.insert(newInstance)
         
         let signal = newInstance.signal
         
@@ -91,8 +85,7 @@ extension SignalSet {
             // this is a new signal we haven't seen yet
             _stats[signal] = SignalStat(signal)
             
-            signals.append(signal)
-            signals.sort()
+            signals.insert(signal)
         }
         
         _stats[signal]!.add(newInstance: newInstance)
