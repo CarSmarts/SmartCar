@@ -88,7 +88,7 @@ class VehicleListViewController: UITableViewController {
             let connectedVehicle = vehicleManager.connect(to: discoveredVehicles[indexPath.row])
             
             // add new connected vehicle
-            let newIndex = vehicleManager.vehicles.index(of: connectedVehicle)!
+            let newIndex = vehicleManager.vehicles.firstIndex(of: connectedVehicle)!
             
             // and remove old
             discoveredVehicles.remove(at: indexPath.row)
@@ -136,7 +136,7 @@ extension VehicleListViewController: VehicleManagerDelegate {
     }
     
     private func reloadRow(for vehicle: Vehicle) {
-        let indexPath = IndexPath(row: vehicleManager.vehicles.index(of: vehicle)!, section: 0)
+        let indexPath = IndexPath(row: vehicleManager.vehicles.firstIndex(of: vehicle)!, section: 0)
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     

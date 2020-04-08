@@ -28,6 +28,8 @@ public class VehicleManager: NSObject {
                 self = .unavailible("Device Not supported")
             case .unknown, .resetting:
                 self = .unknown
+            @unknown default:
+                fatalError()
             }
         }
     }

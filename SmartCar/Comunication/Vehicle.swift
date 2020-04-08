@@ -101,7 +101,7 @@ extension Vehicle {
         return lhs.peripheral == rhs.peripheral
     }
     
-    public override var hashValue: Int {
+    public override var hash: Int {
         return peripheral.hashValue
     }
     

@@ -63,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		7332B3B01EF2C1BF0059046C /* CommandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandView.swift; sourceTree = "<group>"; };
+		7340D096243C01DF00C35776 /* SmartCar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartCar.entitlements; sourceTree = "<group>"; };
 		734B7FCC20E42AA700CF9EB6 /* ObservableArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableArray.swift; sourceTree = "<group>"; };
 		7353E1E41FBD65580072948D /* GroupedSignalSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedSignalSet.swift; sourceTree = "<group>"; };
 		73859D4F1F02EC8100492484 /* Byte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Byte.swift; sourceTree = "<group>"; };
@@ -228,6 +229,7 @@
 		73CE154A1EB2B68F00F54E7E /* SmartCar */ = {
 			isa = PBXGroup;
 			children = (
+				7340D096243C01DF00C35776 /* SmartCar.entitlements */,
 				73CE154B1EB2B68F00F54E7E /* AppDelegate.swift */,
 				73FF9FCC20D9CC6500D8FBDD /* Helper */,
 				7399B2FC1EB2BA6A00ECBB84 /* Comunication */,
@@ -351,7 +353,7 @@
 					73CE15471EB2B68F00F54E7E = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = CB8792S7AP;
-						LastSwiftMigration = "";
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -362,14 +364,14 @@
 					73CE155B1EB2B68F00F54E7E = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = CB8792S7AP;
-						LastSwiftMigration = "";
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 73CE15471EB2B68F00F54E7E;
 					};
 					73CE15661EB2B68F00F54E7E = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = CB8792S7AP;
-						LastSwiftMigration = "";
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 73CE15471EB2B68F00F54E7E;
 					};
@@ -377,7 +379,7 @@
 			};
 			buildConfigurationList = 73CE15431EB2B68F00F54E7E /* Build configuration list for PBXProject "SmartCar" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -559,7 +561,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -612,7 +614,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -625,12 +627,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SmartCar/SmartCar.entitlements;
 				DEVELOPMENT_TEAM = CB8792S7AP;
 				INFOPLIST_FILE = SmartCar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RJSDev.SmartCar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -638,12 +642,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SmartCar/SmartCar.entitlements;
 				DEVELOPMENT_TEAM = CB8792S7AP;
 				INFOPLIST_FILE = SmartCar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RJSDev.SmartCar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -658,7 +664,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = RJSDev.SmartCarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartCar.app/SmartCar";
 			};
 			name = Debug;
@@ -674,7 +680,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = RJSDev.SmartCarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartCar.app/SmartCar";
 			};
 			name = Release;
@@ -689,7 +695,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = RJSDev.SmartCarUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = SmartCar;
 			};
 			name = Debug;
@@ -704,7 +710,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = RJSDev.SmartCarUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = SmartCar;
 			};
 			name = Release;

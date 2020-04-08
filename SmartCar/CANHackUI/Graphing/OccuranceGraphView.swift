@@ -44,7 +44,7 @@ class OccuranceGraphView: UIView {
         // calculating target height from overlapFactor and target bar height
         let targetHeight = barHeight + CGFloat(data.count - 1) * barHeight * overlapFactor
         
-        return CGSize(width: UIViewNoIntrinsicMetric, height: targetHeight)
+        return CGSize(width: UIView.noIntrinsicMetric, height: targetHeight)
     }
     
     private func draw(occurances: [Int], scale: OccuranceGraphScale, color: UIColor, ypos: CGFloat, height: CGFloat) {
