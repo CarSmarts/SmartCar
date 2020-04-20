@@ -50,7 +50,7 @@ internal extension SmartLock.Command {
             self = .cancel; return
         }
         
-        let value: Int = data.withUnsafeBytes { $0.pointee }
+        let value = Int(data[0])
         
         self = SmartLock.Command(rawValue: value) ?? .cancel
     }
@@ -58,6 +58,6 @@ internal extension SmartLock.Command {
     var data: Data
     {
         let value = UInt8(rawValue)
-        return Data(bytes: [value])
+        return Data([value])
     }
 }
