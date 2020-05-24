@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftUI
+
 class VehicleViewController: UIViewController {
     
     let vehicleManager = VehicleManager(uniqueID: "manager")
@@ -69,7 +71,7 @@ class VehicleViewController: UIViewController {
             }
         }
     }
-            
+                
     func send(_ command: Command) {
         vehicle?.smartLock?.send(command)
         commandView.display(sending: command)

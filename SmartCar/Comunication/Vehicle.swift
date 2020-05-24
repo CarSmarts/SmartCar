@@ -8,15 +8,24 @@
 
 import Foundation
 import CoreBluetooth
+import Combine
 
 public typealias VehicleState = CBPeripheralState
 public typealias Command = SmartLock.Command
+
+public class MockVehicle: Vehicle {
+    init() {
+        super.init(with: nil)
+        
+        self.uartService = UARTService(vehicle: self)
+    }
+}
 
 public class Vehicle: NSObject {
     
     public var delegate: VehicleDelegate?
     
-    let peripheral: CBPeripheral
+    let peripheral: CBPeripheral!
     
     public private(set) var smartLock: SmartLock? {
         didSet {
@@ -26,17 +35,24 @@ public class Vehicle: NSObject {
         }
     }
     
-    init(with peripheral: CBPeripheral) {
+    internal fileprivate(set) var uartService: UARTService?
+    
+    var rx: CBCharacteristic?
+    var tx: CBCharacteristic?
+    
+    var recivedData = PassthroughSubject<Data, Never>()
+    
+    internal init(with peripheral: CBPeripheral?) {
         self.peripheral = peripheral
         
         super.init()
         
-        peripheral.delegate = self
+        peripheral?.delegate = self
     }
     
     /// Method to pass "didConnect" callback from manager delegate to individual Vehicles
     internal func didConnect() {
-        peripheral.discoverServices([SmartLock.serviceUUID])
+        peripheral.discoverServices([SmartLock.serviceUUID, UARTService.serviceUUID])
     }
     
     /// Method to pass "didDisconnect" callback from manager delegate to individual Vehicles
@@ -49,11 +65,11 @@ public class Vehicle: NSObject {
 public extension Vehicle {
     
     var name: String {
-        return peripheral.name ?? "Vehicle"
+        return peripheral?.name ?? "Vehicle"
     }
     
     var state: VehicleState {
-        return peripheral.state
+        return peripheral?.state ?? .disconnected
     }
 
     var isConnected: Bool {
@@ -72,6 +88,12 @@ extension Vehicle: CBPeripheralDelegate {
         
             peripheral.discoverCharacteristics([SmartLock.commandUUID], for: smartLockService)
         }
+        
+        if let uartService = peripheral.services?.first(where: { $0.uuid == UARTService.serviceUUID }) {
+        
+            peripheral.discoverCharacteristics([UARTService.rxUUID, UARTService.txUUID], for: uartService)
+        }
+
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
@@ -83,6 +105,17 @@ extension Vehicle: CBPeripheralDelegate {
         if let characteristic = service.characteristics?.first(where: { $0.uuid == SmartLock.commandUUID }) {
             smartLock = SmartLock(commandCharacteristic: characteristic)
         }
+        
+        if let rx = service.characteristics?.first(where: { $0.uuid == UARTService.rxUUID }) {
+            self.rx = rx
+        }
+        if let tx = service.characteristics?.first(where: { $0.uuid == UARTService.txUUID }) {
+            self.tx = tx
+            peripheral.setNotifyValue(true, for: tx)
+        }
+        if self.rx != nil, self.tx != nil {
+            self.uartService = UARTService(vehicle: self)
+        }
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
@@ -91,6 +124,12 @@ extension Vehicle: CBPeripheralDelegate {
             smartLock.didWrite(error: error)
         }
         
+    }
+    
+    public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        if let tx = tx, let data = characteristic.value, tx == characteristic {
+            recivedData.send(data)
+        }
     }
 }
 
@@ -102,7 +141,7 @@ extension Vehicle {
     }
     
     public override var hash: Int {
-        return peripheral.hashValue
+        return peripheral?.hashValue ?? 0
     }
     
 }

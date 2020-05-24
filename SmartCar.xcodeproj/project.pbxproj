@@ -19,6 +19,9 @@
 		73859D5F1F02FE3100492484 /* CANHack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73859D5E1F02FE3100492484 /* CANHack.storyboard */; };
 		7386037620D7589700FDB9B4 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7386037520D7589700FDB9B4 /* Parser.swift */; };
 		7386037820D76CDB00FDB9B4 /* GVRET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7386037720D76CDB00FDB9B4 /* GVRET.swift */; };
+		73973772244C0AA70067F762 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73973771244C0AA70067F762 /* TextView.swift */; };
+		73973774244C17600067F762 /* UARTViewHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73973773244C17600067F762 /* UARTViewHost.swift */; };
+		73973776244C18830067F762 /* UARTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73973775244C18830067F762 /* UARTService.swift */; };
 		7399B2FE1EB2BA9400ECBB84 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7399B2FD1EB2BA9400ECBB84 /* Vehicle.swift */; };
 		7399B3001EB2BB1000ECBB84 /* VehicleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7399B2FF1EB2BB1000ECBB84 /* VehicleManager.swift */; };
 		7399B3021EB2BCBF00ECBB84 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7399B3011EB2BCBF00ECBB84 /* CoreBluetooth.framework */; };
@@ -39,6 +42,9 @@
 		73EE84C21FB81E08003E45F7 /* MessageStatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EE84C11FB81E07003E45F7 /* MessageStatTableViewCell.swift */; };
 		73F6168A1FBD198C00691138 /* MessageIDStatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F616891FBD198C00691138 /* MessageIDStatTableViewCell.swift */; };
 		73F7215A20D9B61B00A72964 /* MessageStatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F7215920D9B61B00A72964 /* MessageStatViewController.swift */; };
+		73FCD471244E08AA00F4C7A6 /* UARTServiceUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FCD470244E08AA00F4C7A6 /* UARTServiceUI.swift */; };
+		73FCD473244E0ED300F4C7A6 /* VehicleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FCD472244E0ED300F4C7A6 /* VehicleView.swift */; };
+		73FCD475244E0F8300F4C7A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FCD474244E0F8200F4C7A6 /* SceneDelegate.swift */; };
 		73FF9FC920D9C97600D8FBDD /* BinaryDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FF9FC820D9C97600D8FBDD /* BinaryDataView.swift */; };
 		73FF9FCB20D9CC5600D8FBDD /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FF9FCA20D9CC5500D8FBDD /* Then.swift */; };
 		73FF9FCE20D9CC7C00D8FBDD /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FF9FCD20D9CC7C00D8FBDD /* Reusable.swift */; };
@@ -75,6 +81,9 @@
 		73859D5E1F02FE3100492484 /* CANHack.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CANHack.storyboard; sourceTree = "<group>"; };
 		7386037520D7589700FDB9B4 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		7386037720D76CDB00FDB9B4 /* GVRET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GVRET.swift; sourceTree = "<group>"; };
+		73973771244C0AA70067F762 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		73973773244C17600067F762 /* UARTViewHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UARTViewHost.swift; sourceTree = "<group>"; };
+		73973775244C18830067F762 /* UARTService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UARTService.swift; sourceTree = "<group>"; };
 		7399B2FD1EB2BA9400ECBB84 /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vehicle.swift; path = Comunication/Vehicle.swift; sourceTree = "<group>"; };
 		7399B2FF1EB2BB1000ECBB84 /* VehicleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VehicleManager.swift; path = Comunication/VehicleManager.swift; sourceTree = "<group>"; };
 		7399B3011EB2BCBF00ECBB84 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
@@ -102,6 +111,9 @@
 		73EE84C11FB81E07003E45F7 /* MessageStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStatTableViewCell.swift; sourceTree = "<group>"; };
 		73F616891FBD198C00691138 /* MessageIDStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageIDStatTableViewCell.swift; sourceTree = "<group>"; };
 		73F7215920D9B61B00A72964 /* MessageStatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStatViewController.swift; sourceTree = "<group>"; };
+		73FCD470244E08AA00F4C7A6 /* UARTServiceUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UARTServiceUI.swift; sourceTree = "<group>"; };
+		73FCD472244E0ED300F4C7A6 /* VehicleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleView.swift; sourceTree = "<group>"; };
+		73FCD474244E0F8200F4C7A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		73FF9FC820D9C97600D8FBDD /* BinaryDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryDataView.swift; sourceTree = "<group>"; };
 		73FF9FCA20D9CC5500D8FBDD /* Then.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		73FF9FCD20D9CC7C00D8FBDD /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -188,6 +200,8 @@
 				7399B2FF1EB2BB1000ECBB84 /* VehicleManager.swift */,
 				7399B2FD1EB2BA9400ECBB84 /* Vehicle.swift */,
 				73E4A6BF1EB7F689002BD442 /* SmartLock.swift */,
+				73973775244C18830067F762 /* UARTService.swift */,
+				73FCD470244E08AA00F4C7A6 /* UARTServiceUI.swift */,
 				73859D531F02ECDE00492484 /* CANHack.swift */,
 			);
 			name = Comunication;
@@ -231,6 +245,9 @@
 			children = (
 				7340D096243C01DF00C35776 /* SmartCar.entitlements */,
 				73CE154B1EB2B68F00F54E7E /* AppDelegate.swift */,
+				73FCD474244E0F8200F4C7A6 /* SceneDelegate.swift */,
+				73973771244C0AA70067F762 /* TextView.swift */,
+				73973773244C17600067F762 /* UARTViewHost.swift */,
 				73FF9FCC20D9CC6500D8FBDD /* Helper */,
 				7399B2FC1EB2BA6A00ECBB84 /* Comunication */,
 				73C13A9A1F02EC4500335950 /* CANHack */,
@@ -238,6 +255,7 @@
 				73859D5D1F02FDEA00492484 /* CANHackUI */,
 				7399B3031EB2C46A00ECBB84 /* VehicleListViewController.swift */,
 				73E4A6C11EB7FDED002BD442 /* VehicleViewController.swift */,
+				73FCD472244E0ED300F4C7A6 /* VehicleView.swift */,
 				7332B3B01EF2C1BF0059046C /* CommandView.swift */,
 				73CE154F1EB2B68F00F54E7E /* Main.storyboard */,
 				7399B2FB1EB2BA3F00ECBB84 /* Supporting Files */,
@@ -433,14 +451,18 @@
 				73B2D1511FBBFD76002D2B23 /* SignalInstance.swift in Sources */,
 				73859D571F02EE4000492484 /* SignalSet.swift in Sources */,
 				73EE84C21FB81E08003E45F7 /* MessageStatTableViewCell.swift in Sources */,
+				73973772244C0AA70067F762 /* TextView.swift in Sources */,
 				7399B3041EB2C46A00ECBB84 /* VehicleListViewController.swift in Sources */,
 				734B7FCD20E42AA800CF9EB6 /* ObservableArray.swift in Sources */,
 				73859D551F02EE4000492484 /* Byte.swift in Sources */,
+				73FCD475244E0F8300F4C7A6 /* SceneDelegate.swift in Sources */,
 				73F6168A1FBD198C00691138 /* MessageIDStatTableViewCell.swift in Sources */,
 				73E4A6C01EB7F689002BD442 /* SmartLock.swift in Sources */,
 				73EE84BE1FB8066E003E45F7 /* OccuranceGraphView.swift in Sources */,
 				7399B3001EB2BB1000ECBB84 /* VehicleManager.swift in Sources */,
+				73973776244C18830067F762 /* UARTService.swift in Sources */,
 				73FF9FCB20D9CC5600D8FBDD /* Then.swift in Sources */,
+				73973774244C17600067F762 /* UARTViewHost.swift in Sources */,
 				7353E1E51FBD65580072948D /* GroupedSignalSet.swift in Sources */,
 				73A5F5041FAEADC500187A70 /* MessageSetTableViewController.swift in Sources */,
 				73859D5A1F02FC1B00492484 /* MessageID.swift in Sources */,
@@ -452,6 +474,8 @@
 				73859D561F02EE4000492484 /* Message.swift in Sources */,
 				73FF9FCE20D9CC7C00D8FBDD /* Reusable.swift in Sources */,
 				73CE154C1EB2B68F00F54E7E /* AppDelegate.swift in Sources */,
+				73FCD473244E0ED300F4C7A6 /* VehicleView.swift in Sources */,
+				73FCD471244E08AA00F4C7A6 /* UARTServiceUI.swift in Sources */,
 				73859D5C1F02FDE200492484 /* MessageSetListTableViewController.swift in Sources */,
 				7386037620D7589700FDB9B4 /* Parser.swift in Sources */,
 				7386037820D76CDB00FDB9B4 /* GVRET.swift in Sources */,
@@ -630,6 +654,7 @@
 				CODE_SIGN_ENTITLEMENTS = SmartCar/SmartCar.entitlements;
 				DEVELOPMENT_TEAM = CB8792S7AP;
 				INFOPLIST_FILE = SmartCar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RJSDev.SmartCar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -645,6 +670,7 @@
 				CODE_SIGN_ENTITLEMENTS = SmartCar/SmartCar.entitlements;
 				DEVELOPMENT_TEAM = CB8792S7AP;
 				INFOPLIST_FILE = SmartCar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RJSDev.SmartCar;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -9,7 +9,7 @@
 import Foundation
 import CoreBluetooth
 
-public class VehicleManager: NSObject {
+public class VehicleManager: NSObject, ObservableObject {
     
     public enum State {
         case availible
@@ -75,7 +75,7 @@ public class VehicleManager: NSObject {
 public extension VehicleManager {
     /// Search for more vehicles to pair with
     func scanForNewVehicles() {
-        centralManager.scanForPeripherals(withServices: [SmartLock.serviceUUID])
+        centralManager.scanForPeripherals(withServices: [SmartLock.serviceUUID, UARTService.serviceUUID])
     }
     
     var isScanning: Bool {
