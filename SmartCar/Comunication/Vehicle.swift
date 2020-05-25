@@ -21,27 +21,27 @@ public class MockVehicle: Vehicle {
     }
 }
 
-public class Vehicle: NSObject {
-    
-    public var delegate: VehicleDelegate?
-    
+public class Vehicle: NSObject, Identifiable, ObservableObject {
     let peripheral: CBPeripheral!
     
-    public private(set) var smartLock: SmartLock? {
-        didSet {
-            if let smartLock = smartLock {
-                delegate?.vehicle(self, smartLockDidBecomeAvalible: smartLock)
-            }
-        }
+    public typealias ID = UUID
+    
+    public var id: UUID {
+        return peripheral.identifier
     }
     
-    internal fileprivate(set) var uartService: UARTService?
+    public private(set) var smartLock: SmartLock?
+    public fileprivate(set) var uartService: UARTService? {
+        didSet {
+            guard let uartService = uartService else { return }
+            self.m2SmartService = M2SmartService(uartService: uartService)
+        }
+    }
+    public fileprivate(set) var m2SmartService: M2SmartService?
     
     var rx: CBCharacteristic?
     var tx: CBCharacteristic?
-    
-    var recivedData = PassthroughSubject<Data, Never>()
-    
+        
     internal init(with peripheral: CBPeripheral?) {
         self.peripheral = peripheral
         
@@ -53,17 +53,15 @@ public class Vehicle: NSObject {
     /// Method to pass "didConnect" callback from manager delegate to individual Vehicles
     internal func didConnect() {
         peripheral.discoverServices([SmartLock.serviceUUID, UARTService.serviceUUID])
+        self.isConnected = true
     }
     
     /// Method to pass "didDisconnect" callback from manager delegate to individual Vehicles
     internal func didDisconnect(error: Error?) {
-        delegate?.vehicleDidBecomeUnavailible(self, error: error)
+        self.isConnected = false
     }
-}
-
-/// Public Accessors
-public extension Vehicle {
     
+    /// Public Accessors
     var name: String {
         return peripheral?.name ?? "Vehicle"
     }
@@ -72,12 +70,18 @@ public extension Vehicle {
         return peripheral?.state ?? .disconnected
     }
 
-    var isConnected: Bool {
-        return state == .connected
+    @Published var isConnected: Bool = false
+
+    static public func == (lhs: Vehicle, rhs: Vehicle) -> Bool {
+        return lhs.peripheral == rhs.peripheral
     }
 }
 
 extension Vehicle: CBPeripheralDelegate {
+    public func peripheralDidUpdateName(_ peripheral: CBPeripheral) {
+        self.objectWillChange.send()
+    }
+    
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let error = error {
             print("Failed to discover service: \(error)")
@@ -113,43 +117,26 @@ extension Vehicle: CBPeripheralDelegate {
             self.tx = tx
             peripheral.setNotifyValue(true, for: tx)
         }
-        if self.rx != nil, self.tx != nil {
+        if self.rx != nil, self.tx != nil, self.uartService == nil {
             self.uartService = UARTService(vehicle: self)
         }
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
-        
         if let smartLock = smartLock, smartLock.commandCharacteristic == characteristic {
             smartLock.didWrite(error: error)
         }
-        
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        if let tx = tx, let data = characteristic.value, tx == characteristic {
-            recivedData.send(data)
+        if let uartService = uartService, let tx = tx, let data = characteristic.value, tx == characteristic {
+            uartService.rxBuffer = data
         }
     }
 }
 
-/// Hashable Conformance
 extension Vehicle {
-    
-    static public func == (lhs: Vehicle, rhs: Vehicle) -> Bool {
-        return lhs.peripheral == rhs.peripheral
+    public override var description: String {
+        return "Vehicle: M2Smart " + (isConnected ? "Connected" : "Not Connected")
     }
-    
-    public override var hash: Int {
-        return peripheral?.hashValue ?? 0
-    }
-    
 }
-
-public protocol VehicleDelegate {
-    func vehicleDidBecomeAvailible(_ vehicle: Vehicle)
-    func vehicleDidBecomeUnavailible(_ vehicle: Vehicle, error: Error?)
-    
-    func vehicle(_ vehicle: Vehicle, smartLockDidBecomeAvalible smartLock: SmartLock)
-}
-
