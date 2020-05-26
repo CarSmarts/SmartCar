@@ -9,6 +9,7 @@
 import SwiftUI
 import SmartCarUI
 import CANHackUI
+import CANHack
 
 struct VehicleDetailView: View  {
     @EnvironmentObject var vehicleManager: VehicleManager
@@ -27,7 +28,7 @@ struct VehicleDetailView: View  {
                 }.padding()
                 Spacer()
                 Unwrap(vehicle.m2SmartService) { m2SmartService in
-                    NavigationLink("CANHack", destination: MessageSetView(messageSet: m2SmartService.messageSet)
+                    NavigationLink("CANHack", destination: MessageSetView(model: CanBusModel(signalSet: m2SmartService.messageSet))
                     )
                 }.padding()
             }

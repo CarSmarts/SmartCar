@@ -64,10 +64,8 @@ public class M2SmartService: ObservableObject {
         guard var id = MessageID(rawValue: idBytes) else { return nil }
         
         if (id.rawValue & 1 << 31) == 0b1 {
-            id.extended = true
+//            id.extended = true
             id.rawValue &= 0x7FFFFFFF // largest posible 11 bit extended id
-        } else {
-            id.extended = false
         }
         return id
     }
