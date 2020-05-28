@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import CANHackUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -27,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             
             let hostingController = UIHostingController(rootView: contentView)
-            let pickerObject = PickerObject(rootVC: hostingController)
+            let pickerObject = CANHackManager(rootVC: hostingController)
             let newContent = AnyView(contentView.environmentObject(pickerObject))
             hostingController.rootView = newContent
             

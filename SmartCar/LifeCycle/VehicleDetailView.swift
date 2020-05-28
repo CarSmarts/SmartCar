@@ -13,7 +13,7 @@ import CANHack
 
 struct VehicleDetailView: View  {
     @EnvironmentObject var vehicleManager: VehicleManager
-    @EnvironmentObject var pickerObject: PickerObject
+    @EnvironmentObject var canHackManager: CANHackManager
     @ObservedObject var vehicle: Vehicle
     
     var body: some View {
@@ -28,7 +28,7 @@ struct VehicleDetailView: View  {
                 }.padding()
                 Spacer()
                 Unwrap(vehicle.m2SmartService) { m2SmartService in
-                    NavigationLink("CANHack", destination: MessageSetView(model: CanBusModel(signalSet: m2SmartService.messageSet))
+                    NavigationLink("CANHack", destination: MessageSetView(document: self.canHackManager.scratch, decoder: self.canHackManager.decoderBinding )
                     )
                 }.padding()
             }

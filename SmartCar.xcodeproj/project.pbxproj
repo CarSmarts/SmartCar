@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,7 +19,6 @@
 		732864922457F05A008F5DAC /* CommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FCD4CF244E902700F4C7A6 /* CommandView.swift */; };
 		732864932457F05A008F5DAC /* UARTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FCD4C4244E37CC00F4C7A6 /* UARTView.swift */; };
 		732864A12457F05A008F5DAC /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FCD4C6244E3AFC00F4C7A6 /* TextView.swift */; };
-		732864A22457F05A008F5DAC /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7320173C24578F3C00B594D5 /* Picker.swift */; };
 		732864A52457F05A008F5DAC /* CANHack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FCD4B8244E379F00F4C7A6 /* CANHack.swift */; };
 		732864A62457F05A008F5DAC /* UARTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FCD4BC244E379F00F4C7A6 /* UARTService.swift */; };
 		732864A72457F05A008F5DAC /* UARTServiceUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FCD4BD244E379F00F4C7A6 /* UARTServiceUI.swift */; };
@@ -27,7 +26,6 @@
 		732864A92457F05A008F5DAC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FCD4B9244E379F00F4C7A6 /* Vehicle.swift */; };
 		732864AA2457F05A008F5DAC /* VehicleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FCD4BA244E379F00F4C7A6 /* VehicleManager.swift */; };
 		732864AB2457F05A008F5DAC /* M2SmartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3B0BA245256C400CB177D /* M2SmartService.swift */; };
-		73CFBB08247B569D005743E4 /* CanHackUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CFBB07247B569C005743E4 /* CanHackUIView.swift */; };
 		73FCD48C244E352700F4C7A6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FCD48B244E352700F4C7A6 /* Preview Assets.xcassets */; };
 		73FCD48F244E352700F4C7A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73FCD48D244E352700F4C7A6 /* LaunchScreen.storyboard */; };
 		73FCD49A244E352700F4C7A6 /* SmartCarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FCD499244E352700F4C7A6 /* SmartCarTests.swift */; };
@@ -104,10 +102,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7320173C24578F3C00B594D5 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
 		73A3B0BA245256C400CB177D /* M2SmartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M2SmartService.swift; sourceTree = "<group>"; };
 		73CFBAD9247B4518005743E4 /* CANHack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CANHack.xcodeproj; path = ../CANHack/CANHack.xcodeproj; sourceTree = "<group>"; };
-		73CFBB07247B569C005743E4 /* CanHackUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanHackUIView.swift; sourceTree = "<group>"; };
 		73FCD47F244E351F00F4C7A6 /* SmartCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FCD482244E351F00F4C7A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73FCD484244E351F00F4C7A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -183,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				73FCD4C6244E3AFC00F4C7A6 /* TextView.swift */,
-				7320173C24578F3C00B594D5 /* Picker.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -224,7 +219,6 @@
 			isa = PBXGroup;
 			children = (
 				73FCD4B2244E358D00F4C7A6 /* SmartCar.entitlements */,
-				73CFBB07247B569C005743E4 /* CanHackUIView.swift */,
 				7328648C2457EECA008F5DAC /* LifeCycle */,
 				73A3B0E72452612200CB177D /* Helper */,
 				73FCD4B7244E378600F4C7A6 /* Comunication */,
@@ -378,6 +372,7 @@
 			);
 			mainGroup = 73FCD476244E351E00F4C7A6;
 			packageReferences = (
+				730A8046247DD650009E00A5 /* XCRemoteSwiftPackageReference "AppFolder" */,
 			);
 			productRefGroup = 73FCD480244E351F00F4C7A6 /* Products */;
 			projectDirPath = "";
@@ -453,7 +448,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7328648D2457F05A008F5DAC /* AppDelegate.swift in Sources */,
-				73CFBB08247B569D005743E4 /* CanHackUIView.swift in Sources */,
 				7328648E2457F05A008F5DAC /* SceneDelegate.swift in Sources */,
 				7328648F2457F05A008F5DAC /* ContentView.swift in Sources */,
 				732864902457F05A008F5DAC /* VehicleDetailView.swift in Sources */,
@@ -461,7 +455,6 @@
 				732864922457F05A008F5DAC /* CommandView.swift in Sources */,
 				732864932457F05A008F5DAC /* UARTView.swift in Sources */,
 				732864A12457F05A008F5DAC /* TextView.swift in Sources */,
-				732864A22457F05A008F5DAC /* Picker.swift in Sources */,
 				732864A52457F05A008F5DAC /* CANHack.swift in Sources */,
 				732864A62457F05A008F5DAC /* UARTService.swift in Sources */,
 				732864A72457F05A008F5DAC /* UARTServiceUI.swift in Sources */,
@@ -809,6 +802,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		730A8046247DD650009E00A5 /* XCRemoteSwiftPackageReference "AppFolder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dreymonde/AppFolder";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 73FCD477244E351E00F4C7A6 /* Project object */;
 }

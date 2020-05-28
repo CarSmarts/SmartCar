@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CANHackUI
 
 struct ContentView: View {
     @EnvironmentObject var vehicleManager: VehicleManager

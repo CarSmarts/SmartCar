@@ -38,7 +38,7 @@ public class M2SmartService: ObservableObject {
     
     init(uartService: UARTService) {
         self.uartService = uartService
-        self.messageSet = SignalSet<Message>(signalInstances: [])
+        self.messageSet = SignalSet()
         
         uartService.$rxBuffer.sink(receiveValue: { data in
             self.parseM2SmartCommand(data)
