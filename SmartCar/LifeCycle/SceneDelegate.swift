@@ -9,6 +9,7 @@
 import UIKit
 import SwiftUI
 import CANHackUI
+import SmartCarUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -25,11 +26,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
+
             let window = UIWindow(windowScene: windowScene)
             
             let hostingController = UIHostingController(rootView: contentView)
-            let pickerObject = CANHackManager(rootVC: hostingController)
-            let newContent = AnyView(contentView.environmentObject(pickerObject))
+            
+            let manager = CANHackManager()
+            let picker = PickerObject(rootVC: hostingController)
+            picker.didPickDocument = { url in
+                manager.openMessageSet(at: url)
+            }
+            
+            let newContent = AnyView(contentView.environmentObject(picker).environmentObject(manager))
             hostingController.rootView = newContent
             
             window.rootViewController = hostingController
