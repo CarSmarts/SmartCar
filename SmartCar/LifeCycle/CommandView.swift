@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import CANHack
+import CANHackUI
 
 struct CommandView: View {
     var body: some View {
