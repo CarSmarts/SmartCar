@@ -59,6 +59,7 @@ public class Vehicle: NSObject, Identifiable, ObservableObject {
     /// Method to pass "didDisconnect" callback from manager delegate to individual Vehicles
     internal func didDisconnect(error: Error?) {
         self.isConnected = false
+        self.uartService?.clear()
     }
     
     /// Public Accessors

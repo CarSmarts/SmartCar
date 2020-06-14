@@ -41,6 +41,8 @@ class UARTServiceUI: ObservableObject, CustomStringConvertible {
     @Published var utf8Output = NSAttributedString()
 
     func clear() {
+        uartService.clear()
+        
         hexOutput = NSAttributedString()
         utf8Output = NSAttributedString()
     }

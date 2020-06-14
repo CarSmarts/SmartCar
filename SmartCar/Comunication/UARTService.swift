@@ -32,6 +32,11 @@ public class UARTService : ObservableObject, CustomStringConvertible {
             // We shouldn't get here
         }
     }
+    
+    public func clear() {
+        rxBuffer = Data()
+        txBuffer = Data()
+    }
 
     @Published public var rxBuffer = Data()
     @Published public var txBuffer = Data()

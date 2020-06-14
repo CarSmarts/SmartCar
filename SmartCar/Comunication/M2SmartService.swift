@@ -47,6 +47,7 @@ public class M2SmartService: ObservableObject {
         
         self.frames.sink { newInstance in
             self.messageSet.add(newInstance)
+            self.objectWillChange.send()
         }
         .store(in: &subs)
     }
@@ -86,7 +87,7 @@ public class M2SmartService: ObservableObject {
             // frame
             // todoChecksum
             guard data.count >= 10 else { return }
-            guard let milis = UInt32.from(bytes: data[2...5]) else {
+            guard let micros = UInt32.from(bytes: data[2...5]) else {
                 return
             }
             guard let id = deserialize(id: data[6...9]) else {
@@ -96,8 +97,7 @@ public class M2SmartService: ObservableObject {
 //            let bus = data[10] & 0xF0
             guard 11 + len + 1 == data.count else { return }
             let recivedMessage = Message(id: id, contents: Array(data[11 ..< 11 + len]))
-            
-            frames.send(SignalInstance(signal: recivedMessage, timestamp: Timestamp(milis)))
+            frames.send(SignalInstance(signal: recivedMessage, timestamp: Timestamp(micros/1000)))
             
         default:
             // do nothing

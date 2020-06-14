@@ -37,7 +37,12 @@ struct UARTView: View {
     fileprivate func parseHexString(_ text: String) -> Data {
         var hexData = Data()
         
-        for chars in text.clump(by: 2) {
+        let byteStrings = text
+            .filter { character in
+                !character.isWhitespace
+            }.clump(by: 2)
+        
+        for chars in byteStrings {
             if let hexDigit = UInt8(String(chars), radix: 16) {
                 hexData.append(hexDigit)
             }
@@ -102,28 +107,26 @@ struct AdaptsToKeyboard: ViewModifier {
     @State var currentHeight: CGFloat = 0
 
     func body(content: Content) -> some View {
-        GeometryReader { geometry in
-            content
-                .padding(.bottom, self.currentHeight)
-                .animation(.easeOut(duration: 0.16))
-                .onAppear(perform: {
-                    NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillShowNotification)
-                        .merge(with: NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillChangeFrameNotification))
-                        .compactMap { notification in
-                            notification.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect
-                    }
-                    .map { rect in
-                        rect.height - geometry.safeAreaInsets.bottom
-                    }
-                    .subscribe(Subscribers.Assign(object: self, keyPath: \.currentHeight))
+        content
+            .padding(.bottom, self.currentHeight)
+            .animation(.easeOut(duration: 0.16))
+            .onAppear(perform: {
+                NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillShowNotification)
+                    .merge(with: NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillChangeFrameNotification))
+                    .compactMap { notification in
+                        notification.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect
+                }
+                .map { rect in
+                    rect.height// - geometry.safeAreaInsets.bottom
+                }
+                .subscribe(Subscribers.Assign(object: self, keyPath: \.currentHeight))
 
-                    NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillHideNotification)
-                        .compactMap { notification in
-                            CGFloat.zero
-                    }
-                    .subscribe(Subscribers.Assign(object: self, keyPath: \.currentHeight))
-                })
-        }
+                NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillHideNotification)
+                    .compactMap { notification in
+                        CGFloat.zero
+                }
+                .subscribe(Subscribers.Assign(object: self, keyPath: \.currentHeight))
+            })
     }
 }
 
