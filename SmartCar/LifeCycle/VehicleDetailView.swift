@@ -28,9 +28,9 @@ struct VehicleDetailView: View  {
                 }.padding()
                 Spacer()
                 Unwrap(vehicle.m2SmartService) { m2SmartService in
-                    NavigationLink("CANHack", destination: MessageSetView(document: self.canHackManager.scratch, decoder: self.canHackManager.decoderBinding )
+                    NavigationLink("CANHack", destination: MessageSetView(document: self.canHackManager.scratch, decoder: self.canHackManager.decoderBinding)
                         .onReceive(m2SmartService.frames) { newInstance in
-                            self.canHackManager.scratch.activeSignalSet.add(newInstance)
+                            self.canHackManager.scratch.signalSet.add(newInstance)
                         }
                     )
                 }.padding()
