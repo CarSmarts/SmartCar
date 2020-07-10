@@ -65,13 +65,16 @@ public class VehicleManager: NSObject, ObservableObject {
         return centralManager.isScanning
     }
         
+    let queue = DispatchQueue(label: "vehicleManagerQueue", qos: .userInitiated)
+    
     public init(uniqueID: String = "manager") {
         super.init()
         
         let options = [CBCentralManagerOptionRestoreIdentifierKey : uniqueID as AnyObject]
         
+        
         // TODO: background queue?
-        centralManager = CBCentralManager(delegate: self, queue: nil, options: options)
+        centralManager = CBCentralManager(delegate: self, queue: queue, options: options)
         
         let peripherals = centralManager.retrievePeripherals(withIdentifiers: recordedIdentifiers)
         
@@ -139,7 +142,9 @@ extension VehicleManager : CBCentralManagerDelegate {
         centralManager.connect(peripheral)
 
         recordedIdentifiers.append(peripheral.identifier)
-        vehicles.append(Vehicle(with: peripheral))
+        DispatchQueue.main.async {
+            self.vehicles.append(Vehicle(with: peripheral))
+        }
     }
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {

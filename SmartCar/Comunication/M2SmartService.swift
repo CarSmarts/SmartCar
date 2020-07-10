@@ -31,7 +31,7 @@ enum Bus: UInt8 {
     case SWCAN = 2
 }
 
-public class M2SmartService: ObservableObject {
+public class M2SmartService {
     var uartService: UARTService
     
     var subs = [AnyCancellable]()
@@ -43,12 +43,6 @@ public class M2SmartService: ObservableObject {
         uartService.$rxBuffer.sink(receiveValue: { data in
             self.parseM2SmartCommand(data)
         })
-        .store(in: &subs)
-        
-        self.frames.sink { newInstance in
-            self.messageSet.add(newInstance)
-            self.objectWillChange.send()
-        }
         .store(in: &subs)
     }
         
@@ -76,27 +70,35 @@ public class M2SmartService: ObservableObject {
     var frames = PassthroughSubject<SignalInstance<Message>, Never>()
     
     func parseM2SmartCommand(_ data: Data) {
-        guard data.count >= 2, data[0] == 0xF1 else {
-            return // not a command
+        // scan through the data until we find the start of a command
+        guard let offset = data.firstIndex(of: 0xF1) else { return }
+        
+        guard data.count - offset >= 2 else {
+            return // out of data
         }
-        guard let command = M2SmartCommand(rawValue: data[1]) else {
+                
+        let offsetData = data[offset...]
+        
+        guard let command = M2SmartCommand(rawValue: offsetData[1]) else {
             return // invalid command bit
         }
+        
         switch command {
         case .SendFrame:
             // frame
             // todoChecksum
             guard data.count >= 10 else { return }
-            guard let micros = UInt32.from(bytes: data[2...5]) else {
+            guard let micros = UInt32.from(bytes: offsetData[2...5]) else {
                 return
             }
-            guard let id = deserialize(id: data[6...9]) else {
+            guard let id = deserialize(id: offsetData[6...9]) else {
                 return // fail
             }
-            let len = data[10] & 0x0F
+            let len = offsetData[10] & 0x0F
 //            let bus = data[10] & 0xF0
-            guard 11 + len + 1 == data.count else { return }
-            let recivedMessage = Message(id: id, contents: Array(data[11 ..< 11 + len]))
+            guard 11 + len + 1 == offsetData.count else { return }
+            let recivedMessage = Message(id: id, contents: Array(offsetData[11 ..< 11 + len]))
+            
             frames.send(SignalInstance(signal: recivedMessage, timestamp: Timestamp(micros/1000)))
             
         default:

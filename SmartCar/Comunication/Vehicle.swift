@@ -53,12 +53,17 @@ public class Vehicle: NSObject, Identifiable, ObservableObject {
     /// Method to pass "didConnect" callback from manager delegate to individual Vehicles
     internal func didConnect() {
         peripheral.discoverServices([SmartLock.serviceUUID, UARTService.serviceUUID])
-        self.isConnected = true
+        
+        DispatchQueue.main.async {
+            self.isConnected = true
+        }
     }
     
     /// Method to pass "didDisconnect" callback from manager delegate to individual Vehicles
     internal func didDisconnect(error: Error?) {
-        self.isConnected = false
+        DispatchQueue.main.async {
+            self.isConnected = false
+        }
         self.uartService?.clear()
     }
     

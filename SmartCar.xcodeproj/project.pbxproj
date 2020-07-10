@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73021D76249C3F170078B5FE /* LiveCANHackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73021D75249C3F170078B5FE /* LiveCANHackView.swift */; };
 		7306B3D0247B8AFC00EC32B3 /* CANHack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CFBAE2247B4518005743E4 /* CANHack.framework */; };
 		7306B3D1247B8AFC00EC32B3 /* CANHack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73CFBAE2247B4518005743E4 /* CANHack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7306B3D3247B8AFD00EC32B3 /* CANHackUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CFBAE6247B4518005743E4 /* CANHackUI.framework */; };
@@ -102,6 +103,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		73021D75249C3F170078B5FE /* LiveCANHackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCANHackView.swift; sourceTree = "<group>"; };
 		73A3B0BA245256C400CB177D /* M2SmartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M2SmartService.swift; sourceTree = "<group>"; };
 		73CFBAD9247B4518005743E4 /* CANHack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CANHack.xcodeproj; path = ../CANHack/CANHack.xcodeproj; sourceTree = "<group>"; };
 		73FCD47F244E351F00F4C7A6 /* SmartCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +170,7 @@
 				73FCD484244E351F00F4C7A6 /* SceneDelegate.swift */,
 				73FCD486244E351F00F4C7A6 /* ContentView.swift */,
 				73FCD4B3244E371400F4C7A6 /* VehicleDetailView.swift */,
+				73021D75249C3F170078B5FE /* LiveCANHackView.swift */,
 				73FCD4CA244E40A800F4C7A6 /* VehicleListView.swift */,
 				73FCD4CF244E902700F4C7A6 /* CommandView.swift */,
 				73FCD4C4244E37CC00F4C7A6 /* UARTView.swift */,
@@ -451,6 +454,7 @@
 				7328648E2457F05A008F5DAC /* SceneDelegate.swift in Sources */,
 				7328648F2457F05A008F5DAC /* ContentView.swift in Sources */,
 				732864902457F05A008F5DAC /* VehicleDetailView.swift in Sources */,
+				73021D76249C3F170078B5FE /* LiveCANHackView.swift in Sources */,
 				732864912457F05A008F5DAC /* VehicleListView.swift in Sources */,
 				732864922457F05A008F5DAC /* CommandView.swift in Sources */,
 				732864932457F05A008F5DAC /* UARTView.swift in Sources */,
