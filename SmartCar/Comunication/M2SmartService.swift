@@ -31,6 +31,13 @@ enum Bus: UInt8 {
     case SWCAN = 2
 }
 
+fileprivate extension Data.Index {
+    static postfix func ++(value: inout Self) -> Self {
+        defer { value += 1 }
+        return value
+    }
+}
+
 public class M2SmartService {
     var uartService: UARTService
     
@@ -69,17 +76,38 @@ public class M2SmartService {
     
     var frames = PassthroughSubject<SignalInstance<Message>, Never>()
     
+    struct OffsetData {
+        typealias Index = Data.Index
+        var data: Data
+        var offset: Index
+        
+        subscript(index: Index) -> UInt8 {
+            return data[index + offset]
+        }
+        
+        subscript(bounds: ClosedRange<Index>) -> Data {
+            return data[offset + bounds.lowerBound ... offset + bounds.upperBound]
+        }
+        
+        subscript(bounds: Range<Index>) -> Data {
+            return data[offset + bounds.lowerBound ..< offset + bounds.upperBound]
+        }
+
+        var count: Int {
+            return data.count - offset
+        }
+    }
+    
     func parseM2SmartCommand(_ data: Data) {
         // scan through the data until we find the start of a command
-        guard let offset = data.firstIndex(of: 0xF1) else { return }
+        guard let startIndex = data.firstIndex(of: 0xF1) else { return }
+        let data = OffsetData(data: data, offset: startIndex)
         
-        guard data.count - offset >= 2 else {
+        guard data.count >= 2 else {
             return // out of data
         }
-                
-        let offsetData = data[offset...]
         
-        guard let command = M2SmartCommand(rawValue: offsetData[1]) else {
+        guard let command = M2SmartCommand(rawValue: data[1]) else {
             return // invalid command bit
         }
         
@@ -88,16 +116,16 @@ public class M2SmartService {
             // frame
             // todoChecksum
             guard data.count >= 10 else { return }
-            guard let micros = UInt32.from(bytes: offsetData[2...5]) else {
+            guard let micros = UInt32.from(bytes: data[2...5]) else {
                 return
             }
-            guard let id = deserialize(id: offsetData[6...9]) else {
+            guard let id = deserialize(id: data[6...9]) else {
                 return // fail
             }
-            let len = offsetData[10] & 0x0F
+            let len = Int(data[10] & 0x0F)
 //            let bus = data[10] & 0xF0
-            guard 11 + len + 1 == offsetData.count else { return }
-            let recivedMessage = Message(id: id, contents: Array(offsetData[11 ..< 11 + len]))
+            guard 11 + len + 1 == data.count else { return }
+            let recivedMessage = Message(id: id, contents: Array(data[11 ..< 11 + len]))
             
             frames.send(SignalInstance(signal: recivedMessage, timestamp: Timestamp(micros/1000)))
             
